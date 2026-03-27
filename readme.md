@@ -61,7 +61,7 @@ sudo apt upgrade -y
 sudo apt install software-properties-common -y
 ```
 
-### Now upbantu default repository may not inculde the exact python version we want . So we can use deadsnakes repository (to manage exact python version )
+### Now default repository may not inculde the exact python version we want . So we can use deadsnakes repository (to manage exact python version )
 ```
 In our case we are using 3.11.15 version . To install use following commands.
 
