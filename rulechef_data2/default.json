@@ -1,0 +1,4156 @@
+{
+  "name": "default",
+  "task": {
+    "name": "Cancer Type Classification",
+    "description": "Classify cancer type based on symptoms",
+    "input_schema": {
+      "text": "str"
+    },
+    "output_schema": {
+      "label": "str"
+    },
+    "type": "classification",
+    "matching_mode": "text",
+    "text_field": "text"
+  },
+  "description": "",
+  "examples": [
+    {
+      "id": "0b1f6739",
+      "input": {
+        "text": "There is no known cure for this cancer"
+      },
+      "expected_output": {
+        "label": "pancreas"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "939e0c6a",
+      "input": {
+        "text": "Symptoms are abdominal pain, jaundice, loss of appetite or weight loss"
+      },
+      "expected_output": {
+        "label": "pancreas"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "78d6f06b",
+      "input": {
+        "text": "It is recommended that you abstain from tobacco use, follow a low fat diet, eat fruit and vegetables, moderately fried or grilled foods"
+      },
+      "expected_output": {
+        "label": "pancreas"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "d0476668",
+      "input": {
+        "text": "Margarine not butter is a suspect"
+      },
+      "expected_output": {
+        "label": "pancreas"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "949ab069",
+      "input": {
+        "text": "They may be primary or secondary"
+      },
+      "expected_output": {
+        "label": "liver"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "1519506e",
+      "input": {
+        "text": "Symptoms are loss of appetite, weight loss, abdominal swelling, pain, fever and jaundice"
+      },
+      "expected_output": {
+        "label": "liver"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "59881083",
+      "input": {
+        "text": "Cirrhosis is closely linked with cancer of the liver"
+      },
+      "expected_output": {
+        "label": "liver"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "54238454",
+      "input": {
+        "text": "Avoid alcohol, vinyl chloride (plastics), drug abuse, aflatoxins from fungus on peanuts"
+      },
+      "expected_output": {
+        "label": "liver"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "06bc21b3",
+      "input": {
+        "text": "Signs and Symptoms ofBreast Cancer"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "79fd6567",
+      "input": {
+        "text": "Every woman must be aware how her breasts normally look and feel"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "8c25c9c5",
+      "input": {
+        "text": "This will help her to be aware of changes in the breasts immediately, so that she can take action without any loss of time"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "fcd2efa3",
+      "input": {
+        "text": "A lump in the breast or underarm (most common symptom)"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "8c93e52d",
+      "input": {
+        "text": "Change in the size, shape or appearance of the breast"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "907452ae",
+      "input": {
+        "text": "An inverted nipple (newly developed)"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "99e14f13",
+      "input": {
+        "text": "Peeling, scaling, crusting or flaking of the area of skin surrounding the nipple or breast skin"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "4a78b326",
+      "input": {
+        "text": "Redness or pitting of the skin over the breast (like the peel of an orange)"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "dcb88961",
+      "input": {
+        "text": "Bloody or clear discharge from the nipple"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "b51f5977",
+      "input": {
+        "text": "Swelling, warmth, redness or darkening on the breast"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "1faa9a65",
+      "input": {
+        "text": "Itchy, scaly sore or rash on the nipple"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "3a634f5b",
+      "input": {
+        "text": "If you find a lump or any other change in your breasts, consult your Doctor immediately"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "8c6f547b",
+      "input": {
+        "text": "Most breast lumps are not cancer; they may be due to a non-cancerous cause like a cyst or a fibro adenoma"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "dad61a7c",
+      "input": {
+        "text": "Some lumps come and go, while others may change in shape, size and texture in relation to a woman's menstrual cycle"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "093ec24f",
+      "input": {
+        "text": "Early detection of breast cancer is important as it provides several treatment options, increased survival, and good quality of life"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "7cee9f37",
+      "input": {
+        "text": "Early detection provides the best chance of effective treatment"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "ca33f4ea",
+      "input": {
+        "text": "When Breast cancer is found early, when it\u2019s small in size and has not spread, it is easier to treat successfully"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "36c6a4a2",
+      "input": {
+        "text": "This is linked to high fat and low fiber diet"
+      },
+      "expected_output": {
+        "label": "colorectal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "04c786c8",
+      "input": {
+        "text": "It is a rich mans' disease, and prevalent in the richer countries"
+      },
+      "expected_output": {
+        "label": "colorectal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "8899c203",
+      "input": {
+        "text": "Diarrhea, pain in the abdomen, lower back or bladder, or a change in bowel habits are symptoms of this cancer"
+      },
+      "expected_output": {
+        "label": "colorectal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "2f900583",
+      "input": {
+        "text": "Men with undescended testicals are at risk"
+      },
+      "expected_output": {
+        "label": "testicular"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "c4c10290",
+      "input": {
+        "text": "Enlargement of one testicle, dragging ache in the lower abdomen are signs to beware of"
+      },
+      "expected_output": {
+        "label": "testicular"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "ccdad7d3",
+      "input": {
+        "text": "Regular self examination is strongly recommended"
+      },
+      "expected_output": {
+        "label": "testicular"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "bdac522c",
+      "input": {
+        "text": "This is a slow growing cancer, and responds well to treatment"
+      },
+      "expected_output": {
+        "label": "bladder"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "9e2f017b",
+      "input": {
+        "text": "Tobacco and chronic irritation are prime causes"
+      },
+      "expected_output": {
+        "label": "bladder"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "2a675aae",
+      "input": {
+        "text": "House painters, hair dressers, truck drivers, textile workers and printers are at a risk due to the chemicals they are constantly in touch"
+      },
+      "expected_output": {
+        "label": "bladder"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "f583ed83",
+      "input": {
+        "text": "Blood in urine and painful passing of urine are symptoms to beware"
+      },
+      "expected_output": {
+        "label": "bladder"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "c2abb373",
+      "input": {
+        "text": "They are common in women of child bearing age"
+      },
+      "expected_output": {
+        "label": "thyroid"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "883deb63",
+      "input": {
+        "text": "Survivors of nuclear holocausts at Bikini Atoll, Nagasaki and Hiroshima suffered these cancers due to exposure to radiation"
+      },
+      "expected_output": {
+        "label": "thyroid"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "93af05c0",
+      "input": {
+        "text": "They are slow growing and hard to treat"
+      },
+      "expected_output": {
+        "label": "stomach"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "5b452cbc",
+      "input": {
+        "text": "People with Blood group A and who have pernicious anemia are at risk"
+      },
+      "expected_output": {
+        "label": "stomach"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "fa5bc161",
+      "input": {
+        "text": "Eat plenty of raw veg-cruciform, or dark green and yellow vegetables with vitamin A and C are best"
+      },
+      "expected_output": {
+        "label": "stomach"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "d46715a9",
+      "input": {
+        "text": "Avoid highly salted or smoked or pickled food"
+      },
+      "expected_output": {
+        "label": "stomach"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "a598dc14",
+      "input": {
+        "text": "It affects most men than women"
+      },
+      "expected_output": {
+        "label": "kidney"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "68ac1877",
+      "input": {
+        "text": "Blood in the urine, backache, fullness or lumps in the upper abdomen, loss of appetite, are signs of Renal Cell Cancer"
+      },
+      "expected_output": {
+        "label": "kidney"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "69779bb1",
+      "input": {
+        "text": "Renal pelvic cancers affect people over age of 60 years"
+      },
+      "expected_output": {
+        "label": "kidney"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "0f0e2891",
+      "input": {
+        "text": "Battery makers, electroplaters, and rubber workers are at particular risk"
+      },
+      "expected_output": {
+        "label": "kidney"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "07c0291c",
+      "input": {
+        "text": "Tobacco, cadmium, high protein and saccharine are prime suspects"
+      },
+      "expected_output": {
+        "label": "kidney"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "4536e802",
+      "input": {
+        "text": "Tobacco and alcohol predispose you to this cancer"
+      },
+      "expected_output": {
+        "label": "esophageal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "dba5e4b4",
+      "input": {
+        "text": "Also pickled foods and too much spice"
+      },
+      "expected_output": {
+        "label": "esophageal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "81b55ae2",
+      "input": {
+        "text": "Symptoms are trouble in swallowing, choking, pain and spasms in the throat"
+      },
+      "expected_output": {
+        "label": "esophageal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "e781003b",
+      "input": {
+        "text": "Vitamin A and C are recommended as retardants"
+      },
+      "expected_output": {
+        "label": "esophageal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "8ab87377",
+      "input": {
+        "text": "It affects women over 50 years"
+      },
+      "expected_output": {
+        "label": "uterine"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "8a6cf303",
+      "input": {
+        "text": "Hormone treatment, high fat diets, smoking and drinking, obesity, diabetes and high BP are risk factors"
+      },
+      "expected_output": {
+        "label": "uterine"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "bb4c5c3c",
+      "input": {
+        "text": "The Pap smear is again an early warning tool"
+      },
+      "expected_output": {
+        "label": "uterine"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "1e3c8c56",
+      "input": {
+        "text": "They are more common in white skinned people"
+      },
+      "expected_output": {
+        "label": "skin"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "7c480e34",
+      "input": {
+        "text": "People with light eyes and hair are at risk"
+      },
+      "expected_output": {
+        "label": "skin"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "6e5df2d8",
+      "input": {
+        "text": "Look out for moles that grow dark and uneven, itch or change color and out line"
+      },
+      "expected_output": {
+        "label": "skin"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "3de42ced",
+      "input": {
+        "text": "They affect mostly post-menopausal women"
+      },
+      "expected_output": {
+        "label": "ovarian"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "239214ad",
+      "input": {
+        "text": "It affects women with few or no children, with a history of menses problems or other cancers"
+      },
+      "expected_output": {
+        "label": "ovarian"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "cff992fd",
+      "input": {
+        "text": "Symptoms are constipation, flatulence, water retention, a need to urinate, pain, swelling or nausea"
+      },
+      "expected_output": {
+        "label": "ovarian"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "3cfe1bad",
+      "input": {
+        "text": "What arethe signs & symptoms?"
+      },
+      "expected_output": {
+        "label": "cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "98aee912",
+      "input": {
+        "text": "Women with pre-cancers and early cervical cancers usually have no signs and symptoms"
+      },
+      "expected_output": {
+        "label": "cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "4ce854c6",
+      "input": {
+        "text": "Signs & symptoms of CC appear only after the cancer has reached an advanced stage"
+      },
+      "expected_output": {
+        "label": "cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "80b21a7c",
+      "input": {
+        "text": "More severe symptoms may develop at advanced stages of CC"
+      },
+      "expected_output": {
+        "label": "cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "8c8bb233",
+      "input": {
+        "text": "Irregular, inter-menstrual (between periods) bleeding"
+      },
+      "expected_output": {
+        "label": "cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "59dccc9f",
+      "input": {
+        "text": "Abnormal vaginal bleeding after sexual intercourse and a pelvic examination or bleeding after menopause"
+      },
+      "expected_output": {
+        "label": "cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "f31aa968",
+      "input": {
+        "text": "Vaginal discomfort or odorous discharge from vagina, the discharge may contain some blood and may occur between periods or after menopause"
+      },
+      "expected_output": {
+        "label": "cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "5dfb8460",
+      "input": {
+        "text": "Fatigue, weight loss, loss of appetite"
+      },
+      "expected_output": {
+        "label": "cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "ffc1bb63",
+      "input": {
+        "text": "Hoarseness and discomfort in the throat are symptoms to look out for"
+      },
+      "expected_output": {
+        "label": "laryngeal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "68415de1",
+      "input": {
+        "text": "Tobacco, alcohol, asbestos and nickel are suspected causes"
+      },
+      "expected_output": {
+        "label": "laryngeal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "f63cebd5",
+      "input": {
+        "text": "It can be of several types"
+      },
+      "expected_output": {
+        "label": "eyes"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "2b614422",
+      "input": {
+        "text": "Intense exposure to U/V rays of the sun may cause it"
+      },
+      "expected_output": {
+        "label": "eyes"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "bbde008b",
+      "input": {
+        "text": "Light eyed persons are at greater risk of melanoma"
+      },
+      "expected_output": {
+        "label": "eyes"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "72e1b75f",
+      "input": {
+        "text": "Men over 50 years should include PSA (Prostrate Sensitive Antigen) test in their annual medical routine"
+      },
+      "expected_output": {
+        "label": "prostate"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "aa672057",
+      "input": {
+        "text": "Signs& Symptoms of Oral Cancer"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "fbad27b0",
+      "input": {
+        "text": "The most common signs & symptoms of oral cancer include:"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "a7080ca8",
+      "input": {
+        "text": "Red or red and white, patches on the lining of mouth or tongue"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "cc4dfe00",
+      "input": {
+        "text": "Leukoplakia > 2cm in size"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "4e848242",
+      "input": {
+        "text": "One or more mouth ulcers that do not heal after three weeks"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "2ff483e6",
+      "input": {
+        "text": "Swelling in mouth that lasts for more than three weeks"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "331e6e9b",
+      "input": {
+        "text": "Pain when swallowing (dysphagia)"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "820a9e59",
+      "input": {
+        "text": "Difficulty chewing, swallowing, speaking or moving tongue"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "9bcb00fc",
+      "input": {
+        "text": "Difficulty in opening mouth, moving jaw, or swelling or pain in jaw"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "824c97bd",
+      "input": {
+        "text": "A persistent pain in the neck"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "c56d971b",
+      "input": {
+        "text": "Unusual changes in sense of taste"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "266e1529",
+      "input": {
+        "text": "Difficulty in tolerating spicy foods"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "40088476",
+      "input": {
+        "text": "The lymph nodes (glands) in neck become swollen"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "5c045664",
+      "input": {
+        "text": "90% of these can be attributed to smoking"
+      },
+      "expected_output": {
+        "label": "lung"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "4c0b121f",
+      "input": {
+        "text": "Women are catching up on men smokers"
+      },
+      "expected_output": {
+        "label": "lung"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "9fedeb26",
+      "input": {
+        "text": "Pollution in the cities has increased chances lung cancer"
+      },
+      "expected_output": {
+        "label": "lung"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "50fd1628",
+      "input": {
+        "text": "To counter the toxicity of pollution, increase intake of green leafy vegetables and yellow and orange fruit"
+      },
+      "expected_output": {
+        "label": "lung"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "2ef07dbf",
+      "input": {
+        "text": "Symptoms may include persistent cough, weight loss and loss of appetite"
+      },
+      "expected_output": {
+        "label": "lung"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "fa7a99c5",
+      "input": {
+        "text": "There is no known cure for this cancer"
+      },
+      "expected_output": {
+        "label": "pancreas"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "b5ac618a",
+      "input": {
+        "text": "Symptoms are abdominal pain, jaundice, loss of appetite or weight loss"
+      },
+      "expected_output": {
+        "label": "pancreas"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "8d54c4dd",
+      "input": {
+        "text": "It is recommended that you abstain from tobacco use, follow a low fat diet, eat fruit and vegetables, moderately fried or grilled foods"
+      },
+      "expected_output": {
+        "label": "pancreas"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "b02b3a74",
+      "input": {
+        "text": "Margarine not butter is a suspect"
+      },
+      "expected_output": {
+        "label": "pancreas"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "9828e6d4",
+      "input": {
+        "text": "They may be primary or secondary"
+      },
+      "expected_output": {
+        "label": "liver"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "f5efce6a",
+      "input": {
+        "text": "Symptoms are loss of appetite, weight loss, abdominal swelling, pain, fever and jaundice"
+      },
+      "expected_output": {
+        "label": "liver"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "850a4a9b",
+      "input": {
+        "text": "Cirrhosis is closely linked with cancer of the liver"
+      },
+      "expected_output": {
+        "label": "liver"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "e368cc5e",
+      "input": {
+        "text": "Avoid alcohol, vinyl chloride (plastics), drug abuse, aflatoxins from fungus on peanuts"
+      },
+      "expected_output": {
+        "label": "liver"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "20e238e0",
+      "input": {
+        "text": "Signs and Symptoms ofBreast Cancer"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "934bb90f",
+      "input": {
+        "text": "Every woman must be aware how her breasts normally look and feel"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "ac689e26",
+      "input": {
+        "text": "This will help her to be aware of changes in the breasts immediately, so that she can take action without any loss of time"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "bb17784c",
+      "input": {
+        "text": "A lump in the breast or underarm (most common symptom)"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "fbaf9ace",
+      "input": {
+        "text": "Change in the size, shape or appearance of the breast"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "41d12683",
+      "input": {
+        "text": "An inverted nipple (newly developed)"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "ced2eef1",
+      "input": {
+        "text": "Peeling, scaling, crusting or flaking of the area of skin surrounding the nipple or breast skin"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "1fa9b8b9",
+      "input": {
+        "text": "Redness or pitting of the skin over the breast (like the peel of an orange)"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "e489c58e",
+      "input": {
+        "text": "Bloody or clear discharge from the nipple"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "97fed6b2",
+      "input": {
+        "text": "Swelling, warmth, redness or darkening on the breast"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "ce6470aa",
+      "input": {
+        "text": "Itchy, scaly sore or rash on the nipple"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "4c60e4e2",
+      "input": {
+        "text": "If you find a lump or any other change in your breasts, consult your Doctor immediately"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "dbdea787",
+      "input": {
+        "text": "Most breast lumps are not cancer; they may be due to a non-cancerous cause like a cyst or a fibro adenoma"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "b79224cc",
+      "input": {
+        "text": "Some lumps come and go, while others may change in shape, size and texture in relation to a woman's menstrual cycle"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "30fb8b9b",
+      "input": {
+        "text": "Early detection of breast cancer is important as it provides several treatment options, increased survival, and good quality of life"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "88574db9",
+      "input": {
+        "text": "Early detection provides the best chance of effective treatment"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "1a60245e",
+      "input": {
+        "text": "When Breast cancer is found early, when it\u2019s small in size and has not spread, it is easier to treat successfully"
+      },
+      "expected_output": {
+        "label": "breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "c42a8075",
+      "input": {
+        "text": "This is linked to high fat and low fiber diet"
+      },
+      "expected_output": {
+        "label": "colorectal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "d8269a41",
+      "input": {
+        "text": "It is a rich mans' disease, and prevalent in the richer countries"
+      },
+      "expected_output": {
+        "label": "colorectal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "9f1a258b",
+      "input": {
+        "text": "Diarrhea, pain in the abdomen, lower back or bladder, or a change in bowel habits are symptoms of this cancer"
+      },
+      "expected_output": {
+        "label": "colorectal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "a221a849",
+      "input": {
+        "text": "Men with undescended testicals are at risk"
+      },
+      "expected_output": {
+        "label": "testicular"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "eba59af9",
+      "input": {
+        "text": "Enlargement of one testicle, dragging ache in the lower abdomen are signs to beware of"
+      },
+      "expected_output": {
+        "label": "testicular"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "c2f3a3ce",
+      "input": {
+        "text": "Regular self examination is strongly recommended"
+      },
+      "expected_output": {
+        "label": "testicular"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "4a6eead2",
+      "input": {
+        "text": "This is a slow growing cancer, and responds well to treatment"
+      },
+      "expected_output": {
+        "label": "bladder"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "4d7e5048",
+      "input": {
+        "text": "Tobacco and chronic irritation are prime causes"
+      },
+      "expected_output": {
+        "label": "bladder"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "f8b4477b",
+      "input": {
+        "text": "House painters, hair dressers, truck drivers, textile workers and printers are at a risk due to the chemicals they are constantly in touch"
+      },
+      "expected_output": {
+        "label": "bladder"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "1bed6916",
+      "input": {
+        "text": "Blood in urine and painful passing of urine are symptoms to beware"
+      },
+      "expected_output": {
+        "label": "bladder"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "fb7e7029",
+      "input": {
+        "text": "They are common in women of child bearing age"
+      },
+      "expected_output": {
+        "label": "thyroid"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "a41eb73d",
+      "input": {
+        "text": "Survivors of nuclear holocausts at Bikini Atoll, Nagasaki and Hiroshima suffered these cancers due to exposure to radiation"
+      },
+      "expected_output": {
+        "label": "thyroid"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "b7c693a9",
+      "input": {
+        "text": "They are slow growing and hard to treat"
+      },
+      "expected_output": {
+        "label": "stomach"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "6e13a6ce",
+      "input": {
+        "text": "People with Blood group A and who have pernicious anemia are at risk"
+      },
+      "expected_output": {
+        "label": "stomach"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "796ac93d",
+      "input": {
+        "text": "Eat plenty of raw veg-cruciform, or dark green and yellow vegetables with vitamin A and C are best"
+      },
+      "expected_output": {
+        "label": "stomach"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "520a7258",
+      "input": {
+        "text": "Avoid highly salted or smoked or pickled food"
+      },
+      "expected_output": {
+        "label": "stomach"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "31b48244",
+      "input": {
+        "text": "It affects most men than women"
+      },
+      "expected_output": {
+        "label": "kidney"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "7a359c5f",
+      "input": {
+        "text": "Blood in the urine, backache, fullness or lumps in the upper abdomen, loss of appetite, are signs of Renal Cell Cancer"
+      },
+      "expected_output": {
+        "label": "kidney"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "cd385045",
+      "input": {
+        "text": "Renal pelvic cancers affect people over age of 60 years"
+      },
+      "expected_output": {
+        "label": "kidney"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "61f41396",
+      "input": {
+        "text": "Battery makers, electroplaters, and rubber workers are at particular risk"
+      },
+      "expected_output": {
+        "label": "kidney"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "79440311",
+      "input": {
+        "text": "Tobacco, cadmium, high protein and saccharine are prime suspects"
+      },
+      "expected_output": {
+        "label": "kidney"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "9f1286b5",
+      "input": {
+        "text": "Tobacco and alcohol predispose you to this cancer"
+      },
+      "expected_output": {
+        "label": "esophageal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "11d3e862",
+      "input": {
+        "text": "Also pickled foods and too much spice"
+      },
+      "expected_output": {
+        "label": "esophageal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "553b00be",
+      "input": {
+        "text": "Symptoms are trouble in swallowing, choking, pain and spasms in the throat"
+      },
+      "expected_output": {
+        "label": "esophageal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "84e16ff8",
+      "input": {
+        "text": "Vitamin A and C are recommended as retardants"
+      },
+      "expected_output": {
+        "label": "esophageal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "05aa81a8",
+      "input": {
+        "text": "It affects women over 50 years"
+      },
+      "expected_output": {
+        "label": "uterine"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "1f64f65a",
+      "input": {
+        "text": "Hormone treatment, high fat diets, smoking and drinking, obesity, diabetes and high BP are risk factors"
+      },
+      "expected_output": {
+        "label": "uterine"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "ef0bf789",
+      "input": {
+        "text": "The Pap smear is again an early warning tool"
+      },
+      "expected_output": {
+        "label": "uterine"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "b2560d41",
+      "input": {
+        "text": "They are more common in white skinned people"
+      },
+      "expected_output": {
+        "label": "skin"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "376523e7",
+      "input": {
+        "text": "People with light eyes and hair are at risk"
+      },
+      "expected_output": {
+        "label": "skin"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "29f573db",
+      "input": {
+        "text": "Look out for moles that grow dark and uneven, itch or change color and out line"
+      },
+      "expected_output": {
+        "label": "skin"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "85160b57",
+      "input": {
+        "text": "They affect mostly post-menopausal women"
+      },
+      "expected_output": {
+        "label": "ovarian"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "e9286596",
+      "input": {
+        "text": "It affects women with few or no children, with a history of menses problems or other cancers"
+      },
+      "expected_output": {
+        "label": "ovarian"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "c1bebedb",
+      "input": {
+        "text": "Symptoms are constipation, flatulence, water retention, a need to urinate, pain, swelling or nausea"
+      },
+      "expected_output": {
+        "label": "ovarian"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "89988bce",
+      "input": {
+        "text": "What arethe signs & symptoms?"
+      },
+      "expected_output": {
+        "label": "cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "d201c953",
+      "input": {
+        "text": "Women with pre-cancers and early cervical cancers usually have no signs and symptoms"
+      },
+      "expected_output": {
+        "label": "cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "6fccbd4b",
+      "input": {
+        "text": "Signs & symptoms of CC appear only after the cancer has reached an advanced stage"
+      },
+      "expected_output": {
+        "label": "cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "6284ef04",
+      "input": {
+        "text": "More severe symptoms may develop at advanced stages of CC"
+      },
+      "expected_output": {
+        "label": "cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "d6d5139c",
+      "input": {
+        "text": "Irregular, inter-menstrual (between periods) bleeding"
+      },
+      "expected_output": {
+        "label": "cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "3aeffc6d",
+      "input": {
+        "text": "Abnormal vaginal bleeding after sexual intercourse and a pelvic examination or bleeding after menopause"
+      },
+      "expected_output": {
+        "label": "cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "1a3c23ce",
+      "input": {
+        "text": "Vaginal discomfort or odorous discharge from vagina, the discharge may contain some blood and may occur between periods or after menopause"
+      },
+      "expected_output": {
+        "label": "cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "993e53d7",
+      "input": {
+        "text": "Fatigue, weight loss, loss of appetite"
+      },
+      "expected_output": {
+        "label": "cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "3705b5a1",
+      "input": {
+        "text": "Hoarseness and discomfort in the throat are symptoms to look out for"
+      },
+      "expected_output": {
+        "label": "laryngeal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "80df0869",
+      "input": {
+        "text": "Tobacco, alcohol, asbestos and nickel are suspected causes"
+      },
+      "expected_output": {
+        "label": "laryngeal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "2b0123db",
+      "input": {
+        "text": "It can be of several types"
+      },
+      "expected_output": {
+        "label": "eyes"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "c4549c92",
+      "input": {
+        "text": "Intense exposure to U/V rays of the sun may cause it"
+      },
+      "expected_output": {
+        "label": "eyes"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "ad1a86e8",
+      "input": {
+        "text": "Light eyed persons are at greater risk of melanoma"
+      },
+      "expected_output": {
+        "label": "eyes"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "6b5a27c0",
+      "input": {
+        "text": "Men over 50 years should include PSA (Prostrate Sensitive Antigen) test in their annual medical routine"
+      },
+      "expected_output": {
+        "label": "prostate"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "51ad7431",
+      "input": {
+        "text": "Signs& Symptoms of Oral Cancer"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "7f1aad5f",
+      "input": {
+        "text": "The most common signs & symptoms of oral cancer include:"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "9fda40c4",
+      "input": {
+        "text": "Red or red and white, patches on the lining of mouth or tongue"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "e30f894b",
+      "input": {
+        "text": "Leukoplakia > 2cm in size"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "733f14bc",
+      "input": {
+        "text": "One or more mouth ulcers that do not heal after three weeks"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "acd139fc",
+      "input": {
+        "text": "Swelling in mouth that lasts for more than three weeks"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "b45e93d0",
+      "input": {
+        "text": "Pain when swallowing (dysphagia)"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "c57f821b",
+      "input": {
+        "text": "Difficulty chewing, swallowing, speaking or moving tongue"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "27422916",
+      "input": {
+        "text": "Difficulty in opening mouth, moving jaw, or swelling or pain in jaw"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "4e081e00",
+      "input": {
+        "text": "A persistent pain in the neck"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "7278afef",
+      "input": {
+        "text": "Unusual changes in sense of taste"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "e7887677",
+      "input": {
+        "text": "Difficulty in tolerating spicy foods"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "2ab8700c",
+      "input": {
+        "text": "The lymph nodes (glands) in neck become swollen"
+      },
+      "expected_output": {
+        "label": "oral"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "7e2bef8f",
+      "input": {
+        "text": "90% of these can be attributed to smoking"
+      },
+      "expected_output": {
+        "label": "lung"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "8b2f53f9",
+      "input": {
+        "text": "Women are catching up on men smokers"
+      },
+      "expected_output": {
+        "label": "lung"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "3ee6122a",
+      "input": {
+        "text": "Pollution in the cities has increased chances lung cancer"
+      },
+      "expected_output": {
+        "label": "lung"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "d73fe24a",
+      "input": {
+        "text": "To counter the toxicity of pollution, increase intake of green leafy vegetables and yellow and orange fruit"
+      },
+      "expected_output": {
+        "label": "lung"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "3d6b5520",
+      "input": {
+        "text": "Symptoms may include persistent cough, weight loss and loss of appetite"
+      },
+      "expected_output": {
+        "label": "lung"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "a58c158a",
+      "input": {
+        "text": "- 90% of these can be attributed to smoking"
+      },
+      "expected_output": {
+        "label": "12_lung_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "9c87f1c4",
+      "input": {
+        "text": "Women are catching up on men smokers"
+      },
+      "expected_output": {
+        "label": "12_lung_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "5fc50fe4",
+      "input": {
+        "text": "Pollution in the cities has increased chances lung cancer"
+      },
+      "expected_output": {
+        "label": "12_lung_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "b0fbf0db",
+      "input": {
+        "text": "To counter the toxicity of pollution, increase intake of green leafy vegetables and yellow and orange fruit"
+      },
+      "expected_output": {
+        "label": "12_lung_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "bc8f95a6",
+      "input": {
+        "text": "Symptoms may include persistent cough, weight loss and loss of appetite"
+      },
+      "expected_output": {
+        "label": "12_lung_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "2dca6455",
+      "input": {
+        "text": "- Hoarseness and discomfort in the throat are symptoms to look out for"
+      },
+      "expected_output": {
+        "label": "10_laryngeal_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "08fa3c9c",
+      "input": {
+        "text": "Tobacco, alcohol, asbestos and nickel are suspected causes"
+      },
+      "expected_output": {
+        "label": "10_laryngeal_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "5a1056e1",
+      "input": {
+        "text": "- Tobacco and alcohol predispose you to this cancer"
+      },
+      "expected_output": {
+        "label": "8_esophageal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "bda855bc",
+      "input": {
+        "text": "Also pickled foods and too much spice"
+      },
+      "expected_output": {
+        "label": "8_esophageal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "270af237",
+      "input": {
+        "text": "Symptoms are trouble in swallowing, choking, pain and spasms in the throat"
+      },
+      "expected_output": {
+        "label": "8_esophageal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "7be25f4c",
+      "input": {
+        "text": "Vitamin A and C are recommended as retardants"
+      },
+      "expected_output": {
+        "label": "8_esophageal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "32e3e129",
+      "input": {
+        "text": "- It affects women over 50 years"
+      },
+      "expected_output": {
+        "label": "19_uterine"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "6249490a",
+      "input": {
+        "text": "Hormone treatment, high fat diets, smoking and drinking, obesity, diabetes and high BP are risk factors"
+      },
+      "expected_output": {
+        "label": "19_uterine"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "93051c2c",
+      "input": {
+        "text": "The Pap smear is again an early warning tool"
+      },
+      "expected_output": {
+        "label": "19_uterine"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "99d1f163",
+      "input": {
+        "text": "- This is a slow growing cancer, and responds well to treatment"
+      },
+      "expected_output": {
+        "label": "4_bladder"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "d2f98d97",
+      "input": {
+        "text": "Tobacco and chronic irritation are prime causes"
+      },
+      "expected_output": {
+        "label": "4_bladder"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "c5d6a7cc",
+      "input": {
+        "text": "House painters, hair dressers, truck drivers, textile workers and printers are at a risk due to the chemicals they are constantly in touch"
+      },
+      "expected_output": {
+        "label": "4_bladder"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "8c5d500b",
+      "input": {
+        "text": "Blood in urine and painful passing of urine are symptoms to beware"
+      },
+      "expected_output": {
+        "label": "4_bladder"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "738874f1",
+      "input": {
+        "text": "- They affect mostly post-menopausal women"
+      },
+      "expected_output": {
+        "label": "13_ovarian_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "85d56fd5",
+      "input": {
+        "text": "It affects women with few or no children, with a history of menses problems or other cancers"
+      },
+      "expected_output": {
+        "label": "13_ovarian_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "f00d1e78",
+      "input": {
+        "text": "Symptoms are constipation, flatulence, water retention, a need to urinate, pain, swelling or nausea"
+      },
+      "expected_output": {
+        "label": "13_ovarian_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "696abb7a",
+      "input": {
+        "text": "- Men with undescended testicals are at risk"
+      },
+      "expected_output": {
+        "label": "17_testicular"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "655711fd",
+      "input": {
+        "text": "Enlargement of one testicle, dragging ache in the lower abdomen are signs to beware of"
+      },
+      "expected_output": {
+        "label": "17_testicular"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "860dea7b",
+      "input": {
+        "text": "Regular self examination is strongly recommended"
+      },
+      "expected_output": {
+        "label": "17_testicular"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "8da6d3e6",
+      "input": {
+        "text": "- Women with pre-cancers and early cervical cancers usually have no signs and symptoms"
+      },
+      "expected_output": {
+        "label": "2_cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "17f1f912",
+      "input": {
+        "text": "Signs & symptoms of CC appear only after the cancer has reached an advanced stage"
+      },
+      "expected_output": {
+        "label": "2_cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "fa242f93",
+      "input": {
+        "text": "More severe symptoms may develop at advanced stages of CC"
+      },
+      "expected_output": {
+        "label": "2_cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "1b59adf3",
+      "input": {
+        "text": "- Irregular, inter-menstrual (between periods) bleeding"
+      },
+      "expected_output": {
+        "label": "2_cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "45576447",
+      "input": {
+        "text": "- Abnormal vaginal bleeding after sexual intercourse and a pelvic examination or bleeding after menopause"
+      },
+      "expected_output": {
+        "label": "2_cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "15d44b9f",
+      "input": {
+        "text": "- Vaginal discomfort or odorous discharge from vagina, the discharge may contain some blood and may occur between periods or after menopause"
+      },
+      "expected_output": {
+        "label": "2_cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "4d7435ae",
+      "input": {
+        "text": "- Back, leg or pelvic pain"
+      },
+      "expected_output": {
+        "label": "2_cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "98108112",
+      "input": {
+        "text": "- Fatigue, weight loss, loss of appetite"
+      },
+      "expected_output": {
+        "label": "2_cervical"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "11fdeee6",
+      "input": {
+        "text": "- There is no known cure for this cancer"
+      },
+      "expected_output": {
+        "label": "6_pancreas"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "ce0dff0b",
+      "input": {
+        "text": "Symptoms are abdominal pain, jaundice, loss of appetite or weight loss"
+      },
+      "expected_output": {
+        "label": "6_pancreas"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "070ca633",
+      "input": {
+        "text": "It is recommended that you abstain from tobacco use, follow a low fat diet, eat fruit and vegetables, moderately fried or grilled foods"
+      },
+      "expected_output": {
+        "label": "6_pancreas"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "a8bc939c",
+      "input": {
+        "text": "Margarine not butter is a suspect"
+      },
+      "expected_output": {
+        "label": "6_pancreas"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "707b3bcf",
+      "input": {
+        "text": "- The most common signs & symptoms of oral cancer include:"
+      },
+      "expected_output": {
+        "label": "3_oral_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "f5373194",
+      "input": {
+        "text": "- Red or red and white, patches on the lining of mouth or tongue"
+      },
+      "expected_output": {
+        "label": "3_oral_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "1ba4aa49",
+      "input": {
+        "text": "- Leukoplakia > 2cm in size"
+      },
+      "expected_output": {
+        "label": "3_oral_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "2990ec1f",
+      "input": {
+        "text": "- One or more mouth ulcers that do not heal after three weeks"
+      },
+      "expected_output": {
+        "label": "3_oral_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "297b5445",
+      "input": {
+        "text": "- Swelling in mouth that lasts for more than three weeks"
+      },
+      "expected_output": {
+        "label": "3_oral_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "b17632ae",
+      "input": {
+        "text": "- Pain when swallowing (dysphagia)"
+      },
+      "expected_output": {
+        "label": "3_oral_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "b0ea6926",
+      "input": {
+        "text": "- Difficulty chewing, swallowing, speaking or moving tongue"
+      },
+      "expected_output": {
+        "label": "3_oral_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "ea3d8a8a",
+      "input": {
+        "text": "- Difficulty in opening mouth, moving jaw, or swelling or pain in jaw"
+      },
+      "expected_output": {
+        "label": "3_oral_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "38698def",
+      "input": {
+        "text": "- A persistent pain in the neck"
+      },
+      "expected_output": {
+        "label": "3_oral_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "abfe1503",
+      "input": {
+        "text": "- Unexplained weight loss"
+      },
+      "expected_output": {
+        "label": "3_oral_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "1b66c7a9",
+      "input": {
+        "text": "- Unusual changes in sense of taste"
+      },
+      "expected_output": {
+        "label": "3_oral_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "98b130bf",
+      "input": {
+        "text": "- Difficulty in tolerating spicy foods"
+      },
+      "expected_output": {
+        "label": "3_oral_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "79867204",
+      "input": {
+        "text": "- The lymph nodes (glands) in neck become swollen"
+      },
+      "expected_output": {
+        "label": "3_oral_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "9a0bf6ef",
+      "input": {
+        "text": "- They may be primary or secondary"
+      },
+      "expected_output": {
+        "label": "11_liver_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "a6f2b1d2",
+      "input": {
+        "text": "Symptoms are loss of appetite, weight loss, abdominal swelling, pain, fever and jaundice"
+      },
+      "expected_output": {
+        "label": "11_liver_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "58d00f78",
+      "input": {
+        "text": "Cirrhosis is closely linked with cancer of the liver"
+      },
+      "expected_output": {
+        "label": "11_liver_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "64e29cd8",
+      "input": {
+        "text": "Avoid alcohol, vinyl chloride (plastics), drug abuse, aflatoxins from fungus on peanuts"
+      },
+      "expected_output": {
+        "label": "11_liver_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "727c5315",
+      "input": {
+        "text": "- Every woman must be aware how her breasts normally look and feel"
+      },
+      "expected_output": {
+        "label": "1_breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "36c4ca2d",
+      "input": {
+        "text": "This will help her to be aware of changes in the breasts immediately, so that she can take action without any loss of time"
+      },
+      "expected_output": {
+        "label": "1_breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "ec04461f",
+      "input": {
+        "text": "- A lump in the breast or underarm (most common symptom)"
+      },
+      "expected_output": {
+        "label": "1_breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "7b9b5423",
+      "input": {
+        "text": "- Change in the size, shape or appearance of the breast"
+      },
+      "expected_output": {
+        "label": "1_breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "8c920aec",
+      "input": {
+        "text": "- An inverted nipple (newly developed)"
+      },
+      "expected_output": {
+        "label": "1_breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "2cf7f4ee",
+      "input": {
+        "text": "- Peeling, scaling, crusting or flaking of the area of skin surrounding the nipple or breast skin"
+      },
+      "expected_output": {
+        "label": "1_breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "1948edb8",
+      "input": {
+        "text": "- Redness or pitting of the skin over the breast (like the peel of an orange)"
+      },
+      "expected_output": {
+        "label": "1_breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "592285ec",
+      "input": {
+        "text": "- Bloody or clear discharge from the nipple"
+      },
+      "expected_output": {
+        "label": "1_breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "30eff511",
+      "input": {
+        "text": "- Swelling, warmth, redness or darkening on the breast"
+      },
+      "expected_output": {
+        "label": "1_breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "a0082218",
+      "input": {
+        "text": "- Itchy, scaly sore or rash on the nipple"
+      },
+      "expected_output": {
+        "label": "1_breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "037221c8",
+      "input": {
+        "text": "- If you find a lump or any other change in your breasts, consult your Doctor immediately"
+      },
+      "expected_output": {
+        "label": "1_breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "ea1f47fc",
+      "input": {
+        "text": "Most breast lumps are not cancer; they may be due to a non-cancerous cause like a cyst or a fibro adenoma"
+      },
+      "expected_output": {
+        "label": "1_breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "03c0ca2a",
+      "input": {
+        "text": "Some lumps come and go, while others may change in shape, size and texture in relation to a woman's menstrual cycle"
+      },
+      "expected_output": {
+        "label": "1_breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "bc7bc209",
+      "input": {
+        "text": "- Early detection of breast cancer is important as it provides several treatment options, increased survival, and good quality of life"
+      },
+      "expected_output": {
+        "label": "1_breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "f7655678",
+      "input": {
+        "text": "Early detection provides the best chance of effective treatment"
+      },
+      "expected_output": {
+        "label": "1_breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "ada1675e",
+      "input": {
+        "text": "When Breast cancer is found early, when it\u2019s small in size and has not spread, it is easier to treat successfully"
+      },
+      "expected_output": {
+        "label": "1_breast"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "aa801127",
+      "input": {
+        "text": "- They are slow growing and hard to treat"
+      },
+      "expected_output": {
+        "label": "16_stomach"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "1fb3b2e3",
+      "input": {
+        "text": "People with Blood group A and who have pernicious anemia are at risk"
+      },
+      "expected_output": {
+        "label": "16_stomach"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "9f4146b6",
+      "input": {
+        "text": "Eat plenty of raw veg-cruciform, or dark green and yellow vegetables with vitamin A and C are best"
+      },
+      "expected_output": {
+        "label": "16_stomach"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "df1072e6",
+      "input": {
+        "text": "Avoid highly salted or smoked or pickled foods"
+      },
+      "expected_output": {
+        "label": "16_stomach"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "cdc5db1d",
+      "input": {
+        "text": "- This is linked to high fat and low fiber diet"
+      },
+      "expected_output": {
+        "label": "7_colorectal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "d984ca9d",
+      "input": {
+        "text": "It is a rich mans' disease, and prevalent in the richer countries"
+      },
+      "expected_output": {
+        "label": "7_colorectal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "35ae726a",
+      "input": {
+        "text": "Diarrhea, pain in the abdomen, lower back or bladder, or a change in bowel habits are symptoms of this cancer"
+      },
+      "expected_output": {
+        "label": "7_colorectal"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "5f1746bb",
+      "input": {
+        "text": "Men over 50 years should include PSA (Prostrate Sensitive Antigen) test in their annual medical routine"
+      },
+      "expected_output": {
+        "label": "14_prostrate"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "49c9beb8",
+      "input": {
+        "text": "- It can be of several types"
+      },
+      "expected_output": {
+        "label": "5_eyes"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "84cc3ff0",
+      "input": {
+        "text": "Intense exposure to U/V rays of the sun may cause it"
+      },
+      "expected_output": {
+        "label": "5_eyes"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "9fb8fd57",
+      "input": {
+        "text": "Light eyed persons are at greater risk of melanoma"
+      },
+      "expected_output": {
+        "label": "5_eyes"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "6ebe42f0",
+      "input": {
+        "text": "- They are common in women of child bearing age"
+      },
+      "expected_output": {
+        "label": "18_thyroid_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "a97c6cfb",
+      "input": {
+        "text": "Survivors of nuclear holocausts at Bikini Atoll, Nagasaki and Hiroshima suffered these cancers due to exposure to radiation"
+      },
+      "expected_output": {
+        "label": "18_thyroid_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "8365e13c",
+      "input": {
+        "text": "- They are more common in white skinned people"
+      },
+      "expected_output": {
+        "label": "15_skin_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "40fccdf7",
+      "input": {
+        "text": "People with light eyes and hair are at risk"
+      },
+      "expected_output": {
+        "label": "15_skin_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "1656b9cf",
+      "input": {
+        "text": "Look out for moles that grow dark and uneven, itch or change color and out line"
+      },
+      "expected_output": {
+        "label": "15_skin_s"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "0b2b2003",
+      "input": {
+        "text": "- It affects most men than women"
+      },
+      "expected_output": {
+        "label": "9_kidney"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "09895cfc",
+      "input": {
+        "text": "Blood in the urine, backache, fullness or lumps in the upper abdomen, loss of appetite, are signs of Renal Cell Cancer"
+      },
+      "expected_output": {
+        "label": "9_kidney"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "ba071f1f",
+      "input": {
+        "text": "Renal pelvic cancers affect people over age of 60 years"
+      },
+      "expected_output": {
+        "label": "9_kidney"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "7df100fb",
+      "input": {
+        "text": "Battery makers, electroplaters, and rubber workers are at particular risk"
+      },
+      "expected_output": {
+        "label": "9_kidney"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "578f7f4d",
+      "input": {
+        "text": "Tobacco, cadmium, high protein and saccharine are prime suspects"
+      },
+      "expected_output": {
+        "label": "9_kidney"
+      },
+      "source": "human",
+      "confidence": 0.8
+    }
+  ],
+  "corrections": [],
+  "feedback": [],
+  "structured_feedback": [],
+  "rules": [
+    {
+      "id": "c4021bff",
+      "name": "Bladder_UrineSymptoms",
+      "description": "Matches symptoms directly related to the urinary system, such as blood in urine or painful urination.",
+      "format": "regex",
+      "content": "(?i)\\b(?:blood in urine|painful passing of urine)\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474107",
+      "output_template": {
+        "label": "bladder"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "77689eae",
+      "name": "Bladder_OccupationalChemicalRisk",
+      "description": "Identifies specific occupations associated with chemical exposure as a risk factor for bladder cancer.",
+      "format": "regex",
+      "content": "(?i)\\b(?:house painters|hair dressers|truck drivers|textile workers|printers)\\b.*?chemicals?\\b",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474116",
+      "output_template": {
+        "label": "bladder"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "6c332dd9",
+      "name": "Bladder_ChronicIrritationCause",
+      "description": "Matches the specific cause 'chronic irritation' in the context of being a cause for cancer, now with higher priority to win against generic risk factors.",
+      "format": "regex",
+      "content": "(?i)\\bchronic irritation\\b.*?causes?\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474122",
+      "output_template": {
+        "label": "bladder"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "182627e9",
+      "name": "Bladder_SlowGrowingTreatment",
+      "description": "Detects descriptive phrases about the cancer being slow-growing and responsive to treatment.",
+      "format": "regex",
+      "content": "(?i)\\bslow growing cancer(?:.*?responds well to treatment)?\\b",
+      "priority": 7,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474127",
+      "output_template": {
+        "label": "bladder"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "214f34c4",
+      "name": "BreastCancerKeyword",
+      "description": "Matches the explicit phrase 'breast cancer' and variations like 'ofBreast cancer' to be robust to missing spaces between words or common concatenations found in training data.",
+      "format": "regex",
+      "content": "(?i)\\b(?:breast|ofBreast)\\s*cancer\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474131",
+      "output_template": {
+        "label": "breast"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "9c8a6c2b",
+      "name": "BreastAnatomyKeyword",
+      "description": "Matches the words 'breast' or 'breasts', which are central to the diagnosis and discussion of this cancer type.",
+      "format": "regex",
+      "content": "(?i)\\bbreasts?\\b",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474136",
+      "output_template": {
+        "label": "breast"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "ae14b57e",
+      "name": "NippleAnatomyKeyword",
+      "description": "Matches the word 'nipple', a highly specific anatomical part directly associated with breast cancer symptoms.",
+      "format": "regex",
+      "content": "(?i)\\bnipple\\b",
+      "priority": 8,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474141",
+      "output_template": {
+        "label": "breast"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "d0041ddf",
+      "name": "LumpMenstrualContext",
+      "description": "Matches 'lump' in close proximity to 'woman's menstrual cycle', now with an increased character window for better contextual matching.",
+      "format": "regex",
+      "content": "(?i)(?:\\blump(?:s)?\\b(?:.{0,100}?)\\bwoman(?:'s)? menstrual cycle\\b|\\bwoman(?:'s)? menstrual cycle\\b(?:.{0,100}?)\\blump(?:s)?\\b)",
+      "priority": 7,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474147",
+      "output_template": {
+        "label": "breast"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "0578808c",
+      "name": "Cervical_DirectMention",
+      "description": "Matches direct mentions of 'cervical cancer' or its common abbreviation 'CC'.",
+      "format": "regex",
+      "content": "(?i)\\bcervical\\s+cancer(?:s)?\\b|\\bCC\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474152",
+      "output_template": {
+        "label": "cervical"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "c7dc564f",
+      "name": "Cervical_SpecificBleeding",
+      "description": "Identifies specific bleeding patterns related to cervical cancer, now explicitly matching parenthetical descriptions.",
+      "format": "regex",
+      "content": "(?i)\\b(?:irregular|abnormal|inter-menstrual\\s*\\(between\\s+periods\\)|between\\s+periods)\\s*(?:vaginal)?\\s*bleeding\\b|\\bbleeding\\s+after\\s+(?:sexual\\s+intercourse|a\\s+pelvic\\s+examination|menopause)\\b",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474156",
+      "output_template": {
+        "label": "cervical"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "f46897b0",
+      "name": "Cervical_VaginalDiscomfortDischarge",
+      "description": "Detects mentions of vaginal discomfort or specific types of odorous vaginal discharge, potentially containing blood.",
+      "format": "regex",
+      "content": "(?i)\\b(?:vaginal\\s+discomfort|odorous\\s+discharge\\s+from\\s+vagina|discharge\\s+may\\s+contain\\s+some\\s+blood)\\b",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474160",
+      "output_template": {
+        "label": "cervical"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "d3c881e2",
+      "name": "Cervical_GeneralConstitutionalSymptoms",
+      "description": "Captures general constitutional symptoms (fatigue, weight loss, loss of appetite) explicitly provided as a positive example for cervical cancer.",
+      "format": "regex",
+      "content": "(?i)\\b(?:fatigue|weight\\s+loss|loss\\s+of\\s+appetite)\\b",
+      "priority": 8,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474164",
+      "output_template": {
+        "label": "cervical"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "fb3b3cb0",
+      "name": "Colorectal_BowelSymptoms",
+      "description": "Matches common symptoms like diarrhea, changes in bowel habits, or abdominal pain specific to colorectal cancer.",
+      "format": "regex",
+      "content": "(?i)\\b(?:diarrhea|bowel\\s+habits|abdomen(?:al)?\\s+(?:pain|discomfort))\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474168",
+      "output_template": {
+        "label": "colorectal"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "4b2c7726",
+      "name": "Colorectal_SpecificDiet",
+      "description": "Identifies the specific dietary link involving 'high fat and low fiber diet'.",
+      "format": "regex",
+      "content": "(?i)\\b(?:high\\s+fat\\s+and\\s+low\\s+fiber|low\\s+fiber\\s+and\\s+high\\s+fat)\\s+diet\\b",
+      "priority": 8,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474172",
+      "output_template": {
+        "label": "colorectal"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "931a8d31",
+      "name": "Colorectal_SocioEconomicFactor",
+      "description": "Catches descriptions related to its prevalence in richer demographics or being a 'rich man's disease'.",
+      "format": "regex",
+      "content": "(?i)\\b(?:rich\\s+mans?'\\s+disease|prevalent\\s+in\\s+the\\s+richer\\s+countries)\\b",
+      "priority": 7,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474176",
+      "output_template": {
+        "label": "colorectal"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "d4130a7a",
+      "name": "EsophagealCausesRiskFactors",
+      "description": "Matches common causes and risk factors for esophageal cancer. Its priority has been lowered to prevent it from broadly overriding more specific cancer classifications.",
+      "format": "regex",
+      "content": "(?i)\\b(?:tobacco|alcohol|pickled foods|spice)\\b",
+      "priority": 7,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474185",
+      "output_template": {
+        "label": "esophageal"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "0e342231",
+      "name": "EsophagealSpecificSymptoms",
+      "description": "Identifies specific symptoms related to esophageal cancer, focusing on difficulty swallowing, choking, and throat pain/spasms.",
+      "format": "regex",
+      "content": "(?i)\\b(?:trouble in swallowing|choking|pain in the throat|spasms in the throat)\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474189",
+      "output_template": {
+        "label": "esophageal"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "e37f9ce8",
+      "name": "EsophagealPreventionRetardants",
+      "description": "Matches mentions of specific vitamins recommended as retardants for esophageal cancer.",
+      "format": "regex",
+      "content": "(?i)\\b(?:vitamin [ac]|retardants)\\b",
+      "priority": 8,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474193",
+      "output_template": {
+        "label": "esophageal"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "3af64bfe",
+      "name": "eyes_eyed_persons",
+      "description": "Matches phrases indicating risk for 'eyed persons', which is highly specific to eye-related context.",
+      "format": "regex",
+      "content": "(?i)\\b(?:light\\s+)?eyed\\s+persons\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474197",
+      "output_template": {
+        "label": "eyes"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "0a2b1926",
+      "name": "eyes_uv_rays",
+      "description": "Matches 'U/V rays' or 'UV rays', which are known environmental factors for eye conditions.",
+      "format": "regex",
+      "content": "(?i)\\b(?:U/V|UV)\\s+rays\\b",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474204",
+      "output_template": {
+        "label": "eyes"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "4b759e26",
+      "name": "eyes_melanoma_keyword",
+      "description": "Matches the keyword 'melanoma', which appears in a positive example for eye cancer and does not conflict with provided counter-examples.",
+      "format": "regex",
+      "content": "(?i)\\bmelanoma\\b",
+      "priority": 8,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474208",
+      "output_template": {
+        "label": "eyes"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "6690a0c4",
+      "name": "Kidney_RenalCancerTerms",
+      "description": "Matches direct mentions of 'Renal Cell Cancer' or 'Renal pelvic cancers', which are specific names for kidney cancer.",
+      "format": "regex",
+      "content": "(?i)\\brenal (?:cell|pelvic)? ?cancer(?:s)?\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474212",
+      "output_template": {
+        "label": "kidney"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "07babaae",
+      "name": "Kidney_CombinedSymptoms",
+      "description": "Matches the specific combination of 'blood in the urine' with related symptoms like 'backache' or 'upper abdomen', distinguishing it from other cancers with 'blood in urine' (e.g., bladder).",
+      "format": "regex",
+      "content": "(?i)\\bblood in the urine\\b(?:,?.*?(?:\\bbackache\\b|\\bupper abdomen\\b|\\blumps in the upper abdomen\\b))",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474216",
+      "output_template": {
+        "label": "kidney"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "c49e5ffc",
+      "name": "Kidney_SpecificRiskFactorsOccupations",
+      "description": "Matches specific chemical risk factors or occupations uniquely associated with kidney cancer. Priority increased to ensure it wins against generic risk factors.",
+      "format": "regex",
+      "content": "(?i)\\b(?:cadmium|saccharine|battery makers|electroplaters|rubber workers)\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474220",
+      "output_template": {
+        "label": "kidney"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "f163c14b",
+      "name": "Kidney_DemographicComparison",
+      "description": "Matches the specific demographic comparison indicating that kidney cancer affects 'most men than women'.",
+      "format": "regex",
+      "content": "(?i)\\b(?:affects most )?men than women\\b",
+      "priority": 7,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474224",
+      "output_template": {
+        "label": "kidney"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "3a563d39",
+      "name": "Kidney_AgeDemographic",
+      "description": "Matches the specific age demographic 'over age of 60 years' or 'age of 60 years' mentioned in relation to kidney cancer.",
+      "format": "regex",
+      "content": "(?i)\\b(?:over age of 60 years|age of 60 years)\\b",
+      "priority": 6,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474231",
+      "output_template": {
+        "label": "kidney"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "266af6fa",
+      "name": "Laryngeal_Symptoms_ThroatVoice",
+      "description": "Matches text describing symptoms specifically related to the throat or voice, such as hoarseness or discomfort in the throat, which are indicative of laryngeal cancer.",
+      "format": "regex",
+      "content": "(?i)\\b(?:hoarseness|discomfort in the throat)\\b",
+      "priority": 8,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474235",
+      "output_template": {
+        "label": "laryngeal"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "63d92a77",
+      "name": "Laryngeal_Causes_SpecificChemicals",
+      "description": "Matches text that identifies a specific combination of environmental and lifestyle factors (tobacco, alcohol, asbestos, and nickel) as suspected causes. Priority increased for this highly specific combination.",
+      "format": "regex",
+      "content": "(?i)(?=.*\\btobacco\\b)(?=.*\\balcohol\\b)(?=.*\\basbestos\\b)(?=.*\\bnickel\\b).*\\b(?:causes?|suspects?|predispose)\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474239",
+      "output_template": {
+        "label": "laryngeal"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "f2dfd7af",
+      "name": "liver_direct_mention",
+      "description": "Matches direct mentions of 'liver' or 'cirrhosis', which is strongly linked to liver cancer.",
+      "format": "regex",
+      "content": "(?i)\\b(cirrhosis|liver)\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474243",
+      "output_template": {
+        "label": "liver"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "e2ad14b8",
+      "name": "liver_jaundice_symptom",
+      "description": "Identifies the symptom 'jaundice', a characteristic sign of liver disease.",
+      "format": "regex",
+      "content": "(?i)\\bjaundice\\b",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474247",
+      "output_template": {
+        "label": "liver"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "46925561",
+      "name": "liver_specific_risk_factors",
+      "description": "Detects specific risk factors for liver cancer such as aflatoxins or vinyl chloride. Priority increased to ensure it wins against generic risk factors.",
+      "format": "regex",
+      "content": "(?i)\\b(aflatoxins|vinyl chloride)\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474251",
+      "output_template": {
+        "label": "liver"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "e6d30400",
+      "name": "liver_abdominal_swelling_symptom",
+      "description": "Matches the symptom 'abdominal swelling', which can be indicative of liver problems.",
+      "format": "regex",
+      "content": "(?i)\\babdominal swelling\\b",
+      "priority": 7,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474255",
+      "output_template": {
+        "label": "liver"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "f72b94f9",
+      "name": "LungCancerDirectMention",
+      "description": "Matches direct mentions of 'lung cancer', providing the most precise classification.",
+      "format": "regex",
+      "content": "(?i)\\blung cancer\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474258",
+      "output_template": {
+        "label": "lung"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "7db1bd95",
+      "name": "LungCancerSmokingRelated",
+      "description": "Identifies text related to smoking or smokers, which are primary causes strongly associated with lung cancer.",
+      "format": "regex",
+      "content": "(?i)\\b(smoking|smokers?)\\b",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474263",
+      "output_template": {
+        "label": "lung"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "aa283621",
+      "name": "LungCancerPersistentCough",
+      "description": "Detects specific symptoms like 'persistent cough' or 'coughing', which are characteristic of lung cancer.",
+      "format": "regex",
+      "content": "(?i)\\b(persistent cough|coughing?)\\b",
+      "priority": 8,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474267",
+      "output_template": {
+        "label": "lung"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "cb8f0d12",
+      "name": "LungCancerPollutionFactors",
+      "description": "Matches terms related to environmental factors like 'pollution' or 'toxicity', which are linked to increased chances of lung cancer.",
+      "format": "regex",
+      "content": "(?i)\\b(pollution|toxicity)\\b",
+      "priority": 7,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474271",
+      "output_template": {
+        "label": "lung"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "c64ac6f5",
+      "name": "OralCancerExplicit",
+      "description": "Matches explicit mentions of 'oral cancer'.",
+      "format": "regex",
+      "content": "(?i)\\b(?:oral\\s+cancer)\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474274",
+      "output_template": {
+        "label": "oral"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "f98dc78b",
+      "name": "OralCavitySpecificSymptoms",
+      "description": "Identifies highly specific symptoms or conditions directly within the oral cavity (mouth, tongue, jaw) including leukoplakia, dysphagia, mouth ulcers, patches, swelling, and pain.",
+      "format": "regex",
+      "content": "(?i)\\b(?:leukoplakia|dysphagia|mouth\\s+ulcers?|patches\\s+on\\s+(?:the\\s+)?(?:lining\\s+of\\s+)?(?:mouth|tongue)|swelling\\s+in\\s+(?:mouth|jaw)|pain\\s+in\\s+jaw|difficulty\\s+in\\s+opening\\s+mouth)\\b",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474278",
+      "output_template": {
+        "label": "oral"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "cbe2438d",
+      "name": "OralFunctionAndTasteSymptoms",
+      "description": "Matches symptoms related to difficulty with oral functions like chewing, swallowing, speaking, or changes in taste and tolerating spicy foods.",
+      "format": "regex",
+      "content": "(?i)\\b(?:difficulty\\s+(?:chewing|swallowing|speaking)|unusual\\s+changes\\s+in\\s+sense\\s+of\\s+taste|difficulty\\s+in\\s+tolerating\\s+spicy\\s+foods)\\b",
+      "priority": 8,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474282",
+      "output_template": {
+        "label": "oral"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "b604ad48",
+      "name": "NeckAndLymphNodeSymptoms",
+      "description": "Captures symptoms related to pain in the neck or swollen lymph nodes in the neck region.",
+      "format": "regex",
+      "content": "(?i)\\b(?:persistent\\s+pain\\s+in\\s+the\\s+neck|lymph\\s+nodes(?:.*?)\\bneck\\b(?:.*?)\\bswollen)\\b",
+      "priority": 7,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474286",
+      "output_template": {
+        "label": "oral"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "a665e985",
+      "name": "Ovarian_FemaleDemographics",
+      "description": "Matches demographic indicators specific to ovarian cancer, such as post-menopausal women or women with specific childbearing histories.",
+      "format": "regex",
+      "content": "(?i)\\b(?:post-?menopausal women|women with few or no children)\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474290",
+      "output_template": {
+        "label": "ovarian"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "086f56bb",
+      "name": "Ovarian_MensesProblems",
+      "description": "Matches the specific phrase 'menses problems' which is a strong indicator from a positive example.",
+      "format": "regex",
+      "content": "(?i)\\bmenses problems\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474297",
+      "output_template": {
+        "label": "ovarian"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "2ac8f7a5",
+      "name": "Ovarian_SpecificSymptomCombination",
+      "description": "Matches text containing at least two of the highly specific digestive and pelvic symptoms associated with ovarian cancer.",
+      "format": "regex",
+      "content": "(?i)\\b(?:flatulence|water retention|a need to urinate|constipation)\\b.*?\\b(?:flatulence|water retention|a need to urinate|constipation)\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474301",
+      "output_template": {
+        "label": "ovarian"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "24552e19",
+      "name": "Pancreas_MargarineButter",
+      "description": "Matches the highly specific dietary mention 'margarine not butter'.",
+      "format": "regex",
+      "content": "(?i)\\bmargarine (?:not|but not) butter\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474305",
+      "output_template": {
+        "label": "pancreas"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "b04e6f34",
+      "name": "Pancreas_Jaundice",
+      "description": "Matches 'jaundice', a key symptom often associated with pancreatic cancer.",
+      "format": "regex",
+      "content": "(?i)\\bjaundice\\b",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474309",
+      "output_template": {
+        "label": "pancreas"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "f46cc567",
+      "name": "Pancreas_DietaryAdvice",
+      "description": "Matches specific dietary recommendations related to pancreatic cancer. Priority increased to ensure it wins against generic risk factors.",
+      "format": "regex",
+      "content": "(?i)\\b(?:low fat diet|fried foods|grilled foods)\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474313",
+      "output_template": {
+        "label": "pancreas"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "7f708ad7",
+      "name": "Pancreas_NoCureStatement",
+      "description": "Matches the literal phrase 'There is no known cure for this cancer' as it appears in a positive example.",
+      "format": "regex",
+      "content": "(?i)\\bThere is no known cure for this cancer\\b",
+      "priority": 7,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474317",
+      "output_template": {
+        "label": "pancreas"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "4193cf39",
+      "name": "prostate_keyword_direct_match",
+      "description": "Matches direct mentions of 'prostate' or 'prostrate' (to account for the spelling in the positive example).",
+      "format": "regex",
+      "content": "(?i)\\b(?:prostate|prostrate)\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474320",
+      "output_template": {
+        "label": "prostate"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "ae3feb6a",
+      "name": "prostate_psa_antigen_test",
+      "description": "Matches the acronym 'PSA' when it appears in context with 'Antigen' or 'test', indicating a Prostate-Specific Antigen test.",
+      "format": "regex",
+      "content": "(?i)\\bPSA\\b.*?\\b(?:Antigen|test)\\b",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474324",
+      "output_template": {
+        "label": "prostate"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "cbeb7095",
+      "name": "prostate_men_over_50_demographic",
+      "description": "Matches the demographic context 'Men over 50', which is a significant risk factor and screening age for prostate cancer.",
+      "format": "regex",
+      "content": "(?i)\\bmen\\b.*?\\bover\\s+50\\b",
+      "priority": 8,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474328",
+      "output_template": {
+        "label": "prostate"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "3198f9b5",
+      "name": "Skin_Explicit_Cancer",
+      "description": "Matches explicit mentions of 'skin cancer', providing a high-confidence classification.",
+      "format": "regex",
+      "content": "(?i)\\bskin\\s+cancer\\b",
+      "priority": 11,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474332",
+      "output_template": {
+        "label": "skin"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "13953d05",
+      "name": "Skin_Moles_Symptoms",
+      "description": "Identifies descriptions of moles with problematic characteristics such as growing dark, uneven, itching, or changing color/outline, which are key indicators for skin cancer.",
+      "format": "regex",
+      "content": "(?i)\\bmoles?\\b(?:\\s+that)?\\s+(?:grow\\s+)?(?:dark|uneven|itch(?:es|ing)?|change\\s+(?:color|outline))\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474336",
+      "output_template": {
+        "label": "skin"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "ab867f0f",
+      "name": "Skin_Risk_WhiteSkinned",
+      "description": "Matches text indicating 'white skinned people' as a risk factor for cancer.",
+      "format": "regex",
+      "content": "(?i)\\bwhite\\s+skinned\\s+people\\b",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474340",
+      "output_template": {
+        "label": "skin"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "5d03dcbe",
+      "name": "Skin_Risk_LightEyesHair",
+      "description": "Matches text referring to 'light eyes and hair' as a risk factor.",
+      "format": "regex",
+      "content": "(?i)\\blight\\s+eyes\\s+and\\s+hair\\b",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474344",
+      "output_template": {
+        "label": "skin"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "94cd49d6",
+      "name": "stomach_risk_factors_anemia",
+      "description": "Identifies specific risk factors like blood group A or pernicious anemia associated with stomach cancer.",
+      "format": "regex",
+      "content": "(?i)\\b(?:blood group a|pernicious anemia)\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474348",
+      "output_template": {
+        "label": "stomach"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "6a1f1a4d",
+      "name": "stomach_diet_avoid_salted_smoked",
+      "description": "Detects dietary advice to avoid highly salted or smoked foods, which are risk factors for stomach cancer, ensuring context with 'food'.",
+      "format": "regex",
+      "content": "(?i)(?:highly salted|smoked).*?\\bfood\\b",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474352",
+      "output_template": {
+        "label": "stomach"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "38a88d44",
+      "name": "stomach_diet_veg",
+      "description": "Matches specific recommendations for vegetables like cruciform or dark green and yellow vegetables.",
+      "format": "regex",
+      "content": "(?i)\\b(?:raw veg-cruciform|(?:dark green and yellow|cruciform) vegetables?)\\b",
+      "priority": 8,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474355",
+      "output_template": {
+        "label": "stomach"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "f4513614",
+      "name": "stomach_treatment_difficulty",
+      "description": "Identifies a characteristic description of stomach cancer as 'hard to treat'.",
+      "format": "regex",
+      "content": "(?i)\\bhard to treat\\b",
+      "priority": 7,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474359",
+      "output_template": {
+        "label": "stomach"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "0b0cd14d",
+      "name": "testicular_direct_mention",
+      "description": "Matches direct mentions of 'testicle' or 'testicals', which are highly specific indicators for testicular cancer, now handling various plural forms.",
+      "format": "regex",
+      "content": "(?i)\\btesticle(?:s|cal|cals)?\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474363",
+      "output_template": {
+        "label": "testicular"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "6b44a1e8",
+      "name": "testicular_self_examination",
+      "description": "Matches the phrase 'self examination', which is explicitly mentioned as a recommendation for testicular cancer in one of the positive examples.",
+      "format": "regex",
+      "content": "(?i)\\bself\\s+examination\\b",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474367",
+      "output_template": {
+        "label": "testicular"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "0b6e0287",
+      "name": "Thyroid_RadiationExposure",
+      "description": "Matches text indicating cancer due to radiation exposure, nuclear events, or specific historical locations known for radiation exposure linked to thyroid cancer.",
+      "format": "regex",
+      "content": "(?i)\\b(?:radiation|nuclear (?:holocausts|exposure)|Bikini Atoll|Nagasaki|Hiroshima)\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474371",
+      "output_template": {
+        "label": "thyroid"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "d8f65e0d",
+      "name": "Thyroid_ChildBearingAgeWomen",
+      "description": "Identifies text mentioning women of child-bearing age as a demographic particularly susceptible to this type of cancer.",
+      "format": "regex",
+      "content": "(?i)\\bwomen\\b.*\\bchild bearing age\\b",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474375",
+      "output_template": {
+        "label": "thyroid"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "6b68dfb2",
+      "name": "Uterine_PapSmear",
+      "description": "Matches mentions of 'Pap smear', a screening tool highly relevant to gynecological cancers.",
+      "format": "regex",
+      "content": "(?i)\\bPap\\s+smear\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474379",
+      "output_template": {
+        "label": "uterine"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "d5f1c774",
+      "name": "Uterine_WomenOverAge",
+      "description": "Identifies text indicating the cancer affects women over a certain age (e.g., 50 years and above).",
+      "format": "regex",
+      "content": "(?i)\\bwomen\\b.*\\b(over|above)\\s+\\d{2,}\\s+years\\b",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474383",
+      "output_template": {
+        "label": "uterine"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "9dd0ff85",
+      "name": "Uterine_HormoneTreatment",
+      "description": "Detects 'Hormone treatment' as a specific risk factor for uterine cancer.",
+      "format": "regex",
+      "content": "(?i)\\bHormone\\s+treatment\\b",
+      "priority": 8,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474387",
+      "output_template": {
+        "label": "uterine"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "ce411304",
+      "name": "Uterine_SpecificRiskFactors",
+      "description": "Matches specific lifestyle/medical conditions (obesity, diabetes, high BP) when explicitly presented as 'risk factors'.",
+      "format": "regex",
+      "content": "(?i)\\b(obesity|diabetes|high\\s+BP)\\b.*\\brisk\\s+factors?\\b",
+      "priority": 7,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474391",
+      "output_template": {
+        "label": "uterine"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "f26672c3",
+      "name": "breast_generic_phrase_early_detection",
+      "description": "Catches a specific generic phrase from the training data about early detection for breast cancer.",
+      "format": "regex",
+      "content": "(?i)\\bEarly detection provides the best chance of effective treatment\\b",
+      "priority": 5,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-04-20T13:47:58.474395",
+      "output_template": {
+        "label": "breast"
+      },
+      "output_key": "label"
+    }
+  ],
+  "version": 1
+}

@@ -1,188 +1,173 @@
-import requests
-import json
-from openai import OpenAI
+import os
+import re
+from google import genai
 from rulechef import RuleChef, Task, TaskType
 
+# Gemini OpenAI-Compatible Client
+class GeminiOpenAIClient:
+    def __init__(self, api_key, model="gemini-2.5-flash"):
+        self.client = genai.Client(api_key=api_key)
+        self.model = model
+        self.chat = self.Chat(self)
 
-# 
-#  Fetching weather JSON
+    class Chat:
+        def __init__(self, parent):
+            self.parent = parent
+            self.completions = self.Completions(parent)
 
-def fetch_weather(url):
-      # Here I'm making a GET request to the weather API
-    response = requests.get(url, timeout=10)
-     # The API returns JSON, so I directly convert it into a Python dictionary
-    return response.json()
+        class Completions:
+            def __init__(self, parent):
+                self.parent = parent
 
-# Converting JSON → text
+            def create(self, model=None, messages=None, **kwargs):
+                prompt = ""
 
-def weather_to_text(data):
+                for m in messages:
+                    role = m.get("role", "").upper()
+                    content = m.get("content", "")
+                    prompt += f"{role}: {content}\n"
 
-    """ Here I'm converting structured JSON into natural language text
-     because LLMs and RuleChef work better with text input """
-    
-    return (
-        f"Weather for {data['location']['name']}, {data['location']['country']}. "
-        f"Temp: {data['current']['temp_c']}C. "
-        f"Condition: {data['current']['condition']['text']}. "
-        f"Humidity: {data['current']['humidity']}%. "
-        f"Wind: {data['current']['wind_kph']} kph."
-    )
-
-#  RuleChef setup (minimal)
-
-def create_rulechef(client):
-
-    """ Here I'm defining a task for RuleChef
-    Basically telling it: From input text, extract these fields"""
-
-    task = Task(
-        name="Weather Extraction",
-        description="Extract weather fields",
-
-        # Input is just text
-        input_schema={"text": "str"},
-        # Output should contain these structured fields
-        output_schema={
-            "location": "str",
-            "temperature": "float",
-            "condition": "str",
-            "humidity": "int",
-            "wind_speed": "float"
-        },
-        # This is a transformation task (text → structured data)
-        type=TaskType.TRANSFORMATION,
-    )
-    """Now I create the RuleChef engine """
-    return RuleChef(
-        task,
-        client=client,
-        # I don't want it to auto-trigger, I'll control it manually
-        auto_trigger=False,
-        # controling fallback manually for much safer
-        llm_fallback=False, 
-         # Not using Grex optimization
-        use_grex=False,
-        model="llama-3.1-8b-instant"
-    )
-
-
-
-# Weather Pipeline using LLM
-
-class WeatherPipeline:
-    def __init__(self):
-        # Here I'm initializing the LLM client (Groq endpoint)
-        self.client = OpenAI(
-            api_key="YOUR_API_KEY",
-            base_url="https://api.groq.com/openai/v1"
-        )
-         # Initialize RuleChef with this LLM client
-        self.chef = create_rulechef(self.client)
-
-  
-    def llm_extract(self, text):
-
-        """STRICT JSON extraction using LLM"""
-        # Here I directly call the LLM to extract structured data
-
-        response = self.client.chat.completions.create(
-            model="llama-3.1-8b-instant",
-            temperature=0,
-            # Force model to return JSON only
-            response_format={"type": "json_object"},
-            messages=[
-                {
-                    "role": "system",
-                    "content": (
-                        "Extract weather data.\n"
-                        "Return ONLY JSON with:\n"
-                        "location, temperature, condition, humidity, wind_speed"
-                    ),
-                },
-                {"role": "user", "content": text},
-            ],
-        )
-        # Convert response string → dictionary
-        return json.loads(response.choices[0].message.content)
-
-  
-    def clean_rulechef_output(self, result):
-
-        """Take best value from noisy RuleChef output"""
-
-        cleaned = {}
-
-        for key, values in result.items():
-            if not values:
-                continue
-
-            # pick best candidate (longest meaningful string)
-            best = max(values, key=lambda x: len(str(x)))
-
-            # Sometimes RuleChef returns nested dicts
-            if isinstance(best, dict):
-                cleaned[key] = (
-                    best.get("location")
-                    or best.get("value")
-                    or best.get("condition")
+                response = self.parent.client.models.generate_content(
+                    model=self.parent.model,
+                    contents=prompt
                 )
-            else:
-                cleaned[key] = best
 
-        return cleaned
+                class Result:
+                    def __init__(self, text):
+                        self.choices = [
+                            type("Choice", (), {
+                                "message": type("Msg", (), {
+                                    "content": text
+                                })
+                            })
+                        ]
 
-    # extraction logic
-    def extract(self, text):
-
-        # RuleChef
-
-        result = self.chef.extract({"text": text})
-
-        if result:
-            cleaned = self.clean_rulechef_output(result)
-
-            # If still garbage → fallback
-            # If extraction looks good enough → return it
-            if cleaned and len(cleaned) >= 3:
-                return cleaned
-        #If RuleChef fails → fallback to LLM
-        print("Fallback to LLM...")
-        return self.llm_extract(text)
-
-   # Full pipeline execution
-    def run(self, url):
-
-        """Get raw weather JSON
-        Convert JSON → text and Extract structured info"""
-
-        data = fetch_weather(url)
-        text = weather_to_text(data)
-
-        print("INPUT TEXT:")
-        print(text)
-
-        result = self.extract(text)
-
-        print("\nFINAL RESULT:")
-        print(result)
-
-        return result
+                return Result(response.text)
 
 
+# Initialize client
+client = GeminiOpenAIClient(
+    api_key="AIzaSyCikuwYXWjbN1U3J5wJSAOHkvfKvFd_yVg",
+    model="gemini-2.5-flash"
+)
 
-# Run
+# Task
+task = Task(
+    name="Cancer Type Classification",
+    description="Classify cancer type based on symptoms",
+    input_schema={"text": "str"},
+    output_schema={"label": "str"},
+    type=TaskType.CLASSIFICATION,
+    text_field="text",
+)
 
-if __name__ == "__main__":
+chef = RuleChef(task, client, storage_path="./rulechef_data2")
+DATA_DIR = "cancer_txt_files"
 
-    """ Weather API details"""
+# Label extraction
+def extract_label(filename):
+    label = filename.replace(".txt", "").lower()
+    # label = label.replace("_symptoms", "")
+    label = label.replace("cancer_of_the_", "")
+    label = label.replace("cancer_in_the_", "")
+    label = label.replace("cancer", "")
+    label = label.strip("_")
 
-    BASE_URL = "http://api.weatherapi.com/v1/current.json?"
-    API_KEY = "YOUR_API_KEY"
-    CITY = "Vienna"
+    corrections = {
+        "paancreas": "pancreas",
+        "prostrate": "prostate"
+    }
 
-     # Construct full API URL
-    url = f"{BASE_URL}key={API_KEY}&q={CITY}"
+    return corrections.get(label, label)
 
-    # Run pipeline
-    pipeline = WeatherPipeline()
-    pipeline.run(url)
+# Load dataset
+def load_dataset(data_dir):
+    examples = []
+
+    print("\n--- STEP 1: Checking DATA_DIR ---")
+    #print("DATA_DIR:", data_dir)
+
+    files = os.listdir(data_dir)
+    #print("Files found:", files)
+
+    for file in files:
+        file_path = os.path.join(data_dir, file)
+
+        if not file.endswith(".txt"):
+            continue
+
+        label = extract_label(file)
+
+        with open(file_path, "r", encoding="utf-8") as f:
+            text = f.read()
+
+        chunks = re.split(r'[.\n]', text)
+
+        for chunk in chunks:
+            chunk = chunk.strip()
+            if len(chunk) < 25:
+                continue
+            examples.append((chunk, label))
+
+    print("\nTotal examples:", len(examples))
+    return examples
+
+# Load dataset
+dataset = load_dataset(DATA_DIR)
+
+# Collect output
+output_log = []
+
+def log(text):
+    print(text)
+    output_log.append(str(text))
+
+# Add examples
+log("\n--- Adding examples ---")
+
+for i, (text, label) in enumerate(dataset):
+    chef.add_example({"text": text}, {"label": label})
+
+# Learn rules
+log("\n--- Learning rules ---")
+rules = chef.learn_rules()
+
+log("\n=== FINAL RULES ===\n")
+
+if rules:
+    log(rules)
+else:
+    log("No rules generated")
+
+test_inputs = [
+    "I have a lump in my breast and pain",
+    "there is bleeding after intercourse",
+    "irregular periods and pelvic pain",
+    "breast swelling and discharge",
+    "persistent cough and weight loss",
+    "difficulty swallowing and throat pain"
+]
+
+log("\n=== TEST PREDICTIONS ===\n")
+
+for text in test_inputs:
+    result = chef.extract({"text": text})
+
+    log(f"Input: {text}")
+    log(f"Prediction: {result}")
+    log("-" * 50)
+
+# Evaluation
+eval_result = chef.evaluate()
+log(f"\nEvaluation: {eval_result}")
+
+# Per-rule evaluation
+metrics = chef.get_rule_metrics()
+log(f"\nPer-rule evaluation: {metrics}")
+
+# Save to file
+output_file = "results.txt"
+with open(output_file, "w", encoding="utf-8") as f:
+    f.write("\n".join(output_log))
+
+print(f"\n Results saved to {output_file}")
