@@ -1,16 +1,32 @@
+
+
+
 import pandas as pd
 import time
 from google import genai
 from rulechef import RuleChef, Task, TaskType
 
 # ==============================
-# Gemini Client
+# Dual-Model Gemini Client
 # ==============================
-class GeminiOpenAIClient:
-    def __init__(self, api_key, model="gemini-2.5-flash"):
+class GeminiDualClient:
+    def __init__(self, api_key):
         self.client = genai.Client(api_key=api_key)
-        self.model = model
+
+        # Models
+        self.synthesis_model = "gemini-2.5-flash"
+        self.eval_model = "gemini-2.5-flash-lite"
+
+        self.active_model = self.synthesis_model
         self.chat = self.Chat(self)
+
+    def set_mode(self, mode="synthesis"):
+        if mode == "evaluation":
+            self.active_model = self.eval_model
+            print(f"\n[Client] Switched to EVALUATION mode ({self.eval_model})")
+        else:
+            self.active_model = self.synthesis_model
+            print(f"\n[Client] Switched to SYNTHESIS mode ({self.synthesis_model})")
 
     class Chat:
         def __init__(self, parent):
@@ -23,36 +39,46 @@ class GeminiOpenAIClient:
 
             def create(self, model=None, messages=None, **kwargs):
                 prompt = ""
+
                 for m in messages:
                     role = m.get("role", "").upper()
                     content = m.get("content", "")
                     prompt += f"{role}: {content}\n"
 
-                response = self.parent.client.models.generate_content(
-                    model=self.parent.model,
-                    contents=prompt
-                )
+                max_retries = 3
 
-                class Result:
-                    def __init__(self, text):
-                        self.choices = [
-                            type("Choice", (), {
-                                "message": type("Msg", (), {
-                                    "content": text
-                                })
-                            })
-                        ]
+                for attempt in range(max_retries):
+                    try:
+                        response = self.parent.client.models.generate_content(
+                            model=self.parent.active_model,
+                            contents=prompt
+                        )
 
-                return Result(response.text)
+                        class Result:
+                            def __init__(self, text):
+                                self.choices = [
+                                    type("Choice", (), {
+                                        "message": type("Msg", (), {
+                                            "content": text
+                                        })
+                                    })
+                                ]
+
+                        return Result(response.text)
+
+                    except Exception as e:
+                        if attempt < max_retries - 1:
+                            wait = (attempt + 1) * 5
+                            print(f"Error: {e}. Retrying in {wait}s...")
+                            time.sleep(wait)
+                        else:
+                            raise e
 
 
 # ==============================
 # Initialize Client
 # ==============================
-client = GeminiOpenAIClient(
-    api_key="YOUR_API_KEY",
-    model="gemini-2.5-flash-lite"   
-)
+client = GeminiDualClient(api_key="YOUR_API_KEY")
 
 # ==============================
 # Define Task
@@ -66,25 +92,17 @@ task = Task(
     text_field="text",
 )
 
-chef = RuleChef(task, client, storage_path="./rulechef_data")
+chef = RuleChef(task, client, storage_path="./rulechef_data1")
 
 # ==============================
 # Load Dataset
 # ==============================
 df = pd.read_csv("Symptom2Disease.csv")
-
-# Clean data
 df["label"] = df["label"].str.lower().str.strip()
 df["text"] = df["text"].str.lower().str.strip()
 
-print("Total samples:", len(df))
-print("Unique labels:", df["label"].nunique())
-
-# OPTIONAL: speed up training
-# df = df.sample(n=300, random_state=42)
-
 # ==============================
-# Logging Setup
+# Logging
 # ==============================
 output_log = []
 
@@ -92,46 +110,53 @@ def log(text):
     print(text)
     output_log.append(str(text))
 
+
 # ==============================
-# Add Examples
+# STEP 1: Learn Rules
 # ==============================
+client.set_mode("synthesis")
+
 log("\n--- Adding examples ---")
-
 for _, row in df.iterrows():
-    chef.add_example(
-        {"text": row["text"]},
-        {"label": row["label"]}
-    )
+    chef.add_example({"text": row["text"]}, {"label": row["label"]})
 
-# ==============================
-# Learn Rules + Time Tracking
-# ==============================
 log("\n--- Learning rules ---")
 
 start_time = time.time()
 rules = chef.learn_rules()
 end_time = time.time()
 
-elapsed_time = end_time - start_time
-log(f"\n Time taken to learn rules: {elapsed_time:.2f} seconds")
+synthesis_time = end_time - start_time
+log(f"\nSynthesis complete in {synthesis_time:.2f} seconds")
+
 
 # ==============================
-# Print Rules
+# ✅ SAVE LEARNED RULES
 # ==============================
-log("\n=== FINAL RULES ===\n")
+log("\n=== LEARNED RULES ===\n")
 
 if rules:
     if isinstance(rules, list):
+        log(f"Total rules generated: {len(rules)}\n")
+
         for i, rule in enumerate(rules):
-            log(f"Rule {i+1}: {rule}")
+            log(f"\n--- Rule {i+1} ---")
+            log("-" * 50)
+            log(str(rule))
     else:
+        log("Single rule object:")
         log(str(rules))
 else:
     log("No rules generated")
 
+
 # ==============================
-# Test Predictions
+# STEP 2: Evaluation
 # ==============================
+client.set_mode("evaluation")
+
+log("\n=== TEST PREDICTIONS ===")
+
 test_inputs = [
     "joint pain and stiffness",
     "My face has rashes and little blisters around my nose",
@@ -141,18 +166,17 @@ test_inputs = [
     "blackheads and pimples that are packed with pus"
 ]
 
-log("\n=== TEST PREDICTIONS ===\n")
-
 for text in test_inputs:
     result = chef.extract({"text": text})
     log(f"Input: {text}")
     log(f"Prediction: {result}")
     log("-" * 50)
 
+
 # ==============================
-# FAST EVALUATION (NO LLM LOOP)
+# FAST EVALUATION
 # ==============================
-log("\n=== FAST EVALUATION (1000 samples) ===")
+log("\n=== FAST EVALUATION (500 samples) ===")
 
 sample_df = df.sample(n=500, random_state=42)
 
@@ -162,40 +186,34 @@ total = 0
 for _, row in sample_df.iterrows():
     pred = chef.extract({"text": row["text"]})
 
-    predicted_label = pred.get("label") if pred else None
-    true_label = row["label"]
-
-    if predicted_label == true_label:
+    if pred and pred.get("label") == row["label"]:
         correct += 1
 
     total += 1
 
 accuracy = correct / total
+log(f"Accuracy: {accuracy:.4f} ({correct}/{total})")
 
-log(f"Accuracy: {accuracy:.2f}")
-log(f"Correct: {correct} / {total}")
-
-# ==============================
-# Rule Metrics (optional)
-# ==============================
-try:
-    metrics = chef.get_rule_metrics()
-    log(f"\nPer-rule evaluation: {metrics}")
-except Exception as e:
-    log(f"\nRule metrics error: {e}")
 
 # ==============================
-# Metadata
+# METADATA
 # ==============================
-log("\n=== METADATA ===")
-log(f"Total samples: {len(df)}")
-log(f"Total labels: {df['label'].nunique()}")
-log(f"Training time (seconds): {elapsed_time:.2f}")
+metadata = f"""
+=== THESIS METADATA ===
+Synthesis Model: {client.synthesis_model}
+Evaluation Model: {client.eval_model}
+Total Samples: {len(df)}
+Synthesis Time: {synthesis_time:.2f} seconds
+Final Accuracy: {accuracy:.4f}
+"""
+
+log(metadata)
+
 
 # ==============================
-# Save Results
+# SAVE FILE
 # ==============================
-with open("main_results4.txt", "w", encoding="utf-8") as f:
+with open("improved_results.txt", "w", encoding="utf-8") as f:
     f.write("\n".join(output_log))
 
-print("\nResults saved to results.txt")
+print("\nFinal results saved to final_results.txt")

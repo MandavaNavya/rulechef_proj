@@ -1,0 +1,19 @@
+
+--- Adding examples ---
+
+--- Learning rules ---
+Synthesis complete in 2183.54 seconds
+
+=== TEST PREDICTIONS ===
+Input: joint pain and stiffness | Prediction: {'Dengue'}
+Input: face rashes and blisters | Prediction: {}
+
+=== FAST EVALUATION (High Volume) ===
+Accuracy: 0.42 (210/500)
+
+=== THESIS METADATA ===
+Synthesis Model: gemini-2.5-flash
+Evaluation Model: gemini-2.5-flash-lite
+Total Samples: 1200
+Synthesis Time: 2183.54s
+Final Accuracy: 0.42
