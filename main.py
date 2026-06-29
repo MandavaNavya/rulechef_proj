@@ -50,7 +50,7 @@ class GeminiOpenAIClient:
 # Initialize Client
 # ==============================
 client = GeminiOpenAIClient(
-    api_key="YOUR_API_KEY",
+    api_key="AIzaSyDAFMRudpPaV31IYg3nXO8uU5LVq2r_ujY",
     model="gemini-2.5-flash-lite"   
 )
 

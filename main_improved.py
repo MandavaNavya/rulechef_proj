@@ -78,7 +78,7 @@ class GeminiDualClient:
 # ==============================
 # Initialize Client
 # ==============================
-client = GeminiDualClient(api_key="YOUR_API_KEY")
+client = GeminiDualClient(api_key="AIzaSyDAFMRudpPaV31IYg3nXO8uU5LVq2r_ujY")
 
 # ==============================
 # Define Task
@@ -92,7 +92,7 @@ task = Task(
     text_field="text",
 )
 
-chef = RuleChef(task, client, storage_path="./rulechef_data1")
+chef = RuleChef(task, client, storage_path="./rulechef_data2")
 
 # ==============================
 # Load Dataset
@@ -213,7 +213,7 @@ log(metadata)
 # ==============================
 # SAVE FILE
 # ==============================
-with open("improved_results.txt", "w", encoding="utf-8") as f:
+with open("improved_results2.txt", "w", encoding="utf-8") as f:
     f.write("\n".join(output_log))
 
 print("\nFinal results saved to final_results.txt")
