@@ -140,7 +140,7 @@ task = Task(
     text_field="text",
 )
 
-client = GeminiClient(api_key="AQ.Ab8RN6J1XqtUHSgJQYp7dkYl_ssrVnVG3TzvVqSkmqjdeuqP6A")
+client = GeminiClient(api_key="yourapikey")
 chef = RuleChef(task, client, storage_path=storage_path)
 
 
