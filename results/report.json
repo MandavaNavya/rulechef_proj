@@ -1,0 +1,341 @@
+{
+  "timestamp": "2026-07-05T16:19:27.601338",
+  "metrics": {
+    "coverage": 0.8666666666666667,
+    "covered_samples": 13,
+    "total_samples": 15,
+    "accuracy": 1.0,
+    "precision_macro": 1.0,
+    "recall_macro": 1.0,
+    "f1_macro": 1.0,
+    "precision_micro": 1.0,
+    "recall_micro": 1.0,
+    "f1_micro": 1.0,
+    "precision_weighted": 1.0,
+    "recall_weighted": 1.0,
+    "f1_weighted": 1.0
+  },
+  "confusion_matrix": [
+    [
+      6,
+      0
+    ],
+    [
+      0,
+      7
+    ]
+  ],
+  "per_class": [
+    {
+      "label": "psoriasis",
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "label": "varicose veins",
+      "tp": 7,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  ],
+  "rule_stats": [
+    {
+      "rule_id": "afc59746",
+      "rule_name": "PsoriasisNailPitting",
+      "matched": 1,
+      "correct": 1,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "f57367ee",
+      "rule_name": "PsoriasisPalmarPlantar",
+      "matched": 0,
+      "correct": 0,
+      "precision": 0.0
+    },
+    {
+      "rule_id": "cc31a3fe",
+      "rule_name": "VaricoseVeins_ExplicitVeinDescription",
+      "matched": 2,
+      "correct": 2,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "8c6d45ad",
+      "rule_name": "Psoriasis_ThickenedCracksPalmsSoles",
+      "matched": 0,
+      "correct": 0,
+      "precision": 0.0
+    },
+    {
+      "rule_id": "31fd4216",
+      "rule_name": "VaricoseVeins_Comprehensive",
+      "matched": 1,
+      "correct": 1,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "0dc87572",
+      "rule_name": "Psoriasis_SilverDusting",
+      "matched": 0,
+      "correct": 0,
+      "precision": 0.0
+    },
+    {
+      "rule_id": "f9300ec8",
+      "rule_name": "VaricoseVeins_VeinProminenceSwelling",
+      "matched": 2,
+      "correct": 2,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "4ac1d6fc",
+      "rule_name": "PsoriasisNailDentsPits",
+      "matched": 1,
+      "correct": 1,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "66df7b23",
+      "rule_name": "VaricoseVeins_ExplicitVeinSymptoms",
+      "matched": 2,
+      "correct": 2,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "f46d37cd",
+      "rule_name": "VV_DirectVeinSigns",
+      "matched": 2,
+      "correct": 2,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "f226b11c",
+      "rule_name": "PsoriasisSilverScales",
+      "matched": 1,
+      "correct": 1,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "dbbaa873",
+      "rule_name": "VaricoseVeins_LegCrampsPainActivity",
+      "matched": 7,
+      "correct": 7,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "5cfa6ad3",
+      "rule_name": "PsoriasisEnvironmentalFactors",
+      "matched": 0,
+      "correct": 0,
+      "precision": 0.0
+    },
+    {
+      "rule_id": "c09aa87e",
+      "rule_name": "Psoriasis_FingersNailsPeelingCracks",
+      "matched": 0,
+      "correct": 0,
+      "precision": 0.0
+    },
+    {
+      "rule_id": "977724cc",
+      "rule_name": "Psoriasis_ThickCrackedPalmsSoles",
+      "matched": 0,
+      "correct": 0,
+      "precision": 0.0
+    },
+    {
+      "rule_id": "535a6292",
+      "rule_name": "VaricoseVeins_ActivityTriggeredLegPain",
+      "matched": 0,
+      "correct": 0,
+      "precision": 0.0
+    },
+    {
+      "rule_id": "e4ded2cc",
+      "rule_name": "PsoriasisSilverDustingScales",
+      "matched": 2,
+      "correct": 2,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "ad89f8b5",
+      "rule_name": "VaricoseVeins_LegCramps",
+      "matched": 4,
+      "correct": 4,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "e171b4d1",
+      "rule_name": "PsoriasisNailSymptoms",
+      "matched": 1,
+      "correct": 1,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "75063977",
+      "rule_name": "PsoriasisPalmSolesCracks",
+      "matched": 0,
+      "correct": 0,
+      "precision": 0.0
+    },
+    {
+      "rule_id": "4cb40514",
+      "rule_name": "PsoriasisSkinPeelingFlaking",
+      "matched": 2,
+      "correct": 2,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "e970a4e2",
+      "rule_name": "VaricoseVeins_LegSwellingOverweight",
+      "matched": 7,
+      "correct": 7,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "a36fc74d",
+      "rule_name": "Psoriasis_FissuresCracksPalmsSoles",
+      "matched": 0,
+      "correct": 0,
+      "precision": 0.0
+    },
+    {
+      "rule_id": "41c10a9a",
+      "rule_name": "Psoriasis_NailJoint",
+      "matched": 1,
+      "correct": 1,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "386b52eb",
+      "rule_name": "VaricoseVeins_LegCrampsSwellingOverweight",
+      "matched": 0,
+      "correct": 0,
+      "precision": 0.0
+    },
+    {
+      "rule_id": "ca114bab",
+      "rule_name": "PsoriasisPeelingFissuresThickenedSkin",
+      "matched": 3,
+      "correct": 3,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "500bb9f7",
+      "rule_name": "VaricoseVeins_LegSwelling",
+      "matched": 3,
+      "correct": 3,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "4d5e87cb",
+      "rule_name": "PsoriasisSkinFlakingLocation",
+      "matched": 5,
+      "correct": 5,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "2466271c",
+      "rule_name": "PsoriasisJointSkinCombo",
+      "matched": 1,
+      "correct": 1,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "387d8e01",
+      "rule_name": "VV_LegSymptomsActivityObesity",
+      "matched": 2,
+      "correct": 2,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "5a5a5dad",
+      "rule_name": "PsoriasisJointAndSkinSymptoms",
+      "matched": 1,
+      "correct": 1,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "61e0fcef",
+      "rule_name": "VaricoseVeins_LegSkinInflammationWithContext",
+      "matched": 0,
+      "correct": 0,
+      "precision": 0.0
+    },
+    {
+      "rule_id": "bcc577a8",
+      "rule_name": "Psoriasis_ScalyRashJointPain",
+      "matched": 1,
+      "correct": 1,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "2041e746",
+      "rule_name": "Psoriasis_SkinConditionBodyPart",
+      "matched": 3,
+      "correct": 3,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "32a4d618",
+      "rule_name": "VaricoseVeins_LegSwellingFunctionalDifficulty",
+      "matched": 1,
+      "correct": 1,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "c8f33360",
+      "rule_name": "PsoriasisJointPainSkinRash",
+      "matched": 1,
+      "correct": 1,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "6e1210b1",
+      "rule_name": "VaricoseVeins_LegPainActivity",
+      "matched": 0,
+      "correct": 0,
+      "precision": 0.0
+    },
+    {
+      "rule_id": "9c074bcd",
+      "rule_name": "PsoriasisGeneralSymptomsAndEnvironment",
+      "matched": 2,
+      "correct": 2,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "538eb651",
+      "rule_name": "VaricoseVeins_LegBruisesOrBodyImage",
+      "matched": 1,
+      "correct": 1,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "6e1a59bd",
+      "rule_name": "Psoriasis_PeelingScalyGeneral",
+      "matched": 3,
+      "correct": 3,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "826b388a",
+      "rule_name": "Psoriasis_RashSymptoms",
+      "matched": 1,
+      "correct": 1,
+      "precision": 1.0
+    }
+  ],
+  "labels": [
+    "psoriasis",
+    "varicose veins"
+  ]
+}

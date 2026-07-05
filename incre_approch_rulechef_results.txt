@@ -1,0 +1,65 @@
+
+=== Disease Distribution ===
+label
+psoriasis                          50
+varicose veins                     50
+typhoid                            50
+chicken pox                        50
+impetigo                           50
+dengue                             50
+fungal infection                   50
+common cold                        50
+pneumonia                          50
+dimorphic hemorrhoids              50
+arthritis                          50
+acne                               50
+bronchial asthma                   50
+hypertension                       50
+migraine                           50
+cervical spondylosis               50
+jaundice                           50
+malaria                            50
+urinary tract infection            50
+allergy                            50
+gastroesophageal reflux disease    50
+drug reaction                      50
+peptic ulcer disease               50
+diabetes                           50
+Name: count, dtype: int64
+
+=== Selected Diseases ===
+['psoriasis', 'varicose veins']
+
+===== BATCH 1 =====
+Rule learning time: 61.43s
+Saved rules to learned_rules/batch_1_rules.txt
+Validation Accuracy : 1.0000
+Validation Precision: 1.0000
+Validation Recall   : 1.0000
+Validation F1       : 1.0000
+
+===== BATCH 2 =====
+Rule learning time: 106.71s
+Saved rules to learned_rules/batch_2_rules.txt
+Validation Accuracy : 1.0000
+Validation Precision: 1.0000
+Validation Recall   : 1.0000
+Validation F1       : 1.0000
+
+===== BATCH 3 =====
+Rule learning time: 150.90s
+Saved rules to learned_rules/batch_3_rules.txt
+Validation Accuracy : 1.0000
+Validation Precision: 1.0000
+Validation Recall   : 1.0000
+Validation F1       : 1.0000
+
+===== FINAL TEST =====
+Test Accuracy : 0.8750
+Test Precision: 0.9167
+Test Recall   : 0.8333
+Test F1       : 0.8545
+Confusion Matrix:
+[[5 0]
+ [1 2]]
+Saved final rules to final_learned_rules.txt
