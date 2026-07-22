@@ -1,0 +1,9 @@
+rule_id,rule_name,label,quality,quality_score,suggestions
+b61526fa,Rule_Psoriasis_NailJointSpecific,psoriasis,Excellent,100,
+d39fa014,Rule_VaricoseVeins_LegSwelling,varicose veins,Excellent,100,
+5cade146,Rule_VaricoseVeins_CrampsAndContext,varicose veins,Good,80,Recall is low. Rule misses many true examples.
+2cbf1f6c,Rule_Psoriasis_SkinSymptoms,psoriasis,Excellent,100,
+a9e080c7,Rule_VaricoseVeins_ExplicitVeins,varicose veins,Good,80,Recall is low. Rule misses many true examples.
+1d1a5b35,Rule_Psoriasis_WinterSensitivity,psoriasis,Poor,35,Precision is very low. Rule is likely too generic.; Recall is low. Rule misses many true examples.; Rule rarely activates.
+6da618e2,Rule_VaricoseVeins_LegRashWithoutPsoriasisMarkers,varicose veins,Poor,35,Precision is very low. Rule is likely too generic.; Recall is low. Rule misses many true examples.; Rule rarely activates.
+08f9d68f,Rule_VaricoseVeins_LegPainFromActivity,varicose veins,Poor,35,Precision is very low. Rule is likely too generic.; Recall is low. Rule misses many true examples.; Rule rarely activates.

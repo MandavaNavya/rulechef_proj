@@ -1,0 +1,9 @@
+rule_id,rule_name,recommendation
+b61526fa,Rule_Psoriasis_NailJointSpecific,Rule looks stable.
+d39fa014,Rule_VaricoseVeins_LegSwelling,Rule looks stable.
+5cade146,Rule_VaricoseVeins_CrampsAndContext,Consider adding alternative symptom patterns.
+2cbf1f6c,Rule_Psoriasis_SkinSymptoms,Rule looks stable.
+a9e080c7,Rule_VaricoseVeins_ExplicitVeins,Consider adding alternative symptom patterns.
+1d1a5b35,Rule_Psoriasis_WinterSensitivity,Require additional symptoms before firing. Consider adding alternative symptom patterns.
+6da618e2,Rule_VaricoseVeins_LegRashWithoutPsoriasisMarkers,Require additional symptoms before firing. Consider adding alternative symptom patterns.
+08f9d68f,Rule_VaricoseVeins_LegPainFromActivity,Require additional symptoms before firing. Consider adding alternative symptom patterns.

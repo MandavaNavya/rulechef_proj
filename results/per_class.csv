@@ -1,3 +1,0 @@
-label,tp,fp,fn,precision,recall,f1
-psoriasis,6,0,0,1.0,1.0,1.0
-varicose veins,7,0,0,1.0,1.0,1.0

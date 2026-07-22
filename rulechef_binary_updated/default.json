@@ -16,7 +16,7 @@
   "description": "",
   "examples": [
     {
-      "id": "4bda31b7",
+      "id": "9e4c785f",
       "input": {
         "text": "my skin has been peeling, especially on my knees, elbows, and scalp. this peeling is often accompanied by a burning or stinging sensation."
       },
@@ -27,7 +27,7 @@
       "confidence": 0.8
     },
     {
-      "id": "81bb3cb9",
+      "id": "6ba67c4e",
       "input": {
         "text": "my palms and soles have grown and developed severe fissures. these cracks are unpleasant and frequently bleed. also, the skin is starting to peel off."
       },
@@ -38,7 +38,7 @@
       "confidence": 0.8
     },
     {
-      "id": "d613c1fe",
+      "id": "c7931f23",
       "input": {
         "text": "i've had trouble falling asleep because of the rash's pain and itching. the skin on my fingers are starting to peel off. my nails have a few tiny cracks, which is really worrying."
       },
@@ -49,7 +49,7 @@
       "confidence": 0.8
     },
     {
-      "id": "71087f4c",
+      "id": "8920721c",
       "input": {
         "text": "for the past few weeks, i've had a skin rash on my arms, legs, and chest. it's red and irritating, with dry, scaly spots. i have a strange pain in my joints too."
       },
@@ -60,7 +60,7 @@
       "confidence": 0.8
     },
     {
-      "id": "cb4242aa",
+      "id": "a450a82f",
       "input": {
         "text": "the skin on my palms and soles is thickened and has deep cracks. these cracks are painful and bleed easily."
       },
@@ -71,7 +71,7 @@
       "confidence": 0.8
     },
     {
-      "id": "9b21d081",
+      "id": "bda67a8d",
       "input": {
         "text": "the prominent veins on my calves are causing self-consciousness and embarrassment. they are swollen and protrude from my skin, making them very noticeable."
       },
@@ -82,7 +82,7 @@
       "confidence": 0.8
     },
     {
-      "id": "0c71b435",
+      "id": "5219f7df",
       "input": {
         "text": "the veins in my legs are causing discomfort and difficulty sleeping at night. they are swollen and protruding from my skin, making them noticeable and painful."
       },
@@ -93,7 +93,7 @@
       "confidence": 0.8
     },
     {
-      "id": "3ca0f1a1",
+      "id": "d66749be",
       "input": {
         "text": "my legs' swelling has become worse over the last couple of days. i can see the blood vessels protruding out of the skin. this is quite unusual."
       },
@@ -104,7 +104,7 @@
       "confidence": 0.8
     },
     {
-      "id": "34158e31",
+      "id": "b6d06669",
       "input": {
         "text": "recently, my calves have been cramping up frequently, especially when i am walking or standing for long periods of time. also, the veins are very noticeable."
       },
@@ -115,7 +115,7 @@
       "confidence": 0.8
     },
     {
-      "id": "11a11f7f",
+      "id": "b526fe10",
       "input": {
         "text": "as i am overweight, i have noticed that my legs are swollen and the blood vessels are more visible than usual. the swelling seems to be getting worse over time."
       },
@@ -126,7 +126,7 @@
       "confidence": 0.8
     },
     {
-      "id": "490b7d0f",
+      "id": "3a108e29",
       "input": {
         "text": "my nails have small dents on them. even my joints have started to pain severely. there is a silver like dusting on my skin, particularly in my back."
       },
@@ -137,7 +137,7 @@
       "confidence": 0.8
     },
     {
-      "id": "87a30021",
+      "id": "72dd252c",
       "input": {
         "text": "the rash on my skin is worse in the winter months when the air is dry. i find that i have to moisturize more frequently and use humidifiers to keep my skin hydrated."
       },
@@ -148,7 +148,7 @@
       "confidence": 0.8
     },
     {
-      "id": "8a379509",
+      "id": "ed94d19d",
       "input": {
         "text": "there is a silver like dusting on my skin, especially on my lower back and scalp. this dusting is made up of small scales that flake off easily when i scratch them."
       },
@@ -159,7 +159,7 @@
       "confidence": 0.8
     },
     {
-      "id": "ac562de5",
+      "id": "a52d8609",
       "input": {
         "text": "because of dry, flaky areas on my skin, i am prone to infections. my joints are in excruciating agony. the skin on my knees and elbows is beginning to flake."
       },
@@ -170,7 +170,7 @@
       "confidence": 0.8
     },
     {
-      "id": "e57540fc",
+      "id": "7b7bc0f5",
       "input": {
         "text": "my skin is extremely sensitive and quickly irritated by changes in temperature or humidity. my nails have developed dents on them. i am worried about this sudden change."
       },
@@ -181,7 +181,7 @@
       "confidence": 0.8
     },
     {
-      "id": "96e52323",
+      "id": "66d5af3b",
       "input": {
         "text": "i have noticed cramps in my calves are becoming more frequent and intense. it is causing me a lot of discomforts. i am also overweight and my legs have started to swell."
       },
@@ -192,7 +192,7 @@
       "confidence": 0.8
     },
     {
-      "id": "88d92b66",
+      "id": "9450077d",
       "input": {
         "text": "the swelling in my legs is causing me to have difficulty fitting into my shoes and is causing discomfort when i sit for long periods of time."
       },
@@ -203,7 +203,7 @@
       "confidence": 0.8
     },
     {
-      "id": "ebeec694",
+      "id": "b0b9fc5a",
       "input": {
         "text": "the prominent blood vessels on my calves are causing self-consciousness and embarrassment. i believe the problem is because of my overweight."
       },
@@ -214,7 +214,7 @@
       "confidence": 0.8
     },
     {
-      "id": "8cce39e1",
+      "id": "4d36f8ea",
       "input": {
         "text": "my legs are causing a lot of discomforts when i exercise. i get frequent cramps and the blood vessels have become quite noticeable."
       },
@@ -225,7 +225,7 @@
       "confidence": 0.8
     },
     {
-      "id": "9179db75",
+      "id": "d2ef218f",
       "input": {
         "text": "standing or walking for long periods of time has been causing a lot of pain in my legs. it feels like a cramp and becomes worse the longer i am on my feet."
       },
@@ -236,7 +236,7 @@
       "confidence": 0.8
     },
     {
-      "id": "1cd6999a",
+      "id": "acd9154c",
       "input": {
         "text": "my skin rash gets worse in the winter when the air is dry. to keep my skin moisturized, i have to moisturize more regularly and use humidifiers. i am also facing joint pain."
       },
@@ -247,7 +247,7 @@
       "confidence": 0.8
     },
     {
-      "id": "b586e14d",
+      "id": "0d7b19d8",
       "input": {
         "text": "i have experienced difficulty sleeping due to the itching and discomfort caused by the rash. there are small dents in my nails, which is really concerning."
       },
@@ -258,7 +258,7 @@
       "confidence": 0.8
     },
     {
-      "id": "af39fe21",
+      "id": "3e26a075",
       "input": {
         "text": "my nails are starting to have small pits on them. i am worried and don't know what is causing it. also, my joints pain and there are rashes on my arms and back."
       },
@@ -269,7 +269,7 @@
       "confidence": 0.8
     },
     {
-      "id": "65717f9e",
+      "id": "ed57e414",
       "input": {
         "text": "my arms, face and back\u00a0are all red and irritated. it is frequently irritating and unpleasant. my nails have a strange inflammation and have developed small dents. i have never seen anything like this."
       },
@@ -280,7 +280,7 @@
       "confidence": 0.8
     },
     {
-      "id": "9997f33b",
+      "id": "8b981bbd",
       "input": {
         "text": "i am starting to have rashes on my skin. the rash often bleeds when i scratch or rub it. moreover, i have noticed small dents in my nails."
       },
@@ -291,7 +291,7 @@
       "confidence": 0.8
     },
     {
-      "id": "9b5e1bad",
+      "id": "c6fb9ece",
       "input": {
         "text": "i have a rash on my legs that is causing a lot of discomforts. it seems there is a cramp and i can see prominent veins on the calf. also, i have been feeling very tired and fatigued in the past couple of days."
       },
@@ -302,7 +302,7 @@
       "confidence": 0.8
     },
     {
-      "id": "c3d1e65f",
+      "id": "e3134119",
       "input": {
         "text": "long durations of standing or walking have caused severe discomfort in my legs. it's a burning ache that gets worse the longer i'm on my feet."
       },
@@ -313,7 +313,7 @@
       "confidence": 0.8
     },
     {
-      "id": "d207c6b5",
+      "id": "c7ecef80",
       "input": {
         "text": "the rash on my legs is spreading and becoming more severe. it is red, inflamed, and itchy, causing a lot of discomfort and difficulty sleeping at night."
       },
@@ -324,7 +324,7 @@
       "confidence": 0.8
     },
     {
-      "id": "3e07d69e",
+      "id": "01172d8e",
       "input": {
         "text": "walking is tough for me because of cramps in my calves. obesity, i believe, is the cause of this. after a while of working, i'm exhausted."
       },
@@ -335,7 +335,7 @@
       "confidence": 0.8
     },
     {
-      "id": "506b67d8",
+      "id": "ca22d3e8",
       "input": {
         "text": "the skin on my calves has become inflamed and red. my legs hurt if i try to run or do any physical activities."
       },
@@ -351,119 +351,136 @@
   "structured_feedback": [],
   "rules": [
     {
-      "id": "e171b4d1",
-      "name": "PsoriasisNailSymptoms",
-      "description": "Detects psoriasis based on characteristic nail symptoms like dents, pits, cracks, or inflammation, which are strong indicators of the disease. Now also accounts for symptoms appearing before the mention of 'nails'.",
+      "id": "a9e080c7",
+      "name": "Rule_VaricoseVeins_ExplicitVeins",
+      "description": "Matches texts explicitly mentioning visible, prominent, or noticeable veins/blood vessels, allowing for flexible phrasing (adjective before or after noun), especially in the legs or calves, potentially with associated symptoms like swelling, discomfort, or general factors like being overweight.",
       "format": "regex",
-      "content": "(?i)(?:\\bnails\\b(?:.{0,50}?)(?:\\bdents\\b|\\bpits\\b|\\bcracks\\b|\\binflammation\\b))|(?:(?:\\bdents\\b|\\bpits\\b|\\bcracks\\b|\\binflammation\\b)(?:.{0,50}?)\\bnails\\b)",
-      "priority": 9,
-      "confidence": 0.5,
-      "times_applied": 0,
-      "successes": 0,
-      "failures": 0,
-      "created_at": "2026-07-05T15:59:18.113041",
-      "output_template": {
-        "label": "psoriasis"
-      },
-      "output_key": "label"
-    },
-    {
-      "id": "75063977",
-      "name": "PsoriasisPalmSolesCracks",
-      "description": "Identifies psoriasis based on fissures or deep cracks, especially on palms or soles, which may also be painful or bleed.",
-      "format": "regex",
-      "content": "(?i)\\b(?:palms|soles)\\b(?:.{0,50}?)\\b(?:fissures|deep\\s*cracks|cracks)\\b(?:.{0,50}?)(?:\\bbleed\\b|\\bpainful\\b)?|\\b(?:fissures|deep\\s*cracks|cracks)\\b(?:.{0,50}?)\\b(?:palms|soles)\\b(?:.{0,50}?)(?:\\bbleed\\b|\\bpainful\\b)?",
-      "priority": 9,
-      "confidence": 0.5,
-      "times_applied": 0,
-      "successes": 0,
-      "failures": 0,
-      "created_at": "2026-07-05T15:57:21.068051",
-      "output_template": {
-        "label": "psoriasis"
-      },
-      "output_key": "label"
-    },
-    {
-      "id": "4d5e87cb",
-      "name": "PsoriasisSkinFlakingLocation",
-      "description": "Identifies psoriasis by characteristic skin symptoms such as peeling, flaking, scales, silver-like dusting, or scaly spots on typical affected areas like knees, elbows, scalp, palms, soles, or back.",
-      "format": "regex",
-      "content": "(?i)\\b(?:peeling|peel\\s*off|flaky|flake|scales|silver\\s*like\\s*dusting|scaly\\s*spots)\\b(?:.{0,50}?)\\b(?:skin|knees|elbows|scalp|palms|soles|back)\\b|\\b(?:skin|knees|elbows|scalp|palms|soles|back)\\b(?:.{0,50}?)\\b(?:peeling|peel\\s*off|flaky|flake|scales|silver\\s*like\\s*dusting|scaly\\s*spots)\\b",
-      "priority": 8,
-      "confidence": 0.5,
-      "times_applied": 0,
-      "successes": 0,
-      "failures": 0,
-      "created_at": "2026-07-05T15:57:21.069029",
-      "output_template": {
-        "label": "psoriasis"
-      },
-      "output_key": "label"
-    },
-    {
-      "id": "2466271c",
-      "name": "PsoriasisJointSkinCombo",
-      "description": "Detects psoriasis when joint pain or agony is combined with general skin manifestations like rash, dry skin, redness, irritation, or scaly spots, indicative of psoriatic arthritis or widespread psoriasis. The proximity between symptoms has been increased for better coverage.",
-      "format": "regex",
-      "content": "(?i)\\b(?:joint\\s*pain|joints\\s*(?:pain|agony))\\b(?:.{0,120}?)(?:\\brash\\b|\\bdry\\s*skin\\b|\\bred\\b|\\birritating\\b|\\bscaly\\s*spots\\b)|\\b(?:rash\\b|\\bdry\\s*skin\\b|\\bred\\b|\\birritating\\b|\\bscaly\\s*spots\\b)(?:.{0,120}?)\\b(?:joint\\s*pain|joints\\s*(?:pain|agony))\\b",
-      "priority": 8,
-      "confidence": 0.5,
-      "times_applied": 0,
-      "successes": 0,
-      "failures": 0,
-      "created_at": "2026-07-05T15:59:18.114009",
-      "output_template": {
-        "label": "psoriasis"
-      },
-      "output_key": "label"
-    },
-    {
-      "id": "f46d37cd",
-      "name": "VV_DirectVeinSigns",
-      "description": "Matches descriptions of abnormal veins/blood vessels (e.g., prominent, swollen, noticeable, visible) on the legs or calves. The rule is more flexible to allow for different keyword orders and an optional explicit location when the vein description is strong.",
-      "format": "regex",
-      "content": "(?i)(?:\\b(?:veins|blood\\s*vessels)\\b(?:.{0,75}?)(?:prominent|swollen|protruding|noticeable|visible|more\\s*visible|sticking\\s*out)\\b(?:.{0,75}?\\b(?:legs|calves|skin)\\b)?)|(?:\\b(?:prominent|swollen|protruding|noticeable|visible|more\\s*visible|sticking\\s*out)\\b(?:.{0,75}?)(?:veins|blood\\s*vessels)\\b(?:.{0,75}?\\b(?:legs|calves|skin)\\b)?)",
+      "content": "(?i)(?:\\b(?:prominent|swollen|protruding|noticeable|visible)\\s+(?:veins|blood\\s*vessels?)|\\b(?:veins|blood\\s*vessels?)\\b(?:.*?\\b(?:are\\s*very|have\\s*become\\s*quite)?\\s*(?:prominent|swollen|protruding|noticeable|visible|protrud(?:e|ing))))\\b(?:.*?\\b(?:legs|calves)\\b)?(?:.*?\\b(?:swelling|discomfort|pain|cramps|aching|embarrassment|self-consciousness|protrud(e|ing)|overweight|obesity)\\b)?",
       "priority": 10,
       "confidence": 0.5,
       "times_applied": 0,
       "successes": 0,
       "failures": 0,
-      "created_at": "2026-07-05T15:59:18.116052",
+      "created_at": "2026-07-22T13:44:10.279591",
       "output_template": {
         "label": "varicose veins"
       },
       "output_key": "label"
     },
     {
-      "id": "387d8e01",
-      "name": "VV_LegSymptomsActivityObesity",
-      "description": "Matches leg/calf symptoms like swelling, cramps, pain, discomfort, or aching that are associated with prolonged standing/walking/sitting, exercise, or being overweight/obese. The rule now allows for flexible ordering of these symptom and trigger keywords.",
+      "id": "5cade146",
+      "name": "Rule_VaricoseVeins_CrampsAndContext",
+      "description": "Matches texts describing cramps in the calves or legs, allowing for either order of 'cramps' and 'legs/calves', especially when associated with frequent occurrence, prolonged activity (standing, walking, exercising) or being overweight/obese.",
       "format": "regex",
-      "content": "(?i)(?:\\b(?:standing|walking|exercise|sit(?:ting)?.*?long\\s*periods)\\b|\\b(?:overweight|obesity)\\b)(?:.{0,100}?)(?:\\b(?:legs|calves)\\b|\\b(?:swelling|swollen|cramps?|pain|discomfort|ache|hurt)\\b)(?:.{0,100}?)(?:\\b(?:legs|calves)\\b|\\b(?:swelling|swollen|cramps?|pain|discomfort|ache|hurt)\\b)?|(?:\b(?:legs|calves)\\b|\\b(?:swelling|swollen|cramps?|pain|discomfort|ache|hurt)\\b)(?:.{0,100}?)(?:\\b(?:standing|walking|exercise|sit(?:ting)?.*?long\\s*periods)\\b|\\b(?:overweight|obesity)\\b)(?:.{0,100}?)(?:\\b(?:legs|calves)\\b|\\b(?:swelling|swollen|cramps?|pain|discomfort|ache|hurt)\\b)?",
+      "content": "(?i)(?:\\b(?:frequent(?:ly)?\\s+)?(?:cramps?|cramping)\\b.*?\\b(?:calves|legs)\\b|\\b(?:calves|legs)\\b.*?\\b(?:frequent(?:ly)?\\s+)?(?:cramps?|cramping))\\b.*?\\b(?:(?:standing|walking|exercising|physical\\s*activities)\\b.*?\\b(?:long\\s*periods|long\\s*durations|longer\\s*i'm\\s*on\\s*my\\s*feet|after\\s*a\\s*while\\s*of\\s*working)\\b|overweight|obesity)\\b",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-07-22T13:44:10.280176",
+      "output_template": {
+        "label": "varicose veins"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "d39fa014",
+      "name": "Rule_VaricoseVeins_LegSwelling",
+      "description": "Matches texts about swelling in the legs or calves, often linked to being overweight, obesity, difficulty with footwear, worsening over time, or discomfort when sitting.",
+      "format": "regex",
+      "content": "(?i)\\b(?:legs|calves)\\b.*?\\b(?:swelling|swollen)\\b(?:.*?\\b(?:overweight|obesity|difficulty\\s*fitting\\s*into\\s*my\\s*shoes|worse\\s*over\\s*time|discomfort\\s*(?:when\\s*i\\s*sit|sitting))\\b)?",
       "priority": 8,
       "confidence": 0.5,
       "times_applied": 0,
       "successes": 0,
       "failures": 0,
-      "created_at": "2026-07-05T15:59:18.118121",
+      "created_at": "2026-07-22T13:44:10.280526",
       "output_template": {
         "label": "varicose veins"
       },
       "output_key": "label"
     },
     {
-      "id": "9c074bcd",
-      "name": "PsoriasisGeneralSymptomsAndEnvironment",
-      "description": "Identifies psoriasis based on general skin symptoms like rash, dry skin, itching, flaking, or peeling, especially when aggravated by environmental factors (e.g., winter, dry air) or causing generalized discomfort/sensitivity.",
+      "id": "6da618e2",
+      "name": "Rule_VaricoseVeins_LegRashWithoutPsoriasisMarkers",
+      "description": "Matches texts describing a rash, inflamed, or red skin on the legs or calves causing discomfort, but explicitly excludes keywords commonly associated with psoriasis.",
       "format": "regex",
-      "content": "(?i)\\b(?:skin\\s*rash|rash|dry\\s*skin|itching|flaky|flaking|peeling|scales)\\b(?:.{0,75}?)(?:\\bworse\\s*in\\s*the\\s*winter|\\bair\\s*is\\s*dry|\\birritating|\\bpain|\\bdiscomfort|\\bsensitive|\\birritated)\\b",
+      "content": "(?i)\\b(?:rash|inflamed|red)\\b.*?\\b(?:legs|calves)\\b(?:.*?\\b(?:itchy|discomfort|difficulty\\s*sleeping|hurt|pain|aching)\\b)(?!.*?\\b(?:peeling|cracks|dents\\s*in\\s*nails|scaly|silver\\s*like\\s*dusting|joint\\s*pain|fissures)\\b)",
       "priority": 7,
       "confidence": 0.5,
       "times_applied": 0,
       "successes": 0,
       "failures": 0,
-      "created_at": "2026-07-05T15:59:18.115172",
+      "created_at": "2026-07-22T13:44:10.280722",
+      "output_template": {
+        "label": "varicose veins"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "08f9d68f",
+      "name": "Rule_VaricoseVeins_LegPainFromActivity",
+      "description": "Matches texts describing general discomfort, pain, or aching in the legs, calves, or feet, especially when related to standing, walking, sitting, running, physical activities, or associated with long durations.",
+      "format": "regex",
+      "content": "(?i)\\b(?:discomfort|pain|ache|hurt)\\b.*?\\b(?:legs|calves|feet)\\b.*?\\b(?:standing|walking|sitting|running|physical\\s*activities|exercis(?:e|ing)|long\\s*periods|long\\s*durations|longer\\s*i'm\\s*on\\s*my\\s*feet)\\b",
+      "priority": 6,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-07-22T13:44:10.280729",
+      "output_template": {
+        "label": "varicose veins"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "2cbf1f6c",
+      "name": "Rule_Psoriasis_SkinSymptoms",
+      "description": "Matches texts describing core psoriasis skin manifestations like peeling, scaly, flaky, cracks, fissures, thickened skin, silver-like dusting, or rash. It is flexible to capture these symptoms on typical affected areas (knees, elbows, scalp, palms, soles, etc.) in various word orders, or as general 'skin' or 'rash' symptoms.",
+      "format": "regex",
+      "content": "(?i)(?:\\b(?:peeling|scaly|flaky|cracks?|fissures?|thickened|silver\\s*like\\s*dusting|scales)\\b(?:.*?\\b(?:knees|elbows|scalp|lower\\s*back|palms?|soles?|arms?|legs?|chest|skin|rash)\\b)?|\\b(?:knees|elbows|scalp|lower\\s*back|palms?|soles?|arms?|legs?|chest|skin|rash)\\b.*?\\b(?:peeling|scaly|flaky|cracks?|fissures?|thickened|silver\\s*like\\s*dusting|scales)\\b)",
+      "priority": 12,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-07-22T13:44:10.280937",
+      "output_template": {
+        "label": "psoriasis"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "b61526fa",
+      "name": "Rule_Psoriasis_NailJointSpecific",
+      "description": "Matches texts indicating specific psoriasis symptoms related to nails (dents, pits, cracks, inflammation) or joint pain/agony/ache. It is flexible to capture 'dents' before or after 'nails'.",
+      "format": "regex",
+      "content": "(?i)(?:\\b(?:nails?)\\b.*?\\b(?:small\\s*dents?|dents?|pits?|cracks?|inflammat(?:ion|ed))|\\b(?:small\\s*dents?|dents?|pits?|cracks?|inflammat(?:ion|ed))\\b.*?\\b(?:nails?)|\\b(?:joints?)\\b.*?\\b(?:pain|agony|ache))",
+      "priority": 11,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-07-22T13:44:10.281292",
+      "output_template": {
+        "label": "psoriasis"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "1d1a5b35",
+      "name": "Rule_Psoriasis_WinterSensitivity",
+      "description": "Matches texts describing skin conditions, particularly rashes, that worsen in winter months or dry air, or are sensitive to temperature/humidity changes, often associated with psoriasis.",
+      "format": "regex",
+      "content": "(?i)\\b(?:rash|skin)\\b.*?\\b(?:worse\\s*in\\s*the\\s*winter\\s*months?|dry\\s*air|sensitive|irritated\\s*by\\s*changes\\s*in\\s*temperature\\s*or\\s*humidity)\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-07-22T13:44:10.281531",
       "output_template": {
         "label": "psoriasis"
       },
