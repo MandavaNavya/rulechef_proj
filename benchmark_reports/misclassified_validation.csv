@@ -1,0 +1,10 @@
+text,true_label,predicted_label,rule,rule_name,error_type
+"recently, my calves have been cramping up frequently, especially when i am walking or standing for long periods of time. also, the veins are very noticeable.",varicose veins,unknown,,,no_rule_fired
+"i've seen a sudden peeling of skin on various regions of my body, mostly my arms, legs, and back. in addition, i have significant joint pain and skin rashes. the rash is spreading to different parts of my body.",psoriasis,varicose veins,015bd09a,VaricoseVeins_LegRashSymptoms,false_positive
+"there is a silver like dusting on my skin. moreover, the skin on my arms and back are starting to peel off. this is strange and really concerning me.",psoriasis,unknown,,,no_rule_fired
+the swelling in my legs has gotten worse over the past few weeks and is causing me difficulty fitting into my shoes. it is also causing discomfort when i sit for long periods of time.,varicose veins,unknown,,,no_rule_fired
+the pain in my calves is constant and becomes worse when i stand or walk for long periods of time. i am getting constant cramps and can't run for longer periods of time.,varicose veins,unknown,,,no_rule_fired
+"i have been feeling really fatigued and weak, and i can't seem to get rid of it. i have a mild fever and a strange pain in my abdominal area. i can't understand what is happening.",typhoid,chicken pox,82ee5eb4,ChickenPox_SystemicSymptoms,false_positive
+the skin around the veins on my legs is dry and flaky. it seems there is a major bruise and my legs have started to swell.,varicose veins,unknown,,,no_rule_fired
+"i have noticed that my skin has become more sensitive than it used to be. there is a silver like dusting on my skin, especially on my back and elbows.",psoriasis,unknown,,,no_rule_fired
+"there is a silver like dusting on my skin, especially on my lower back and scalp. this dusting is made up of small scales that flake off easily when i scratch them.",psoriasis,unknown,,,no_rule_fired

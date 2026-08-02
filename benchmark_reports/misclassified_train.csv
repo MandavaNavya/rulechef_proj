@@ -1,0 +1,34 @@
+text,true_label,predicted_label,rule,rule_name,error_type
+"i have been experiencing a skin rash on my arms, legs, and torso for the past few weeks. it is red, itchy, and covered in dry, scaly patches.",psoriasis,varicose veins,015bd09a,VaricoseVeins_LegRashSymptoms,false_positive
+"my lymph nodes are swollen, causing discomfort in my neck and armpits. i don't know what's causing it.",chicken pox,unknown,,,no_rule_fired
+"the rash on my skin has spread to other parts of my body, including my chest and abdomen. it is itchy and uncomfortable, and it is often worse at night. i am also facing skin peeling.",psoriasis,unknown,,,no_rule_fired
+"i am experiencing a lot of nausea and vomiting, and it's been quite difficult for me to eat anything. i've entirely lost my appetite, and as a result, i have become quite weak.",typhoid,chicken pox,82ee5eb4,ChickenPox_SystemicSymptoms,false_positive
+"recently, the pain in my calves has been constant and becomes worse when i stand or walk for long periods of time. my legs have started to swell and also some blood vessels are quite noticeable.",varicose veins,unknown,,,no_rule_fired
+"the skin around the veins on my legs is dry and flaky, causing discomfort and irritation. i am also starting to get frequent cramps.",varicose veins,unknown,,,no_rule_fired
+"the skin on my genitals is red and inflamed. it is often itchy, burning, and uncomfortable. there are rashes on different parts of the body too.",psoriasis,chicken pox,787b35b6,ChickenPox_Rashes_Itch_NoNegs,false_positive
+"there is strange pain in my stomach area. i don't know what the reason behind this is. moreover, i am starting to get a mild fever along with chills and headaches.",typhoid,unknown,,,no_rule_fired
+"my skin has changed from being less sensitive to being more sensitive. my skin has a silvery coating, especially on my back, elbows and knees.",psoriasis,unknown,,,no_rule_fired
+"my skin has a silvery layer over it, especially on my back and arms. this dusting is made up of small scales that peel off readily when rubbed. also, there are rashes all over my body.",psoriasis,unknown,,,no_rule_fired
+"the skin on my calves is itchy and inflamed, causing a lot of discomfort and difficulty sleeping at night. the blood vessels have started to protrude out, which is concerning.",varicose veins,unknown,,,no_rule_fired
+"i have seen rashes on my skin, and it's difficult for me not to scratch. also, i've had a high fever for several days. i'm not sure what's causing it.",chicken pox,unknown,,,no_rule_fired
+"the skin around the veins on my legs is red, inflamed, and itchy. it is causing a lot of discomforts and i am starting to get regular cramps.",varicose veins,unknown,,,no_rule_fired
+"i've been having diarrhoea and loose, watery stools many times a day. i've lost my appetite and am always sick. i'm also developing a mild fever. also, my abdominal part pains a lot. i don't know what the reason behind all of these is.",typhoid,chicken pox,82ee5eb4,ChickenPox_SystemicSymptoms,false_positive
+my legs are causing a lot of discomforts when i exercise. i get frequent cramps and the blood vessels have become quite noticeable.,varicose veins,unknown,,,no_rule_fired
+"my skin is peeling, particularly on my knees, elbows, and scalp. this peeling is frequently accompanied by a stinging or burning feeling.",psoriasis,unknown,,,no_rule_fired
+"i'm having joint discomfort in my fingers, wrists, and knees. the pain is frequently aching and throbbing, and it worsens when i move my joints.",psoriasis,unknown,,,no_rule_fired
+"i've had trouble falling asleep because of the rash's pain and itching. the skin on my fingers are starting to peel off. my nails have a few tiny cracks, which is really worrying.",psoriasis,unknown,,,no_rule_fired
+"the swelling in my legs has gotten worse over the past few weeks. now, a large number of veins are noticeable on my calves, which is making me worried.",varicose veins,unknown,,,no_rule_fired
+"the fatigue has been really uncomfortable, and i've had a lot of difficulties doing my usual activities. i've also been feeling really depressed and irritable. there is mild pain in the abdominal part too.",typhoid,unknown,,,no_rule_fired
+"i have lost my appetite and have noticed a significant weight loss. i have abdominal pain, especially in the area of my stomach and intestines. i am concerned about my health.",typhoid,chicken pox,3c988c38,ChickenPox_AppetiteLoss,false_positive
+"my legs' skin around the veins is unusual. there appears to be a large bruise. nowadays, i get frequent cramps when i sprint or run.",varicose veins,unknown,,,no_rule_fired
+"the rashes on my skin are not healing. moreover, i have noticed a sudden peeling of the skin, especially the skin on my elbows and knees. i am really worried about this.",psoriasis,unknown,,,no_rule_fired
+"i've also been suffering from diarrhea, which has been really uncomfortable. it comes and goes, and it's accompanied by stomach aches and vomiting.",typhoid,unknown,,,no_rule_fired
+"i am worried about the constant peeling of the skin on my palm, elbow and knee. i have developed rashes on my arms, which itch if i touch them. all of these are making my life quite discomforting and miserable.",psoriasis,unknown,,,no_rule_fired
+the veins on my legs are very noticeable and cause me discomfort. it seems like there is a major bruise and i get cramps when i run.,varicose veins,unknown,,,no_rule_fired
+"i have experienced fatigue and a general feeling of malaise. i often feel tired and have a lack of energy, even after a good night's sleep.",psoriasis,chicken pox,6e5048cf,ChickenPox_FatigueEnergyLoss,false_positive
+"i have noticed that the blood vessels in my legs are getting more noticeable than usual. it is a little concerning to me. moreover, i am experiencing cramps every day.",varicose veins,unknown,,,no_rule_fired
+the rash on my skin is worse in the winter months when the air is dry. i find that i have to moisturize more frequently and use humidifiers to keep my skin hydrated.,psoriasis,unknown,,,no_rule_fired
+the skin on my calves has become inflamed and red. my legs hurt if i try to run or do any physical activities.,varicose veins,unknown,,,no_rule_fired
+long durations of standing or walking have caused severe discomfort in my legs. it's a burning ache that gets worse the longer i'm on my feet.,varicose veins,unknown,,,no_rule_fired
+the veins on my legs cause a lot of discomforts when i sit for long periods of time.,varicose veins,unknown,,,no_rule_fired
+the swelling in my legs is causing me to have difficulty fitting into my shoes and is causing discomfort when i sit for long periods of time.,varicose veins,unknown,,,no_rule_fired

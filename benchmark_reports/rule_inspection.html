@@ -1,0 +1,8702 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>RuleChef Rule Inspection</title>
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    background: #f5f5f5;
+    color: #222;
+}
+
+h1 {
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.rule {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.rule-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.rule-name {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.pattern {
+    background: #f0f0f0;
+    padding: 12px;
+    border-radius: 6px;
+    font-family: monospace;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.metrics {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 15px 0;
+}
+
+.metric {
+    background: #eeeeee;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+.section {
+    margin-top: 20px;
+}
+
+.example {
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 6px;
+}
+
+.tp {
+    background: #e9f7ef;
+    border-left: 5px solid #27ae60;
+}
+
+.fp {
+    background: #fdecea;
+    border-left: 5px solid #e74c3c;
+}
+
+.example-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.example-text {
+    line-height: 1.5;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background: white;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background: #eeeeee;
+}
+
+.good {
+    color: #16803c;
+    font-weight: bold;
+}
+
+.bad {
+    color: #c0392b;
+    font-weight: bold;
+}
+
+details {
+    margin-top: 15px;
+}
+
+summary {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>RuleChef Rule Inspection</h1>
+
+<div class="subtitle">
+Rules, performance, true positives and false positives
+</div>
+
+<h2>Rule Summary</h2>
+
+<table>
+<tr>
+<th>Dataset</th>
+<th>Rule</th>
+<th>Class</th>
+<th>Priority</th>
+<th>Matched</th>
+<th>Winning</th>
+<th>TP</th>
+<th>FP</th>
+<th>Precision</th>
+<th>Recall</th>
+<th>F1</th>
+</tr>
+
+
+<tr>
+<td>train</td>
+<td>typhoid_gi_fever_combination</td>
+<td>typhoid</td>
+<td>10</td>
+<td>25</td>
+<td>24</td>
+<td>24</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.686</td>
+<td>0.814</td>
+</tr>
+
+
+<tr>
+<td>train</td>
+<td>Typhoid_SystemicAbdominal</td>
+<td>typhoid</td>
+<td>9</td>
+<td>16</td>
+<td>5</td>
+<td>5</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.143</td>
+<td>0.250</td>
+</tr>
+
+
+<tr>
+<td>train</td>
+<td>VaricoseVeins_VeinVisualSymptoms</td>
+<td>varicose veins</td>
+<td>10</td>
+<td>13</td>
+<td>13</td>
+<td>13</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.371</td>
+<td>0.542</td>
+</tr>
+
+
+<tr>
+<td>train</td>
+<td>ChickenPox_RedSpots_Systemic</td>
+<td>chicken pox</td>
+<td>11</td>
+<td>12</td>
+<td>12</td>
+<td>12</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.343</td>
+<td>0.511</td>
+</tr>
+
+
+<tr>
+<td>train</td>
+<td>Psoriasis_NailIssues</td>
+<td>psoriasis</td>
+<td>9</td>
+<td>10</td>
+<td>10</td>
+<td>10</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.286</td>
+<td>0.444</td>
+</tr>
+
+
+<tr>
+<td>train</td>
+<td>Psoriasis_JointPainSymptoms</td>
+<td>psoriasis</td>
+<td>7</td>
+<td>10</td>
+<td>4</td>
+<td>4</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.114</td>
+<td>0.205</td>
+</tr>
+
+
+<tr>
+<td>train</td>
+<td>Psoriasis_SpecificSkinManifestations</td>
+<td>psoriasis</td>
+<td>9</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.229</td>
+<td>0.372</td>
+</tr>
+
+
+<tr>
+<td>train</td>
+<td>ChickenPox_LymphNodes</td>
+<td>chicken pox</td>
+<td>10</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.086</td>
+<td>0.158</td>
+</tr>
+
+
+<tr>
+<td>train</td>
+<td>VaricoseVeins_UnexplainedBruisingLegs</td>
+<td>varicose veins</td>
+<td>9</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.086</td>
+<td>0.158</td>
+</tr>
+
+
+<tr>
+<td>train</td>
+<td>VaricoseVeins_LegCramps</td>
+<td>varicose veins</td>
+<td>7</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.057</td>
+<td>0.108</td>
+</tr>
+
+
+<tr>
+<td>train</td>
+<td>Psoriasis_PalmsSolesFissures</td>
+<td>psoriasis</td>
+<td>8</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.029</td>
+<td>0.056</td>
+</tr>
+
+
+<tr>
+<td>train</td>
+<td>VaricoseVeins_ActivityAggravatedLegDiscomfort</td>
+<td>varicose veins</td>
+<td>8</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.029</td>
+<td>0.056</td>
+</tr>
+
+
+<tr>
+<td>train</td>
+<td>ChickenPox_Rashes_Itch_NoNegs</td>
+<td>chicken pox</td>
+<td>8</td>
+<td>9</td>
+<td>8</td>
+<td>7</td>
+<td>1</td>
+<td class="">
+0.875
+</td>
+<td>0.200</td>
+<td>0.326</td>
+</tr>
+
+
+<tr>
+<td>train</td>
+<td>ChickenPox_SystemicSymptoms</td>
+<td>chicken pox</td>
+<td>9</td>
+<td>17</td>
+<td>10</td>
+<td>8</td>
+<td>2</td>
+<td class="">
+0.800
+</td>
+<td>0.229</td>
+<td>0.356</td>
+</tr>
+
+
+<tr>
+<td>train</td>
+<td>VaricoseVeins_LegRashSymptoms</td>
+<td>varicose veins</td>
+<td>9</td>
+<td>5</td>
+<td>4</td>
+<td>3</td>
+<td>1</td>
+<td class="">
+0.750
+</td>
+<td>0.086</td>
+<td>0.154</td>
+</tr>
+
+
+<tr>
+<td>train</td>
+<td>ChickenPox_FatigueEnergyLoss</td>
+<td>chicken pox</td>
+<td>6</td>
+<td>27</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td class="bad">
+0.667
+</td>
+<td>0.057</td>
+<td>0.105</td>
+</tr>
+
+
+<tr>
+<td>train</td>
+<td>ChickenPox_AppetiteLoss</td>
+<td>chicken pox</td>
+<td>6</td>
+<td>17</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td class="bad">
+0.500
+</td>
+<td>0.029</td>
+<td>0.054</td>
+</tr>
+
+
+<tr>
+<td>validation</td>
+<td>typhoid_gi_fever_combination</td>
+<td>typhoid</td>
+<td>10</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.857</td>
+<td>0.923</td>
+</tr>
+
+
+<tr>
+<td>validation</td>
+<td>ChickenPox_RedSpots_Systemic</td>
+<td>chicken pox</td>
+<td>11</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.571</td>
+<td>0.727</td>
+</tr>
+
+
+<tr>
+<td>validation</td>
+<td>Psoriasis_NailIssues</td>
+<td>psoriasis</td>
+<td>9</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.375</td>
+<td>0.545</td>
+</tr>
+
+
+<tr>
+<td>validation</td>
+<td>Psoriasis_JointPainSymptoms</td>
+<td>psoriasis</td>
+<td>7</td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.125</td>
+<td>0.222</td>
+</tr>
+
+
+<tr>
+<td>validation</td>
+<td>VaricoseVeins_LegCramps</td>
+<td>varicose veins</td>
+<td>7</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.250</td>
+<td>0.400</td>
+</tr>
+
+
+<tr>
+<td>validation</td>
+<td>ChickenPox_LymphNodes</td>
+<td>chicken pox</td>
+<td>10</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.143</td>
+<td>0.250</td>
+</tr>
+
+
+<tr>
+<td>validation</td>
+<td>VaricoseVeins_VeinVisualSymptoms</td>
+<td>varicose veins</td>
+<td>10</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.125</td>
+<td>0.222</td>
+</tr>
+
+
+<tr>
+<td>validation</td>
+<td>VaricoseVeins_ActivityAggravatedLegDiscomfort</td>
+<td>varicose veins</td>
+<td>8</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.125</td>
+<td>0.222</td>
+</tr>
+
+
+<tr>
+<td>validation</td>
+<td>ChickenPox_SystemicSymptoms</td>
+<td>chicken pox</td>
+<td>9</td>
+<td>5</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td class="bad">
+0.667
+</td>
+<td>0.286</td>
+<td>0.400</td>
+</tr>
+
+
+<tr>
+<td>validation</td>
+<td>ChickenPox_FatigueEnergyLoss</td>
+<td>chicken pox</td>
+<td>6</td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="bad">
+0.000
+</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+
+
+<tr>
+<td>validation</td>
+<td>Typhoid_SystemicAbdominal</td>
+<td>typhoid</td>
+<td>9</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="bad">
+0.000
+</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+
+
+<tr>
+<td>validation</td>
+<td>ChickenPox_AppetiteLoss</td>
+<td>chicken pox</td>
+<td>6</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="bad">
+0.000
+</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+
+
+<tr>
+<td>validation</td>
+<td>VaricoseVeins_LegRashSymptoms</td>
+<td>varicose veins</td>
+<td>9</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td class="bad">
+0.000
+</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+
+
+<tr>
+<td>validation</td>
+<td>ChickenPox_Rashes_Itch_NoNegs</td>
+<td>chicken pox</td>
+<td>8</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="bad">
+0.000
+</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+
+
+<tr>
+<td>validation</td>
+<td>Psoriasis_SpecificSkinManifestations</td>
+<td>psoriasis</td>
+<td>9</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="bad">
+0.000
+</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+
+
+<tr>
+<td>validation</td>
+<td>VaricoseVeins_UnexplainedBruisingLegs</td>
+<td>varicose veins</td>
+<td>9</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="bad">
+0.000
+</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+
+
+<tr>
+<td>validation</td>
+<td>Psoriasis_PalmsSolesFissures</td>
+<td>psoriasis</td>
+<td>8</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="bad">
+0.000
+</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+
+
+<tr>
+<td>test</td>
+<td>typhoid_gi_fever_combination</td>
+<td>typhoid</td>
+<td>10</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.750</td>
+<td>0.857</td>
+</tr>
+
+
+<tr>
+<td>test</td>
+<td>VaricoseVeins_VeinVisualSymptoms</td>
+<td>varicose veins</td>
+<td>10</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.571</td>
+<td>0.727</td>
+</tr>
+
+
+<tr>
+<td>test</td>
+<td>ChickenPox_SystemicSymptoms</td>
+<td>chicken pox</td>
+<td>9</td>
+<td>4</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.250</td>
+<td>0.400</td>
+</tr>
+
+
+<tr>
+<td>test</td>
+<td>ChickenPox_RedSpots_Systemic</td>
+<td>chicken pox</td>
+<td>11</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.375</td>
+<td>0.545</td>
+</tr>
+
+
+<tr>
+<td>test</td>
+<td>Psoriasis_NailIssues</td>
+<td>psoriasis</td>
+<td>9</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.143</td>
+<td>0.250</td>
+</tr>
+
+
+<tr>
+<td>test</td>
+<td>Psoriasis_PalmsSolesFissures</td>
+<td>psoriasis</td>
+<td>8</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.143</td>
+<td>0.250</td>
+</tr>
+
+
+<tr>
+<td>test</td>
+<td>VaricoseVeins_LegCramps</td>
+<td>varicose veins</td>
+<td>7</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td class="good">
+1.000
+</td>
+<td>0.143</td>
+<td>0.250</td>
+</tr>
+
+
+<tr>
+<td>test</td>
+<td>ChickenPox_FatigueEnergyLoss</td>
+<td>chicken pox</td>
+<td>6</td>
+<td>7</td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td class="bad">
+0.000
+</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+
+
+<tr>
+<td>test</td>
+<td>Typhoid_SystemicAbdominal</td>
+<td>typhoid</td>
+<td>9</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="bad">
+0.000
+</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+
+
+<tr>
+<td>test</td>
+<td>VaricoseVeins_LegRashSymptoms</td>
+<td>varicose veins</td>
+<td>9</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td class="bad">
+0.000
+</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+
+
+<tr>
+<td>test</td>
+<td>ChickenPox_AppetiteLoss</td>
+<td>chicken pox</td>
+<td>6</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="bad">
+0.000
+</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+
+
+<tr>
+<td>test</td>
+<td>ChickenPox_LymphNodes</td>
+<td>chicken pox</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="bad">
+0.000
+</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+
+
+<tr>
+<td>test</td>
+<td>Psoriasis_SpecificSkinManifestations</td>
+<td>psoriasis</td>
+<td>9</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="bad">
+0.000
+</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+
+
+<tr>
+<td>test</td>
+<td>VaricoseVeins_UnexplainedBruisingLegs</td>
+<td>varicose veins</td>
+<td>9</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="bad">
+0.000
+</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+
+
+<tr>
+<td>test</td>
+<td>ChickenPox_Rashes_Itch_NoNegs</td>
+<td>chicken pox</td>
+<td>8</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="bad">
+0.000
+</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+
+
+<tr>
+<td>test</td>
+<td>VaricoseVeins_ActivityAggravatedLegDiscomfort</td>
+<td>varicose veins</td>
+<td>8</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="bad">
+0.000
+</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+
+
+<tr>
+<td>test</td>
+<td>Psoriasis_JointPainSymptoms</td>
+<td>psoriasis</td>
+<td>7</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="bad">
+0.000
+</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+
+</table>
+<h2>Detailed Rule Inspection</h2>
+<h2>Train Set</h2>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+typhoid_gi_fever_combination
+</div>
+
+<div>
+Class:
+<span class="label">
+typhoid
+</span>
+</div>
+
+<div>
+Rule ID:
+25da1daa
+</div>
+
+<div>
+Priority:
+10
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\b(?:vomiting|nauseated|nausea|diarrhea|constipation)\b)(?=.*\b(?:fever|headache|abdominal\s+(?:pain|cramps?|part)|stomach\s+(?:ache|discomfort|pains?)|belly\s+(?:pain|area|pains?))\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches texts describing a combination of at least one core GI symptom (vomiting, nausea, diarrhea, constipation) and at least one systemic symptom or abdominal pain (fever, headache, abdominal/stomach pain).
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 25
+</div>
+
+<div class="metric">
+Winning predictions: 24
+</div>
+
+<div class="metric">
+True positives: 24
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.686
+</div>
+
+<div class="metric">
+F1: 0.814
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i am having a terrible pain in my abdominal part, and i&#x27;ve been feeling really nauseated. i&#x27;m also experiencing a mild fever. i am really worried.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve been having a lot of trouble keeping hydrated because of the vomiting and diarrhea. there is a mild fever along with constipation and headache.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i am experiencing constipation and stomach ache, which has been really difficult. the discomfort has gotten worse, and it is seriously interfering with my everyday life.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+there is a distinct pain in my abdominal part. i am not sure what it is. i am also going through constant vomiting and feel nauseous.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve been feeling exhausted and weak, and i can&#x27;t seem to get rid of it. because of the vomiting and nausea, i&#x27;ve entirely lost my appetite. my belly pains which are causing me concern.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve had a high fever, particularly at night. it&#x27;s been quite unpleasant. there is a little headache, as well as constipation and diarrhea. i don&#x27;t feel like eating anything.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve been having a lot of trouble staying hydrated because of the vomiting and diarrhea. i have a high fever, constipation, and a headache. i am also starting to get a strange pain in my stomach area and i can&#x27;t do anything physical.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+diarrhea has been really watery and foul-smelling, and it&#x27;s been accompanied by abdominal pain. i feel like vomiting most of the time.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have had a fever for the last couple of days. now, i am starting to experience a severe pain in my stomach area and suffering from constipation.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i am experiencing a lot of belly pain and constipation, which has been really annoying. sometimes, i feel a strong urge to vomit, and because of all of these, i am feeling very weak.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+Typhoid_SystemicAbdominal
+</div>
+
+<div>
+Class:
+<span class="label">
+typhoid
+</span>
+</div>
+
+<div>
+Rule ID:
+31d0aed0
+</div>
+
+<div>
+Priority:
+9
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\b(?:fever|headache|chills|tired|exhausted|fatigued|sick|weak|lethargic)\b)(?=.*\b(?:abdominal\s+(?:pain|cramps?|part)|stomach\s+(?:ache|discomfort|pains?)|belly\s+(?:pain|area|pains?))\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches a combination of systemic symptoms (fever, headache, chills, fatigue) and abdominal or stomach discomfort, even without explicit GI symptoms like diarrhea or vomiting. This broadens coverage for typhoid cases.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 16
+</div>
+
+<div class="metric">
+Winning predictions: 5
+</div>
+
+<div class="metric">
+True positives: 5
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.143
+</div>
+
+<div class="metric">
+F1: 0.250
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve been having a lot of trouble sleeping because of the high fever, headache and chills. i wake up every day having a terrible pain in my belly area.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve been experiencing chills, fever, and extreme stomach discomfort. i&#x27;ve been generally unhappy, and i can&#x27;t seem to get rid of these symptoms.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i am having severe stomach discomfort and diarrhoea. i have a high fever along with a headache. the previous several days have been really unpleasant.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i am having a lot of trouble sleeping because of the high fever and the headache. moreover, i have constant belly pain, because of which i can&#x27;t go to work.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have been experiencing chills and fever, along with severe abdominal pain. i&#x27;ve been feeling really miserable overall, and i just can&#x27;t seem to shake these symptoms.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+VaricoseVeins_VeinVisualSymptoms
+</div>
+
+<div>
+Class:
+<span class="label">
+varicose veins
+</span>
+</div>
+
+<div>
+Rule ID:
+3b8ab87b
+</div>
+
+<div>
+Priority:
+10
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\b(?:veins|blood\s*vessels?)\b)(?=.*\b(?:protruding|prominent|swollen|visible|bulge|enlarged)\b)(?=.*\b(?:legs?|calves?)\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches direct mentions of veins or blood vessels being prominent, swollen, visible, or protruding on legs or calves.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 13
+</div>
+
+<div class="metric">
+Winning predictions: 13
+</div>
+
+<div class="metric">
+True positives: 13
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.371
+</div>
+
+<div class="metric">
+F1: 0.542
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have a rash on my legs that is causing a lot of discomforts. it seems there is a cramp and i can see prominent veins on the calf. also, i have been feeling very tired and fatigued in the past couple of days.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+the blood vessels on my legs are quite visible and give me a lot of pain. they&#x27;re large and protrude from my skin. it is unusual and i am worried about it.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+the prominent blood vessels on my calves are causing self-consciousness and embarrassment. i believe the problem is because of my overweight.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+as i am overweight, i have noticed that my legs are swollen and the blood vessels are more visible than usual. the swelling seems to be getting worse over time.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+my legs have been causing a lot of discomforts when i exercise. they feel heavy and swollen, and the veins are prominent and painful. i feel fatigued all the time.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i am overweight and have noticed that my legs are swollen and the blood vessels are visible. my legs have swollen and i can see a stream of swollen veins on my calves.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+the veins in my calves are protruding out quite unusually. i am worried about it. also, i am overweight and i believe this is the reason behind all of this.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+the swelling in my legs is causing me to have difficulty fitting into my shoes. i can&#x27;t sprint or stand for long periods of time. i can see some swollen blood vessels.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have a rash on my legs that is giving me a lot of pain. there appears to be a cramp, and i can see visible veins on the calf.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+the veins on my calves have become very prominent and causing discomfort. i can&#x27;t stand for long periods of time, as it causes pain in my legs, similar to cramps.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+ChickenPox_RedSpots_Systemic
+</div>
+
+<div>
+Class:
+<span class="label">
+chicken pox
+</span>
+</div>
+
+<div>
+Rule ID:
+babde443
+</div>
+
+<div>
+Priority:
+11
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\b(?:little|small|red)\s+(?:spots|patches|rashes)\b)(?=.*\b(?:itch(?:ing|es|y)|discomfort|fever|appetite|energy|tired|exhausted|fatigued|sick|lethargic|headache)\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Identifies explicit mentions of &#x27;red spots&#x27;, &#x27;patches&#x27;, or &#x27;rashes&#x27; combined with any general systemic symptom or itching, as these are strong indicators not present in counter-examples. Priority increased to resolve conflict with typhoid.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 12
+</div>
+
+<div class="metric">
+Winning predictions: 12
+</div>
+
+<div class="metric">
+True positives: 12
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.343
+</div>
+
+<div class="metric">
+F1: 0.511
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;m feeling really sick and lost my appetite. i&#x27;ve seen little red patches on my arms, neck and face that itch when i touch them.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+there are red spots all over my body that i can&#x27;t explain. the spots are itchy and starting to swell, and they are spreading rapidly.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve been suffering from severe itching all over my body, along with a fever and headache. the red spots are starting to swell and it is getting really uncomfortable every day.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have a high fever and a severe headache. i can&#x27;t seem to eat anything and feel like vomiting. there are also some red spots developing on my arms. i am really worried.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i feel tired every day. there are red spots all over my arms and back and it itches if i touch them. i am really worried and not sure what to do.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have no energy and have lost my appetite. i&#x27;m feeling really sick and don&#x27;t know what&#x27;s wrong. also, there are small red spots starting to show on my skin.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+there are small red spots all over my body that i can&#x27;t explain. it&#x27;s worrying me. i feel extremely tired and experience a mild fever every night.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have little red spots all over my body that i don&#x27;t understand. it worries me. i have lost my appetite and every night, i am exhausted and have a severe headache.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;m feeling really sick and uncomfortable like something is wrong inside. i don&#x27;t know what it could be. i noticed small red spots on my arms, which itches if i touch them.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+my skin rash is causing me a great deal of pain. there are also small red spots developing near my neck. since yesterday, i have had a severe fever, headache and fatigue.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+Psoriasis_NailIssues
+</div>
+
+<div>
+Class:
+<span class="label">
+psoriasis
+</span>
+</div>
+
+<div>
+Rule ID:
+6f9deb14
+</div>
+
+<div>
+Priority:
+9
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\bnails\b)(?=.*\b(?:dents|pits|inflammation|inflamed)\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Identifies characteristic nail problems like small dents, pits, or strange inflammation, which are strong indicators of psoriatic nail disease.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 10
+</div>
+
+<div class="metric">
+Winning predictions: 10
+</div>
+
+<div class="metric">
+True positives: 10
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.286
+</div>
+
+<div class="metric">
+F1: 0.444
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+my nails have small dents or pits in them, and they often feel inflammatory and tender to the touch. even there are minor rashes on my arms.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+my skin is peeling in places, especially on my knees, elbows, and arms. this peeling is often accompanied by a painful or burning sensation. i am also developing small dents on my nails, which is really concerning.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+my arms, face and back are all red and irritated. it is frequently irritating and unpleasant. my nails have a strange inflammation and have developed small dents. i have never seen anything like this.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+my skin is extremely sensitive and quickly irritated by changes in temperature or humidity. my nails have developed dents on them. i am worried about this sudden change.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i am starting to have rashes on my skin. the rash often bleeds when i scratch or rub it. moreover, i have noticed small dents in my nails.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve had trouble sleeping because of the itching and pain produced by the rash. my nails have little dents. i am also experiencing skin peeling in different parts of my body.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i am starting to have rashes on my arms and neck. the rash often bleeds and hurts when i scratch it. i have also developed small dents in my nails, which is very strange.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve had trouble sleeping because of the itching and pain produced by the rash. my nails have little dents, which is really alarming. there is a noticeable inflammation in my nails.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve had trouble sleeping because of the itching and pain produced by the rash. my nails have little dents, which is really alarming. moreover, my joints pain everyday and i have no idea what is causing it.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+my skin is breaking out in rashes. when i scratch or rub the rash, it frequently bleeds. in addition, i&#x27;ve observed little dents in my nails. there is a noticeable inflammation in my nails.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+Psoriasis_JointPainSymptoms
+</div>
+
+<div>
+Class:
+<span class="label">
+psoriasis
+</span>
+</div>
+
+<div>
+Rule ID:
+19ceccee
+</div>
+
+<div>
+Priority:
+7
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:joint\s+pain|pain\s+in\s+my\s+joints|joints\s+pain|excruciating\s+(?:discomfort|agony)|extreme\s+pain)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Captures various descriptions of joint pain, often with strong adjectives (e.g., excruciating, extreme), which is a key symptom of psoriatic arthritis.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 10
+</div>
+
+<div class="metric">
+Winning predictions: 4
+</div>
+
+<div class="metric">
+True positives: 4
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.114
+</div>
+
+<div class="metric">
+F1: 0.205
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+there is strange pain in my joints. also, i have noticed strange peeling of skin in different parts of my body. i am afraid there is something wrong going on with my body.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+my genital skin is red and irritated. it is frequently irritating, burning, and unpleasant. there are also rashes in various places of the body. also, i have a strange pain in my joints.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have been experiencing joint pain in my fingers, wrists, and knees. the pain is often achy and throbbing, and it gets worse when i move my joints.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+my skin rash gets worse in the winter when the air is dry. to keep my skin moisturized, i have to moisturize more regularly and use humidifiers. i am also facing joint pain.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+Psoriasis_SpecificSkinManifestations
+</div>
+
+<div>
+Class:
+<span class="label">
+psoriasis
+</span>
+</div>
+
+<div>
+Rule ID:
+1e081a6c
+</div>
+
+<div>
+Priority:
+9
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:scaly\s+spots|silvery\s+film|silver-like\s+powder|peeling\s+of\s+the\s+skin(?:(?:,\s+especially(?:\s+(?:the\s+skin|area))?)?\s+on)?(?:my)?\s*(?:elbows|knees|elbows\s+and\s+knees)|dry,\s+flaky\s+(?:areas|patches)|skin\s+flaking)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches highly specific skin descriptions characteristic of psoriasis, such as scaly spots, silvery film/powder, or peeling/flaking skin, especially on common affected areas like elbows and knees. Updated to handle &#x27;elbows and knees&#x27; conjunction.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 8
+</div>
+
+<div class="metric">
+Winning predictions: 8
+</div>
+
+<div class="metric">
+True positives: 8
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.229
+</div>
+
+<div class="metric">
+F1: 0.372
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+because of dry, flaky areas on my skin, i am prone to infections. my joints are in excruciating agony. the skin on my knees and elbows is beginning to flake.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+my skin rash has extended to other areas of my body, including my chest and belly. it is irritating and unpleasant, and it is frequently worst at night. i&#x27;m also experiencing skin flaking.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+because of dry, flaky areas on my skin, i am prone to infections. my joints are in extreme pain . my knees and elbows&#x27; skin are starting to peel off.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+my skin is prone to infections due to dry, flaky patches. i am experiencing a strong pain in my joints. the skin on my knees and elbows is starting to peel off.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+for the past few weeks, i&#x27;ve had a skin rash on my arms, legs, and chest. it&#x27;s red and irritating, with dry, scaly spots. i have a strange pain in my joints too.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+my nails are slightly dented. even my joints are now experiencing excruciating discomfort. my skin has a silver-like powder, especially on my back and elbows.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+my skin has a silvery film, particularly on my back, arms and scalp. this dusting is composed of tiny scales that easily peel off when scratched.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve observed that my skin is more sensitive now than it used to be. my skin has a silvery film, especially on my back and elbows.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+ChickenPox_LymphNodes
+</div>
+
+<div>
+Class:
+<span class="label">
+chicken pox
+</span>
+</div>
+
+<div>
+Rule ID:
+cab0e80f
+</div>
+
+<div>
+Priority:
+10
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:small|large)?\s*lymph nodes\b.*?\b(?:swell|itch(?:ing|es|y)|pain|uncomfortable)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches mentions of lymph nodes combined with itching, swelling, or pain, which is specific to chicken pox in the provided data.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 3
+</div>
+
+<div class="metric">
+Winning predictions: 3
+</div>
+
+<div class="metric">
+True positives: 3
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.086
+</div>
+
+<div class="metric">
+F1: 0.158
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+my arms and neck have large lymph nodes, which itch when i touch them. the itching has made my day extremely uncomfortable.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+my arms and face have small lymph nodes, which are starting to swell. my day has been made really miserable by the constant itching and pain.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+enlarged lymph nodes are giving me a great deal of pain. i have rashes all over my body and because of which i cannot sleep all night.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+VaricoseVeins_UnexplainedBruisingLegs
+</div>
+
+<div>
+Class:
+<span class="label">
+varicose veins
+</span>
+</div>
+
+<div>
+Rule ID:
+960c0e96
+</div>
+
+<div>
+Priority:
+9
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:bruises?|bruising)\b(?:(?!arms|neck|chest|body).*?)\b(?:legs?|calves?)\b(?:.*?)\b(?:cannot\s+explain|unexplained|not\s+sure)\b|\b(?:cannot\s+explain|unexplained|not\s+sure)\b(?:.*?)\b(?:bruises?|bruising)\b(?:(?!arms|neck|chest|body).*?)\b(?:legs?|calves?)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches mentions of unexplained bruises or bruising specifically on the legs or calves.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 3
+</div>
+
+<div class="metric">
+Winning predictions: 3
+</div>
+
+<div class="metric">
+True positives: 3
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.086
+</div>
+
+<div class="metric">
+F1: 0.158
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i am experiencing too many cramps in the last couple of days. i think something is not right. i believe there is a small bruise on my calves, but i am not sure about it.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+there is bruising on my legs that i cannot explain. i can see strange blood vessels below the skin. also, i am slightly obese and i am really worried.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have noticed that there are bruises on my legs that i cannot explain. they are not painful but are concerning to me.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+VaricoseVeins_LegCramps
+</div>
+
+<div>
+Class:
+<span class="label">
+varicose veins
+</span>
+</div>
+
+<div>
+Rule ID:
+24cc9fd7
+</div>
+
+<div>
+Priority:
+7
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:cramps?|pain\b.*?similar\s+to\s+cramps)\b(?:.*?)\b(?:legs?|calves?)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches mentions of cramps specifically located in the legs or calves, including pain similar to cramps.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 3
+</div>
+
+<div class="metric">
+Winning predictions: 2
+</div>
+
+<div class="metric">
+True positives: 2
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.057
+</div>
+
+<div class="metric">
+F1: 0.108
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+the cramps in my calves are making it difficult for me to walk. i feel fatigued after working for some time. i believe obesity is the reason behind this.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+the cramps in my calves are becoming more frequent and intense, making it difficult for me to walk and do my daily activities.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+Psoriasis_PalmsSolesFissures
+</div>
+
+<div>
+Class:
+<span class="label">
+psoriasis
+</span>
+</div>
+
+<div>
+Rule ID:
+18092b20
+</div>
+
+<div>
+Priority:
+8
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\b(?:fissures|cracks)\b)(?=.*\b(?:palms|soles)\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Detects specific skin conditions on palms and soles, such as severe fissures or cracks, which can be seen in forms of psoriasis like palmoplantar psoriasis.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 1
+</div>
+
+<div class="metric">
+Winning predictions: 1
+</div>
+
+<div class="metric">
+True positives: 1
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.029
+</div>
+
+<div class="metric">
+F1: 0.056
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+my palms and soles have grown and developed severe fissures. these cracks are unpleasant and frequently bleed. also, the skin is starting to peel off.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+VaricoseVeins_ActivityAggravatedLegDiscomfort
+</div>
+
+<div>
+Class:
+<span class="label">
+varicose veins
+</span>
+</div>
+
+<div>
+Rule ID:
+e8652932
+</div>
+
+<div>
+Priority:
+8
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:standing|walking)\s+for\s+long\s+(?:periods?|durations?|times?)\b(?:.*?)\b(?:pain|discomfort|cramps?|ache)\b(?:.*?)\b(?:legs?|calves?)\b|\b(?:pain|discomfort|cramps?|ache)\b(?:.*?)\b(?:legs?|calves?)\b(?:.*?)\b(?:standing|walking)\s+for\s+long\s+(?:periods?|durations?|times?)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches leg or calf pain, discomfort, cramps, or aching that is aggravated by prolonged standing or walking.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 1
+</div>
+
+<div class="metric">
+Winning predictions: 1
+</div>
+
+<div class="metric">
+True positives: 1
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.029
+</div>
+
+<div class="metric">
+F1: 0.056
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+standing or walking for long periods of time has been causing a lot of pain in my legs. it feels like a cramp and becomes worse the longer i am on my feet.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+ChickenPox_Rashes_Itch_NoNegs
+</div>
+
+<div>
+Class:
+<span class="label">
+chicken pox
+</span>
+</div>
+
+<div>
+Rule ID:
+787b35b6
+</div>
+
+<div>
+Priority:
+8
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\b(?:rash(?:es)?|skin\s+rash|red\s+patches)\b)(?=.*\b(?:itch(?:ing|es|y)|discomfort|uncomfortable|irritating|swollen|spreading)\b)(?!.*\b(?:legs|calves|veins|nails|dents|pits|silvery\s+film|palms|soles|fissures|peeling|genital|joints|abdominal|diarrhea|constipation)\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches general &#x27;rashes&#x27;, &#x27;skin rash&#x27;, or &#x27;red patches&#x27; combined with itching, discomfort, swelling, or spreading, while employing negative lookaheads to explicitly exclude keywords associated with &#x27;varicose veins&#x27;, &#x27;psoriasis&#x27;, and &#x27;typhoid&#x27; found in counter-examples. Updated to include singular &#x27;rash&#x27;.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 9
+</div>
+
+<div class="metric">
+Winning predictions: 8
+</div>
+
+<div class="metric">
+True positives: 7
+</div>
+
+<div class="metric">
+False positives: 1
+</div>
+
+<div class="metric">
+Precision: 0.875
+</div>
+
+<div class="metric">
+Recall: 0.200
+</div>
+
+<div class="metric">
+F1: 0.326
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve been experiencing intense itching all over my skin, and it&#x27;s driving me crazy. i also have a rash that&#x27;s red and inflamed.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have seen rashes on my arms and neck and it itches if i scratch them. i&#x27;ve also had a high fever for a few days. i have no idea what is causing it. the itching is causing me a lot of discomforts.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;m worried about this rash on my skin. it&#x27;s spreading rapidly and causing a lot of discomforts. i can hardly sleep at night because of the itching,
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve been suffering from severe itching all over my body, and it&#x27;s driving me insane. i also have a red and irritating rash.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+the itching is making it hard for me to sleep at night. i can&#x27;t seem to get any rest because the rash is so itchy and uncomfortable. i&#x27;m feeling really tired and exhausted.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+my skin rash is giving me a lot of pain and discomfort. it&#x27;s red and swollen, and it&#x27;s spreading throughout my body.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have a skin rash that&#x27;s red and swollen, and it&#x27;s spreading all over my body. i have a mild fever and it is causing me a lot of discomforts.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+
+<div class="example fp">
+
+<div class="example-label">
+FALSE POSITIVE
+</div>
+
+<div class="example-text">
+the skin on my genitals is red and inflamed. it is often itchy, burning, and uncomfortable. there are rashes on different parts of the body too.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+ChickenPox_SystemicSymptoms
+</div>
+
+<div>
+Class:
+<span class="label">
+chicken pox
+</span>
+</div>
+
+<div>
+Rule ID:
+82ee5eb4
+</div>
+
+<div>
+Priority:
+9
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?:(?=.*\b(?:high\s+fever|fever|headache)\b)(?=.*\b(?:tired|exhausted|fatigued|no\s+energy|lethargic|sick|weak)\b)|(?=.*\b(?:high\s+fever|fever|headache)\b)(?=.*\b(?:lost\s+my\s+appetite|loss\s+of\s+appetite|can&#x27;t\s+seem\s+to\s+eat|no\s+appetite)\b)|(?=.*\b(?:tired|exhausted|fatigued|no\s+energy|lethargic|sick|weak)\b)(?=.*\b(?:lost\s+my\s+appetite|loss\s+of\s+appetite|can&#x27;t\s+seem\s+to\s+eat|no\s+appetite)\b)).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches combinations of general systemic symptoms characteristic of chicken pox, such as fever/headache, fatigue/weakness, and loss of appetite, requiring at least two distinct categories of these symptoms.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 17
+</div>
+
+<div class="metric">
+Winning predictions: 10
+</div>
+
+<div class="metric">
+True positives: 8
+</div>
+
+<div class="metric">
+False positives: 2
+</div>
+
+<div class="metric">
+Precision: 0.800
+</div>
+
+<div class="metric">
+Recall: 0.229
+</div>
+
+<div class="metric">
+F1: 0.356
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have no energy and have lost my appetite. i have a high fever and severe headache and don&#x27;t know what&#x27;s wrong.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+the high fever and swollen lymph nodes are causing me much discomfort. i have a headache and feel weak and fatigued. it&#x27;s hard for me to concentrate because of the fever.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have no energy and have lost my appetite. i&#x27;m feeling really sick and don&#x27;t know what&#x27;s wrong.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+the high fever, swollen lymph nodes and headache are causing me a lot of trouble. i don&#x27;t feel like eating anything and feel weak and fatigued. it&#x27;s hard for me to concentrate on my daily life.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have a high fever and a mild headache. i&#x27;m tired most of the time and completely lost my appetite.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have lost my appetite completely and can&#x27;t seem to eat anything. i feel like vomiting and feel exhausted. i noticed rashes on my skin, which is really concerning me.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;m really exhausted and lacking in energy. i can hardly keep my eyes open during the day. i have a mild fever and don&#x27;t feel like eating anything. i think i have lost my appetite.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;m feeling really nauseous and uneasy. i&#x27;m not sure what it might be. i&#x27;ve seen rashes on my arms and legs. i have lost my appetite and feel exhausted every day.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+
+<div class="example fp">
+
+<div class="example-label">
+FALSE POSITIVE
+</div>
+
+<div class="example-text">
+i am experiencing a lot of nausea and vomiting, and it&#x27;s been quite difficult for me to eat anything. i&#x27;ve entirely lost my appetite, and as a result, i have become quite weak.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example fp">
+
+<div class="example-label">
+FALSE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve been having diarrhoea and loose, watery stools many times a day. i&#x27;ve lost my appetite and am always sick. i&#x27;m also developing a mild fever. also, my abdominal part pains a lot. i don&#x27;t know what the reason behind all of these is.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+VaricoseVeins_LegRashSymptoms
+</div>
+
+<div>
+Class:
+<span class="label">
+varicose veins
+</span>
+</div>
+
+<div>
+Rule ID:
+015bd09a
+</div>
+
+<div>
+Priority:
+9
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\b(?:rash(?:es)?|skin\s+rash)\b)(?=.*\b(?:legs?|calves?)\b)(?=.*\b(?:spreading|red|inflamed|itch(?:ing|es|y)|discomfort|irritated)\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches descriptions of a spreading, red, inflamed, or itchy rash specifically on the legs or calves, indicating a possible complication of varicose veins like venous eczema.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 5
+</div>
+
+<div class="metric">
+Winning predictions: 4
+</div>
+
+<div class="metric">
+True positives: 3
+</div>
+
+<div class="metric">
+False positives: 1
+</div>
+
+<div class="metric">
+Precision: 0.750
+</div>
+
+<div class="metric">
+Recall: 0.086
+</div>
+
+<div class="metric">
+F1: 0.154
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have been experiencing a rash on my legs that is causing a lot of irritation and discomfort. it is red and inflamed and appears to be spreading.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+the rash on my legs is spreading and becoming more severe. it has become very difficult for me to run.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+the rash on my legs is spreading and becoming more severe. it is red, inflamed, and itchy, causing a lot of discomfort and difficulty sleeping at night.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+
+<div class="example fp">
+
+<div class="example-label">
+FALSE POSITIVE
+</div>
+
+<div class="example-text">
+i have been experiencing a skin rash on my arms, legs, and torso for the past few weeks. it is red, itchy, and covered in dry, scaly patches.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+ChickenPox_FatigueEnergyLoss
+</div>
+
+<div>
+Class:
+<span class="label">
+chicken pox
+</span>
+</div>
+
+<div>
+Rule ID:
+6e5048cf
+</div>
+
+<div>
+Priority:
+6
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:tired|exhausted|fatigued|no\s+energy|lethargic|sick|weak)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches general fatigue, lack of energy, or lethargy, which can be an early symptom of chicken pox.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 27
+</div>
+
+<div class="metric">
+Winning predictions: 3
+</div>
+
+<div class="metric">
+True positives: 2
+</div>
+
+<div class="metric">
+False positives: 1
+</div>
+
+<div class="metric">
+Precision: 0.667
+</div>
+
+<div class="metric">
+Recall: 0.057
+</div>
+
+<div class="metric">
+F1: 0.105
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;m feeling fatigued and have no energy. i can barely keep my eyes open during the day, and i&#x27;ve been feeling lethargic and unable to motivate myself.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;m feeling fatigued and have no energy. i can barely keep my eyes open during the day, and i&#x27;ve been feeling lethargic and unable to motivate myself.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+
+<div class="example fp">
+
+<div class="example-label">
+FALSE POSITIVE
+</div>
+
+<div class="example-text">
+i have experienced fatigue and a general feeling of malaise. i often feel tired and have a lack of energy, even after a good night&#x27;s sleep.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+ChickenPox_AppetiteLoss
+</div>
+
+<div>
+Class:
+<span class="label">
+chicken pox
+</span>
+</div>
+
+<div>
+Rule ID:
+3c988c38
+</div>
+
+<div>
+Priority:
+6
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:lost\s+my\s+appetite|loss\s+of\s+appetite|can&#x27;t\s+seem\s+to\s+eat|no\s+appetite)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches mentions of significant loss of appetite or inability to eat, often a general early symptom of chicken pox when no other specific symptoms are present.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 17
+</div>
+
+<div class="metric">
+Winning predictions: 2
+</div>
+
+<div class="metric">
+True positives: 1
+</div>
+
+<div class="metric">
+False positives: 1
+</div>
+
+<div class="metric">
+Precision: 0.500
+</div>
+
+<div class="metric">
+Recall: 0.029
+</div>
+
+<div class="metric">
+F1: 0.054
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve lost my appetite and can&#x27;t seem to eat anything. i&#x27;m worried about my health.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+
+<div class="example fp">
+
+<div class="example-label">
+FALSE POSITIVE
+</div>
+
+<div class="example-text">
+i have lost my appetite and have noticed a significant weight loss. i have abdominal pain, especially in the area of my stomach and intestines. i am concerned about my health.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+</div>
+</div>
+<h2>Validation Set</h2>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+typhoid_gi_fever_combination
+</div>
+
+<div>
+Class:
+<span class="label">
+typhoid
+</span>
+</div>
+
+<div>
+Rule ID:
+25da1daa
+</div>
+
+<div>
+Priority:
+10
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\b(?:vomiting|nauseated|nausea|diarrhea|constipation)\b)(?=.*\b(?:fever|headache|abdominal\s+(?:pain|cramps?|part)|stomach\s+(?:ache|discomfort|pains?)|belly\s+(?:pain|area|pains?))\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches texts describing a combination of at least one core GI symptom (vomiting, nausea, diarrhea, constipation) and at least one systemic symptom or abdominal pain (fever, headache, abdominal/stomach pain).
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 6
+</div>
+
+<div class="metric">
+Winning predictions: 6
+</div>
+
+<div class="metric">
+True positives: 6
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.857
+</div>
+
+<div class="metric">
+F1: 0.923
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have developed diarrhea. it is accompanied by severe pain in my belly area. i don&#x27;t feel like eating anything, and most of the time, i have a mild headache.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve been experiencing high fever, especially at night. it&#x27;s been really uncomfortable. there is a mild headache along with constipation and diarrhea.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve lost a lot of weight in the past week because i haven&#x27;t been able to eat much due to nausea and vomiting. this is followed by mild fever, headache and belly pain. i&#x27;m really concerned about my health.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have been experiencing diarrhea and have had loose, watery stools several times a day. i have lost my appetite and feel nauseated all the time. i am starting to get a mild fever too.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve had a persistent stomach pain for the past week, and it is not healing even with medication. i feel like vomiting and can&#x27;t eat anything, and because of which i have become extremely weak.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+the stomach discomfort has been severe and frequent. vomiting and constipation have also happened. i&#x27;m concerned about my health.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+ChickenPox_RedSpots_Systemic
+</div>
+
+<div>
+Class:
+<span class="label">
+chicken pox
+</span>
+</div>
+
+<div>
+Rule ID:
+babde443
+</div>
+
+<div>
+Priority:
+11
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\b(?:little|small|red)\s+(?:spots|patches|rashes)\b)(?=.*\b(?:itch(?:ing|es|y)|discomfort|fever|appetite|energy|tired|exhausted|fatigued|sick|lethargic|headache)\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Identifies explicit mentions of &#x27;red spots&#x27;, &#x27;patches&#x27;, or &#x27;rashes&#x27; combined with any general systemic symptom or itching, as these are strong indicators not present in counter-examples. Priority increased to resolve conflict with typhoid.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 4
+</div>
+
+<div class="metric">
+Winning predictions: 4
+</div>
+
+<div class="metric">
+True positives: 4
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.571
+</div>
+
+<div class="metric">
+F1: 0.727
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i am starting to develop tiny red spots all over my face and neck area, and it itches when i touch them. the itching is making my day very uncomfortable.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i am exhausted and have lost my appetite. i feel vomiting and can&#x27;t eat anything. in addition, little red spots are beginning to appear on my skin and near the neck. i am really worried about my health.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;m worried about these red spots on my skin. it&#x27;s spreading rapidly and causing a lot of problems. i also developed a mild fever and headache every night.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+there are small red spots all over my body that i can&#x27;t explain. the bumps are itchy and uncomfortable and seem to spread rapidly. it&#x27;s worrying me.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+Psoriasis_NailIssues
+</div>
+
+<div>
+Class:
+<span class="label">
+psoriasis
+</span>
+</div>
+
+<div>
+Rule ID:
+6f9deb14
+</div>
+
+<div>
+Priority:
+9
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\bnails\b)(?=.*\b(?:dents|pits|inflammation|inflamed)\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Identifies characteristic nail problems like small dents, pits, or strange inflammation, which are strong indicators of psoriatic nail disease.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 3
+</div>
+
+<div class="metric">
+Winning predictions: 3
+</div>
+
+<div class="metric">
+True positives: 3
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.375
+</div>
+
+<div class="metric">
+F1: 0.545
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+the skin around my mouth, nose, and eyes is red and inflamed. it is often itchy and uncomfortable. there is a noticeable inflammation in my nails.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have experienced difficulty sleeping due to the itching and discomfort caused by the rash. there are small dents in my nails, which is really concerning.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+my nails are starting to have small pits on them. i am worried and don&#x27;t know what is causing it. also, my joints pain and there are rashes on my arms and back.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+Psoriasis_JointPainSymptoms
+</div>
+
+<div>
+Class:
+<span class="label">
+psoriasis
+</span>
+</div>
+
+<div>
+Rule ID:
+19ceccee
+</div>
+
+<div>
+Priority:
+7
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:joint\s+pain|pain\s+in\s+my\s+joints|joints\s+pain|excruciating\s+(?:discomfort|agony)|extreme\s+pain)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Captures various descriptions of joint pain, often with strong adjectives (e.g., excruciating, extreme), which is a key symptom of psoriatic arthritis.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 3
+</div>
+
+<div class="metric">
+Winning predictions: 1
+</div>
+
+<div class="metric">
+True positives: 1
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.125
+</div>
+
+<div class="metric">
+F1: 0.222
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have noticed a sudden peeling of skin at different parts of my body, mainly arms, legs and back. also, i face severe joint pain and skin rashes.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+VaricoseVeins_LegCramps
+</div>
+
+<div>
+Class:
+<span class="label">
+varicose veins
+</span>
+</div>
+
+<div>
+Rule ID:
+24cc9fd7
+</div>
+
+<div>
+Priority:
+7
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:cramps?|pain\b.*?similar\s+to\s+cramps)\b(?:.*?)\b(?:legs?|calves?)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches mentions of cramps specifically located in the legs or calves, including pain similar to cramps.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 3
+</div>
+
+<div class="metric">
+Winning predictions: 2
+</div>
+
+<div class="metric">
+True positives: 2
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.250
+</div>
+
+<div class="metric">
+F1: 0.400
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have noticed cramps in my calves are becoming more frequent and intense. it is causing me a lot of discomforts. i am also overweight and my legs have started to swell.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+walking is tough for me because of cramps in my calves. obesity, i believe, is the cause of this. after a while of working, i&#x27;m exhausted.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+ChickenPox_LymphNodes
+</div>
+
+<div>
+Class:
+<span class="label">
+chicken pox
+</span>
+</div>
+
+<div>
+Rule ID:
+cab0e80f
+</div>
+
+<div>
+Priority:
+10
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:small|large)?\s*lymph nodes\b.*?\b(?:swell|itch(?:ing|es|y)|pain|uncomfortable)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches mentions of lymph nodes combined with itching, swelling, or pain, which is specific to chicken pox in the provided data.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 1
+</div>
+
+<div class="metric">
+Winning predictions: 1
+</div>
+
+<div class="metric">
+True positives: 1
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.143
+</div>
+
+<div class="metric">
+F1: 0.250
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have small lymph nodes on my arms and face. the itching is making my day very uncomfortable.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+VaricoseVeins_VeinVisualSymptoms
+</div>
+
+<div>
+Class:
+<span class="label">
+varicose veins
+</span>
+</div>
+
+<div>
+Rule ID:
+3b8ab87b
+</div>
+
+<div>
+Priority:
+10
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\b(?:veins|blood\s*vessels?)\b)(?=.*\b(?:protruding|prominent|swollen|visible|bulge|enlarged)\b)(?=.*\b(?:legs?|calves?)\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches direct mentions of veins or blood vessels being prominent, swollen, visible, or protruding on legs or calves.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 1
+</div>
+
+<div class="metric">
+Winning predictions: 1
+</div>
+
+<div class="metric">
+True positives: 1
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.125
+</div>
+
+<div class="metric">
+F1: 0.222
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+the prominent veins on my calves are causing self-consciousness and embarrassment. they are swollen and protrude from my skin, making them very noticeable.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+VaricoseVeins_ActivityAggravatedLegDiscomfort
+</div>
+
+<div>
+Class:
+<span class="label">
+varicose veins
+</span>
+</div>
+
+<div>
+Rule ID:
+e8652932
+</div>
+
+<div>
+Priority:
+8
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:standing|walking)\s+for\s+long\s+(?:periods?|durations?|times?)\b(?:.*?)\b(?:pain|discomfort|cramps?|ache)\b(?:.*?)\b(?:legs?|calves?)\b|\b(?:pain|discomfort|cramps?|ache)\b(?:.*?)\b(?:legs?|calves?)\b(?:.*?)\b(?:standing|walking)\s+for\s+long\s+(?:periods?|durations?|times?)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches leg or calf pain, discomfort, cramps, or aching that is aggravated by prolonged standing or walking.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 1
+</div>
+
+<div class="metric">
+Winning predictions: 1
+</div>
+
+<div class="metric">
+True positives: 1
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.125
+</div>
+
+<div class="metric">
+F1: 0.222
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+standing or walking for long periods of time causes a lot of pain in my legs. i get cramps upon doing physical activities. there are bruise marks on my legs too.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+ChickenPox_SystemicSymptoms
+</div>
+
+<div>
+Class:
+<span class="label">
+chicken pox
+</span>
+</div>
+
+<div>
+Rule ID:
+82ee5eb4
+</div>
+
+<div>
+Priority:
+9
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?:(?=.*\b(?:high\s+fever|fever|headache)\b)(?=.*\b(?:tired|exhausted|fatigued|no\s+energy|lethargic|sick|weak)\b)|(?=.*\b(?:high\s+fever|fever|headache)\b)(?=.*\b(?:lost\s+my\s+appetite|loss\s+of\s+appetite|can&#x27;t\s+seem\s+to\s+eat|no\s+appetite)\b)|(?=.*\b(?:tired|exhausted|fatigued|no\s+energy|lethargic|sick|weak)\b)(?=.*\b(?:lost\s+my\s+appetite|loss\s+of\s+appetite|can&#x27;t\s+seem\s+to\s+eat|no\s+appetite)\b)).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches combinations of general systemic symptoms characteristic of chicken pox, such as fever/headache, fatigue/weakness, and loss of appetite, requiring at least two distinct categories of these symptoms.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 5
+</div>
+
+<div class="metric">
+Winning predictions: 3
+</div>
+
+<div class="metric">
+True positives: 2
+</div>
+
+<div class="metric">
+False positives: 1
+</div>
+
+<div class="metric">
+Precision: 0.667
+</div>
+
+<div class="metric">
+Recall: 0.286
+</div>
+
+<div class="metric">
+F1: 0.400
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have swollen red lymph nodes on my arms and legs that itch when i touch them. i&#x27;m also suffering from a terrible headache and a mild fever. i don&#x27;t feel like eating anything and have lost my appetite.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+there are red swollen spots all over my body. it itches if i touch them. moreover, i also have a high fever and headache and always feel exhausted.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+
+<div class="example fp">
+
+<div class="example-label">
+FALSE POSITIVE
+</div>
+
+<div class="example-text">
+i have been feeling really fatigued and weak, and i can&#x27;t seem to get rid of it. i have a mild fever and a strange pain in my abdominal area. i can&#x27;t understand what is happening.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+ChickenPox_FatigueEnergyLoss
+</div>
+
+<div>
+Class:
+<span class="label">
+chicken pox
+</span>
+</div>
+
+<div>
+Rule ID:
+6e5048cf
+</div>
+
+<div>
+Priority:
+6
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:tired|exhausted|fatigued|no\s+energy|lethargic|sick|weak)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches general fatigue, lack of energy, or lethargy, which can be an early symptom of chicken pox.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 5
+</div>
+
+<div class="metric">
+Winning predictions: 0
+</div>
+
+<div class="metric">
+True positives: 0
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 0.000
+</div>
+
+<div class="metric">
+Recall: 0.000
+</div>
+
+<div class="metric">
+F1: 0.000
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+<p>No true-positive examples.</p>
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+Typhoid_SystemicAbdominal
+</div>
+
+<div>
+Class:
+<span class="label">
+typhoid
+</span>
+</div>
+
+<div>
+Rule ID:
+31d0aed0
+</div>
+
+<div>
+Priority:
+9
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\b(?:fever|headache|chills|tired|exhausted|fatigued|sick|weak|lethargic)\b)(?=.*\b(?:abdominal\s+(?:pain|cramps?|part)|stomach\s+(?:ache|discomfort|pains?)|belly\s+(?:pain|area|pains?))\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches a combination of systemic symptoms (fever, headache, chills, fatigue) and abdominal or stomach discomfort, even without explicit GI symptoms like diarrhea or vomiting. This broadens coverage for typhoid cases.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 3
+</div>
+
+<div class="metric">
+Winning predictions: 0
+</div>
+
+<div class="metric">
+True positives: 0
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 0.000
+</div>
+
+<div class="metric">
+Recall: 0.000
+</div>
+
+<div class="metric">
+F1: 0.000
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+<p>No true-positive examples.</p>
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+ChickenPox_AppetiteLoss
+</div>
+
+<div>
+Class:
+<span class="label">
+chicken pox
+</span>
+</div>
+
+<div>
+Rule ID:
+3c988c38
+</div>
+
+<div>
+Priority:
+6
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:lost\s+my\s+appetite|loss\s+of\s+appetite|can&#x27;t\s+seem\s+to\s+eat|no\s+appetite)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches mentions of significant loss of appetite or inability to eat, often a general early symptom of chicken pox when no other specific symptoms are present.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 3
+</div>
+
+<div class="metric">
+Winning predictions: 0
+</div>
+
+<div class="metric">
+True positives: 0
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 0.000
+</div>
+
+<div class="metric">
+Recall: 0.000
+</div>
+
+<div class="metric">
+F1: 0.000
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+<p>No true-positive examples.</p>
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+VaricoseVeins_LegRashSymptoms
+</div>
+
+<div>
+Class:
+<span class="label">
+varicose veins
+</span>
+</div>
+
+<div>
+Rule ID:
+015bd09a
+</div>
+
+<div>
+Priority:
+9
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\b(?:rash(?:es)?|skin\s+rash)\b)(?=.*\b(?:legs?|calves?)\b)(?=.*\b(?:spreading|red|inflamed|itch(?:ing|es|y)|discomfort|irritated)\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches descriptions of a spreading, red, inflamed, or itchy rash specifically on the legs or calves, indicating a possible complication of varicose veins like venous eczema.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 1
+</div>
+
+<div class="metric">
+Winning predictions: 1
+</div>
+
+<div class="metric">
+True positives: 0
+</div>
+
+<div class="metric">
+False positives: 1
+</div>
+
+<div class="metric">
+Precision: 0.000
+</div>
+
+<div class="metric">
+Recall: 0.000
+</div>
+
+<div class="metric">
+F1: 0.000
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+<p>No true-positive examples.</p>
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+
+<div class="example fp">
+
+<div class="example-label">
+FALSE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve seen a sudden peeling of skin on various regions of my body, mostly my arms, legs, and back. in addition, i have significant joint pain and skin rashes. the rash is spreading to different parts of my body.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+ChickenPox_Rashes_Itch_NoNegs
+</div>
+
+<div>
+Class:
+<span class="label">
+chicken pox
+</span>
+</div>
+
+<div>
+Rule ID:
+787b35b6
+</div>
+
+<div>
+Priority:
+8
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\b(?:rash(?:es)?|skin\s+rash|red\s+patches)\b)(?=.*\b(?:itch(?:ing|es|y)|discomfort|uncomfortable|irritating|swollen|spreading)\b)(?!.*\b(?:legs|calves|veins|nails|dents|pits|silvery\s+film|palms|soles|fissures|peeling|genital|joints|abdominal|diarrhea|constipation)\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches general &#x27;rashes&#x27;, &#x27;skin rash&#x27;, or &#x27;red patches&#x27; combined with itching, discomfort, swelling, or spreading, while employing negative lookaheads to explicitly exclude keywords associated with &#x27;varicose veins&#x27;, &#x27;psoriasis&#x27;, and &#x27;typhoid&#x27; found in counter-examples. Updated to include singular &#x27;rash&#x27;.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 1
+</div>
+
+<div class="metric">
+Winning predictions: 0
+</div>
+
+<div class="metric">
+True positives: 0
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 0.000
+</div>
+
+<div class="metric">
+Recall: 0.000
+</div>
+
+<div class="metric">
+F1: 0.000
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+<p>No true-positive examples.</p>
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+Psoriasis_SpecificSkinManifestations
+</div>
+
+<div>
+Class:
+<span class="label">
+psoriasis
+</span>
+</div>
+
+<div>
+Rule ID:
+1e081a6c
+</div>
+
+<div>
+Priority:
+9
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:scaly\s+spots|silvery\s+film|silver-like\s+powder|peeling\s+of\s+the\s+skin(?:(?:,\s+especially(?:\s+(?:the\s+skin|area))?)?\s+on)?(?:my)?\s*(?:elbows|knees|elbows\s+and\s+knees)|dry,\s+flaky\s+(?:areas|patches)|skin\s+flaking)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches highly specific skin descriptions characteristic of psoriasis, such as scaly spots, silvery film/powder, or peeling/flaking skin, especially on common affected areas like elbows and knees. Updated to handle &#x27;elbows and knees&#x27; conjunction.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 0
+</div>
+
+<div class="metric">
+Winning predictions: 0
+</div>
+
+<div class="metric">
+True positives: 0
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 0.000
+</div>
+
+<div class="metric">
+Recall: 0.000
+</div>
+
+<div class="metric">
+F1: 0.000
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+<p>No true-positive examples.</p>
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+VaricoseVeins_UnexplainedBruisingLegs
+</div>
+
+<div>
+Class:
+<span class="label">
+varicose veins
+</span>
+</div>
+
+<div>
+Rule ID:
+960c0e96
+</div>
+
+<div>
+Priority:
+9
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:bruises?|bruising)\b(?:(?!arms|neck|chest|body).*?)\b(?:legs?|calves?)\b(?:.*?)\b(?:cannot\s+explain|unexplained|not\s+sure)\b|\b(?:cannot\s+explain|unexplained|not\s+sure)\b(?:.*?)\b(?:bruises?|bruising)\b(?:(?!arms|neck|chest|body).*?)\b(?:legs?|calves?)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches mentions of unexplained bruises or bruising specifically on the legs or calves.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 0
+</div>
+
+<div class="metric">
+Winning predictions: 0
+</div>
+
+<div class="metric">
+True positives: 0
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 0.000
+</div>
+
+<div class="metric">
+Recall: 0.000
+</div>
+
+<div class="metric">
+F1: 0.000
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+<p>No true-positive examples.</p>
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+Psoriasis_PalmsSolesFissures
+</div>
+
+<div>
+Class:
+<span class="label">
+psoriasis
+</span>
+</div>
+
+<div>
+Rule ID:
+18092b20
+</div>
+
+<div>
+Priority:
+8
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\b(?:fissures|cracks)\b)(?=.*\b(?:palms|soles)\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Detects specific skin conditions on palms and soles, such as severe fissures or cracks, which can be seen in forms of psoriasis like palmoplantar psoriasis.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 0
+</div>
+
+<div class="metric">
+Winning predictions: 0
+</div>
+
+<div class="metric">
+True positives: 0
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 0.000
+</div>
+
+<div class="metric">
+Recall: 0.000
+</div>
+
+<div class="metric">
+F1: 0.000
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+<p>No true-positive examples.</p>
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<h2>Test Set</h2>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+typhoid_gi_fever_combination
+</div>
+
+<div>
+Class:
+<span class="label">
+typhoid
+</span>
+</div>
+
+<div>
+Rule ID:
+25da1daa
+</div>
+
+<div>
+Priority:
+10
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\b(?:vomiting|nauseated|nausea|diarrhea|constipation)\b)(?=.*\b(?:fever|headache|abdominal\s+(?:pain|cramps?|part)|stomach\s+(?:ache|discomfort|pains?)|belly\s+(?:pain|area|pains?))\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches texts describing a combination of at least one core GI symptom (vomiting, nausea, diarrhea, constipation) and at least one systemic symptom or abdominal pain (fever, headache, abdominal/stomach pain).
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 6
+</div>
+
+<div class="metric">
+Winning predictions: 6
+</div>
+
+<div class="metric">
+True positives: 6
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.750
+</div>
+
+<div class="metric">
+F1: 0.857
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve lost a lot of weight in the last week because i couldn&#x27;t eat much due to nausea and vomiting. this is followed by a high fever, headache, and stomach pain.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve had a lot of bloating and constipation, which has been really painful. there is a lot of pressure and pain in my stomach area. i get a high fever and chills every night.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+most of the time i feel fatigued. i don&#x27;t want to eat anything. i get a high fever and chills every night. moreover, i have been vomiting since yesterday.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve had a persistent headache for the past week, and it&#x27;s been getting worse. it&#x27;s been accompanied by belly aches, constipation and diarrhea.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i am experiencing extreme belly pain and constipation. every night, i have a severe fever along with chills and headaches. the last couple of days has been really uncomfortable.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve also been experiencing some diarrhea and constipation, which has been really worrying. it feels like a sharp, stabbing pain in my belly area. i feel tired all the time.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+typhoid
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+VaricoseVeins_VeinVisualSymptoms
+</div>
+
+<div>
+Class:
+<span class="label">
+varicose veins
+</span>
+</div>
+
+<div>
+Rule ID:
+3b8ab87b
+</div>
+
+<div>
+Priority:
+10
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\b(?:veins|blood\s*vessels?)\b)(?=.*\b(?:protruding|prominent|swollen|visible|bulge|enlarged)\b)(?=.*\b(?:legs?|calves?)\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches direct mentions of veins or blood vessels being prominent, swollen, visible, or protruding on legs or calves.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 4
+</div>
+
+<div class="metric">
+Winning predictions: 4
+</div>
+
+<div class="metric">
+True positives: 4
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.571
+</div>
+
+<div class="metric">
+F1: 0.727
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+my veins of legs have become more visible and swollen than normal. they are visible through my skin and it hurts when i move.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+the veins on my legs are very noticeable and are causing me a lot of discomforts. they are swollen and protrude from my skin, making them visible through my clothing.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+the veins on my legs are causing a lot of discomforts when i sit for long periods of time. they are swollen and protruding from my skin, making them painful and noticeable.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+the skin around the veins on my legs is red and inflamed. i believe i can see some of the swollen blood vessels. i am really worried about it.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+ChickenPox_SystemicSymptoms
+</div>
+
+<div>
+Class:
+<span class="label">
+chicken pox
+</span>
+</div>
+
+<div>
+Rule ID:
+82ee5eb4
+</div>
+
+<div>
+Priority:
+9
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?:(?=.*\b(?:high\s+fever|fever|headache)\b)(?=.*\b(?:tired|exhausted|fatigued|no\s+energy|lethargic|sick|weak)\b)|(?=.*\b(?:high\s+fever|fever|headache)\b)(?=.*\b(?:lost\s+my\s+appetite|loss\s+of\s+appetite|can&#x27;t\s+seem\s+to\s+eat|no\s+appetite)\b)|(?=.*\b(?:tired|exhausted|fatigued|no\s+energy|lethargic|sick|weak)\b)(?=.*\b(?:lost\s+my\s+appetite|loss\s+of\s+appetite|can&#x27;t\s+seem\s+to\s+eat|no\s+appetite)\b)).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches combinations of general systemic symptoms characteristic of chicken pox, such as fever/headache, fatigue/weakness, and loss of appetite, requiring at least two distinct categories of these symptoms.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 4
+</div>
+
+<div class="metric">
+Winning predictions: 2
+</div>
+
+<div class="metric">
+True positives: 2
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.250
+</div>
+
+<div class="metric">
+F1: 0.400
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i&#x27;ve had a mild fever for the past few days, and it&#x27;s starting to worry me. the fever has been accompanied by a severe headache. i feel weak and lethargic.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+the itching is making it hard for me to sleep at night. i can&#x27;t get any rest. i have also lost my appetite and feel lethargic.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+ChickenPox_RedSpots_Systemic
+</div>
+
+<div>
+Class:
+<span class="label">
+chicken pox
+</span>
+</div>
+
+<div>
+Rule ID:
+babde443
+</div>
+
+<div>
+Priority:
+11
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\b(?:little|small|red)\s+(?:spots|patches|rashes)\b)(?=.*\b(?:itch(?:ing|es|y)|discomfort|fever|appetite|energy|tired|exhausted|fatigued|sick|lethargic|headache)\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Identifies explicit mentions of &#x27;red spots&#x27;, &#x27;patches&#x27;, or &#x27;rashes&#x27; combined with any general systemic symptom or itching, as these are strong indicators not present in counter-examples. Priority increased to resolve conflict with typhoid.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 3
+</div>
+
+<div class="metric">
+Winning predictions: 3
+</div>
+
+<div class="metric">
+True positives: 3
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.375
+</div>
+
+<div class="metric">
+F1: 0.545
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have red spots on my arms and legs and itching them makes it difficult for me to sleep at night. i also have severe headaches and a mild fever.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+i have swollen lymph nodes and red spots all over my body, and they are causing discomfort. i also have a mild fever and feel tired most of the time.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+there are small red spots all over my body. the spots are itchy and uncomfortable. i also have a mild fever and headache.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+Psoriasis_NailIssues
+</div>
+
+<div>
+Class:
+<span class="label">
+psoriasis
+</span>
+</div>
+
+<div>
+Rule ID:
+6f9deb14
+</div>
+
+<div>
+Priority:
+9
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\bnails\b)(?=.*\b(?:dents|pits|inflammation|inflamed)\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Identifies characteristic nail problems like small dents, pits, or strange inflammation, which are strong indicators of psoriatic nail disease.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 1
+</div>
+
+<div class="metric">
+Winning predictions: 1
+</div>
+
+<div class="metric">
+True positives: 1
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.143
+</div>
+
+<div class="metric">
+F1: 0.250
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+my nails have small dents on them. even my joints have started to pain severely. there is a silver like dusting on my skin, particularly in my back.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+Psoriasis_PalmsSolesFissures
+</div>
+
+<div>
+Class:
+<span class="label">
+psoriasis
+</span>
+</div>
+
+<div>
+Rule ID:
+18092b20
+</div>
+
+<div>
+Priority:
+8
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\b(?:fissures|cracks)\b)(?=.*\b(?:palms|soles)\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Detects specific skin conditions on palms and soles, such as severe fissures or cracks, which can be seen in forms of psoriasis like palmoplantar psoriasis.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 1
+</div>
+
+<div class="metric">
+Winning predictions: 1
+</div>
+
+<div class="metric">
+True positives: 1
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.143
+</div>
+
+<div class="metric">
+F1: 0.250
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+the skin on my palms and soles is thickened and has deep cracks. these cracks are painful and bleed easily.
+</div>
+
+<div>
+True:
+psoriasis
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+psoriasis
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+VaricoseVeins_LegCramps
+</div>
+
+<div>
+Class:
+<span class="label">
+varicose veins
+</span>
+</div>
+
+<div>
+Rule ID:
+24cc9fd7
+</div>
+
+<div>
+Priority:
+7
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:cramps?|pain\b.*?similar\s+to\s+cramps)\b(?:.*?)\b(?:legs?|calves?)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches mentions of cramps specifically located in the legs or calves, including pain similar to cramps.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 1
+</div>
+
+<div class="metric">
+Winning predictions: 1
+</div>
+
+<div class="metric">
+True positives: 1
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 1.000
+</div>
+
+<div class="metric">
+Recall: 0.143
+</div>
+
+<div class="metric">
+F1: 0.250
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+
+<div class="example tp">
+
+<div class="example-label">
+TRUE POSITIVE
+</div>
+
+<div class="example-text">
+the cramps in my calves have been making it difficult for me to walk and do my daily activities. they come on suddenly and last for several minutes.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+ChickenPox_FatigueEnergyLoss
+</div>
+
+<div>
+Class:
+<span class="label">
+chicken pox
+</span>
+</div>
+
+<div>
+Rule ID:
+6e5048cf
+</div>
+
+<div>
+Priority:
+6
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:tired|exhausted|fatigued|no\s+energy|lethargic|sick|weak)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches general fatigue, lack of energy, or lethargy, which can be an early symptom of chicken pox.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 7
+</div>
+
+<div class="metric">
+Winning predictions: 2
+</div>
+
+<div class="metric">
+True positives: 0
+</div>
+
+<div class="metric">
+False positives: 2
+</div>
+
+<div class="metric">
+Precision: 0.000
+</div>
+
+<div class="metric">
+Recall: 0.000
+</div>
+
+<div class="metric">
+F1: 0.000
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+<p>No true-positive examples.</p>
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+
+<div class="example fp">
+
+<div class="example-label">
+FALSE POSITIVE
+</div>
+
+<div class="example-text">
+my calves have been cramping up when i walk or stand for long periods of time. there are bruise marks on my calves, which is making me worried. i feel tired very soon.
+</div>
+
+<div>
+True:
+varicose veins
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+
+<div class="example fp">
+
+<div class="example-label">
+FALSE POSITIVE
+</div>
+
+<div class="example-text">
+i am having some diarrhea and constipation, which has been quite concerning. in my stomach, there is a severe, painful ache. i&#x27;m constantly exhausted and don&#x27;t feel like eating anything.
+</div>
+
+<div>
+True:
+typhoid
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+chicken pox
+</div>
+
+</div>
+
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+Typhoid_SystemicAbdominal
+</div>
+
+<div>
+Class:
+<span class="label">
+typhoid
+</span>
+</div>
+
+<div>
+Rule ID:
+31d0aed0
+</div>
+
+<div>
+Priority:
+9
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\b(?:fever|headache|chills|tired|exhausted|fatigued|sick|weak|lethargic)\b)(?=.*\b(?:abdominal\s+(?:pain|cramps?|part)|stomach\s+(?:ache|discomfort|pains?)|belly\s+(?:pain|area|pains?))\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches a combination of systemic symptoms (fever, headache, chills, fatigue) and abdominal or stomach discomfort, even without explicit GI symptoms like diarrhea or vomiting. This broadens coverage for typhoid cases.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 3
+</div>
+
+<div class="metric">
+Winning predictions: 0
+</div>
+
+<div class="metric">
+True positives: 0
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 0.000
+</div>
+
+<div class="metric">
+Recall: 0.000
+</div>
+
+<div class="metric">
+F1: 0.000
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+<p>No true-positive examples.</p>
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+VaricoseVeins_LegRashSymptoms
+</div>
+
+<div>
+Class:
+<span class="label">
+varicose veins
+</span>
+</div>
+
+<div>
+Rule ID:
+015bd09a
+</div>
+
+<div>
+Priority:
+9
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\b(?:rash(?:es)?|skin\s+rash)\b)(?=.*\b(?:legs?|calves?)\b)(?=.*\b(?:spreading|red|inflamed|itch(?:ing|es|y)|discomfort|irritated)\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches descriptions of a spreading, red, inflamed, or itchy rash specifically on the legs or calves, indicating a possible complication of varicose veins like venous eczema.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 2
+</div>
+
+<div class="metric">
+Winning predictions: 2
+</div>
+
+<div class="metric">
+True positives: 0
+</div>
+
+<div class="metric">
+False positives: 2
+</div>
+
+<div class="metric">
+Precision: 0.000
+</div>
+
+<div class="metric">
+Recall: 0.000
+</div>
+
+<div class="metric">
+F1: 0.000
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+<p>No true-positive examples.</p>
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+
+<div class="example fp">
+
+<div class="example-label">
+FALSE POSITIVE
+</div>
+
+<div class="example-text">
+the rash on my skin is causing a lot of discomforts. it&#x27;s red and inflamed, spreading all over my body. the rash is accompanied by intense itching, especially on my arms and legs.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+
+<div class="example fp">
+
+<div class="example-label">
+FALSE POSITIVE
+</div>
+
+<div class="example-text">
+i have a skin rash that&#x27;s red and inflamed, and it&#x27;s spreading all over my body. i&#x27;ve been experiencing intense itching, especially on my arms and legs.
+</div>
+
+<div>
+True:
+chicken pox
+&nbsp;&nbsp;|
+&nbsp;&nbsp;
+Predicted:
+varicose veins
+</div>
+
+</div>
+
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+ChickenPox_AppetiteLoss
+</div>
+
+<div>
+Class:
+<span class="label">
+chicken pox
+</span>
+</div>
+
+<div>
+Rule ID:
+3c988c38
+</div>
+
+<div>
+Priority:
+6
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:lost\s+my\s+appetite|loss\s+of\s+appetite|can&#x27;t\s+seem\s+to\s+eat|no\s+appetite)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches mentions of significant loss of appetite or inability to eat, often a general early symptom of chicken pox when no other specific symptoms are present.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 1
+</div>
+
+<div class="metric">
+Winning predictions: 0
+</div>
+
+<div class="metric">
+True positives: 0
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 0.000
+</div>
+
+<div class="metric">
+Recall: 0.000
+</div>
+
+<div class="metric">
+F1: 0.000
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+<p>No true-positive examples.</p>
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+ChickenPox_LymphNodes
+</div>
+
+<div>
+Class:
+<span class="label">
+chicken pox
+</span>
+</div>
+
+<div>
+Rule ID:
+cab0e80f
+</div>
+
+<div>
+Priority:
+10
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:small|large)?\s*lymph nodes\b.*?\b(?:swell|itch(?:ing|es|y)|pain|uncomfortable)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches mentions of lymph nodes combined with itching, swelling, or pain, which is specific to chicken pox in the provided data.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 0
+</div>
+
+<div class="metric">
+Winning predictions: 0
+</div>
+
+<div class="metric">
+True positives: 0
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 0.000
+</div>
+
+<div class="metric">
+Recall: 0.000
+</div>
+
+<div class="metric">
+F1: 0.000
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+<p>No true-positive examples.</p>
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+Psoriasis_SpecificSkinManifestations
+</div>
+
+<div>
+Class:
+<span class="label">
+psoriasis
+</span>
+</div>
+
+<div>
+Rule ID:
+1e081a6c
+</div>
+
+<div>
+Priority:
+9
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:scaly\s+spots|silvery\s+film|silver-like\s+powder|peeling\s+of\s+the\s+skin(?:(?:,\s+especially(?:\s+(?:the\s+skin|area))?)?\s+on)?(?:my)?\s*(?:elbows|knees|elbows\s+and\s+knees)|dry,\s+flaky\s+(?:areas|patches)|skin\s+flaking)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches highly specific skin descriptions characteristic of psoriasis, such as scaly spots, silvery film/powder, or peeling/flaking skin, especially on common affected areas like elbows and knees. Updated to handle &#x27;elbows and knees&#x27; conjunction.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 0
+</div>
+
+<div class="metric">
+Winning predictions: 0
+</div>
+
+<div class="metric">
+True positives: 0
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 0.000
+</div>
+
+<div class="metric">
+Recall: 0.000
+</div>
+
+<div class="metric">
+F1: 0.000
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+<p>No true-positive examples.</p>
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+VaricoseVeins_UnexplainedBruisingLegs
+</div>
+
+<div>
+Class:
+<span class="label">
+varicose veins
+</span>
+</div>
+
+<div>
+Rule ID:
+960c0e96
+</div>
+
+<div>
+Priority:
+9
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:bruises?|bruising)\b(?:(?!arms|neck|chest|body).*?)\b(?:legs?|calves?)\b(?:.*?)\b(?:cannot\s+explain|unexplained|not\s+sure)\b|\b(?:cannot\s+explain|unexplained|not\s+sure)\b(?:.*?)\b(?:bruises?|bruising)\b(?:(?!arms|neck|chest|body).*?)\b(?:legs?|calves?)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches mentions of unexplained bruises or bruising specifically on the legs or calves.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 0
+</div>
+
+<div class="metric">
+Winning predictions: 0
+</div>
+
+<div class="metric">
+True positives: 0
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 0.000
+</div>
+
+<div class="metric">
+Recall: 0.000
+</div>
+
+<div class="metric">
+F1: 0.000
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+<p>No true-positive examples.</p>
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+ChickenPox_Rashes_Itch_NoNegs
+</div>
+
+<div>
+Class:
+<span class="label">
+chicken pox
+</span>
+</div>
+
+<div>
+Rule ID:
+787b35b6
+</div>
+
+<div>
+Priority:
+8
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)(?=.*\b(?:rash(?:es)?|skin\s+rash|red\s+patches)\b)(?=.*\b(?:itch(?:ing|es|y)|discomfort|uncomfortable|irritating|swollen|spreading)\b)(?!.*\b(?:legs|calves|veins|nails|dents|pits|silvery\s+film|palms|soles|fissures|peeling|genital|joints|abdominal|diarrhea|constipation)\b).*
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches general &#x27;rashes&#x27;, &#x27;skin rash&#x27;, or &#x27;red patches&#x27; combined with itching, discomfort, swelling, or spreading, while employing negative lookaheads to explicitly exclude keywords associated with &#x27;varicose veins&#x27;, &#x27;psoriasis&#x27;, and &#x27;typhoid&#x27; found in counter-examples. Updated to include singular &#x27;rash&#x27;.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 0
+</div>
+
+<div class="metric">
+Winning predictions: 0
+</div>
+
+<div class="metric">
+True positives: 0
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 0.000
+</div>
+
+<div class="metric">
+Recall: 0.000
+</div>
+
+<div class="metric">
+F1: 0.000
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+<p>No true-positive examples.</p>
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+VaricoseVeins_ActivityAggravatedLegDiscomfort
+</div>
+
+<div>
+Class:
+<span class="label">
+varicose veins
+</span>
+</div>
+
+<div>
+Rule ID:
+e8652932
+</div>
+
+<div>
+Priority:
+8
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:standing|walking)\s+for\s+long\s+(?:periods?|durations?|times?)\b(?:.*?)\b(?:pain|discomfort|cramps?|ache)\b(?:.*?)\b(?:legs?|calves?)\b|\b(?:pain|discomfort|cramps?|ache)\b(?:.*?)\b(?:legs?|calves?)\b(?:.*?)\b(?:standing|walking)\s+for\s+long\s+(?:periods?|durations?|times?)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Matches leg or calf pain, discomfort, cramps, or aching that is aggravated by prolonged standing or walking.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 0
+</div>
+
+<div class="metric">
+Winning predictions: 0
+</div>
+
+<div class="metric">
+True positives: 0
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 0.000
+</div>
+
+<div class="metric">
+Recall: 0.000
+</div>
+
+<div class="metric">
+F1: 0.000
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+<p>No true-positive examples.</p>
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+<div class="rule">
+<div class="rule-header">
+
+<div>
+<div class="rule-name">
+Psoriasis_JointPainSymptoms
+</div>
+
+<div>
+Class:
+<span class="label">
+psoriasis
+</span>
+</div>
+
+<div>
+Rule ID:
+19ceccee
+</div>
+
+<div>
+Priority:
+7
+</div>
+</div>
+
+</div>
+<div class='section'><strong>Rule pattern:</strong></div>
+
+<div class="pattern">
+(?i)\b(?:joint\s+pain|pain\s+in\s+my\s+joints|joints\s+pain|excruciating\s+(?:discomfort|agony)|extreme\s+pain)\b
+</div>
+
+
+<div class="section">
+<strong>Description:</strong>
+<p>
+Captures various descriptions of joint pain, often with strong adjectives (e.g., excruciating, extreme), which is a key symptom of psoriatic arthritis.
+</p>
+</div>
+
+
+<div class="metrics">
+
+<div class="metric">
+Matched: 0
+</div>
+
+<div class="metric">
+Winning predictions: 0
+</div>
+
+<div class="metric">
+True positives: 0
+</div>
+
+<div class="metric">
+False positives: 0
+</div>
+
+<div class="metric">
+Precision: 0.000
+</div>
+
+<div class="metric">
+Recall: 0.000
+</div>
+
+<div class="metric">
+F1: 0.000
+</div>
+
+</div>
+
+
+<div class="section">
+<strong>
+True-positive examples
+</strong>
+
+<p>No true-positive examples.</p>
+</div>
+
+<div class="section">
+<strong>
+False-positive examples
+</strong>
+
+<p>No false-positive examples.</p>
+</div>
+</div>
+
+</body>
+</html>

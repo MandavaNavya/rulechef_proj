@@ -1,4 +1,0 @@
-rule_id,rule_name,label,matched,correct,incorrect,precision,recall,f1,coverage,false_positive
-1d1a5b35,Rule_Psoriasis_WinterSensitivity,psoriasis,0,0,0,0,0.0,0,0.0,0
-6da618e2,Rule_VaricoseVeins_LegRashWithoutPsoriasisMarkers,varicose veins,0,0,0,0,0.0,0,0.0,0
-08f9d68f,Rule_VaricoseVeins_LegPainFromActivity,varicose veins,0,0,0,0,0.0,0,0.0,0

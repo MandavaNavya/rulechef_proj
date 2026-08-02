@@ -1,0 +1,18 @@
+rule_id,rule_name,label,quality,quality_score,suggestions
+25da1daa,typhoid_gi_fever_combination,typhoid,Excellent,100,Rule looks stable.
+babde443,ChickenPox_RedSpots_Systemic,chicken pox,Excellent,100,Rule looks stable.
+6f9deb14,Psoriasis_NailIssues,psoriasis,Good,80,Recall is low. Rule misses many true examples.
+19ceccee,Psoriasis_JointPainSymptoms,psoriasis,Good,80,Recall is low. Rule misses many true examples.
+24cc9fd7,VaricoseVeins_LegCramps,varicose veins,Good,80,Recall is low. Rule misses many true examples.
+cab0e80f,ChickenPox_LymphNodes,chicken pox,Fair,70,Recall is low. Rule misses many true examples. Rule rarely activates.
+3b8ab87b,VaricoseVeins_VeinVisualSymptoms,varicose veins,Fair,70,Recall is low. Rule misses many true examples. Rule rarely activates.
+e8652932,VaricoseVeins_ActivityAggravatedLegDiscomfort,varicose veins,Fair,70,Recall is low. Rule misses many true examples. Rule rarely activates.
+82ee5eb4,ChickenPox_SystemicSymptoms,chicken pox,Fair,60,Increase specificity to reduce false positives. Recall is low. Rule misses many true examples.
+6e5048cf,ChickenPox_FatigueEnergyLoss,chicken pox,Poor,45,Precision is very low. Rule is likely too generic. Recall is low. Rule misses many true examples.
+31d0aed0,Typhoid_SystemicAbdominal,typhoid,Poor,45,Precision is very low. Rule is likely too generic. Recall is low. Rule misses many true examples.
+3c988c38,ChickenPox_AppetiteLoss,chicken pox,Poor,45,Precision is very low. Rule is likely too generic. Recall is low. Rule misses many true examples.
+015bd09a,VaricoseVeins_LegRashSymptoms,varicose veins,Poor,10,Precision is very low. Rule is likely too generic. Recall is low. Rule misses many true examples. Rule rarely activates. Produces more false positives than true positives.
+787b35b6,ChickenPox_Rashes_Itch_NoNegs,chicken pox,Poor,35,Precision is very low. Rule is likely too generic. Recall is low. Rule misses many true examples. Rule rarely activates.
+1e081a6c,Psoriasis_SpecificSkinManifestations,psoriasis,Poor,35,Precision is very low. Rule is likely too generic. Recall is low. Rule misses many true examples. Rule rarely activates.
+960c0e96,VaricoseVeins_UnexplainedBruisingLegs,varicose veins,Poor,35,Precision is very low. Rule is likely too generic. Recall is low. Rule misses many true examples. Rule rarely activates.
+18092b20,Psoriasis_PalmsSolesFissures,psoriasis,Poor,35,Precision is very low. Rule is likely too generic. Recall is low. Rule misses many true examples. Rule rarely activates.

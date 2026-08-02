@@ -1,68 +1,146 @@
 {
+  "classes": [
+    "psoriasis",
+    "varicose veins",
+    "typhoid",
+    "chicken pox"
+  ],
   "rules": [
     {
-      "id": "a9e080c7",
-      "name": "Rule_VaricoseVeins_ExplicitVeins",
-      "description": "Matches texts explicitly mentioning visible, prominent, or noticeable veins/blood vessels, allowing for flexible phrasing (adjective before or after noun), especially in the legs or calves, potentially with associated symptoms like swelling, discomfort, or general factors like being overweight.",
-      "pattern": "(?i)(?:\\b(?:prominent|swollen|protruding|noticeable|visible)\\s+(?:veins|blood\\s*vessels?)|\\b(?:veins|blood\\s*vessels?)\\b(?:.*?\\b(?:are\\s*very|have\\s*become\\s*quite)?\\s*(?:prominent|swollen|protruding|noticeable|visible|protrud(?:e|ing))))\\b(?:.*?\\b(?:legs|calves)\\b)?(?:.*?\\b(?:swelling|discomfort|pain|cramps|aching|embarrassment|self-consciousness|protrud(e|ing)|overweight|obesity)\\b)?",
+      "id": "cab0e80f",
+      "name": "ChickenPox_LymphNodes",
+      "description": "Matches mentions of lymph nodes combined with itching, swelling, or pain, which is specific to chicken pox in the provided data.",
+      "pattern": "(?i)\\b(?:small|large)?\\s*lymph nodes\\b.*?\\b(?:swell|itch(?:ing|es|y)|pain|uncomfortable)\\b",
+      "priority": 10,
+      "label": "chicken pox"
+    },
+    {
+      "id": "babde443",
+      "name": "ChickenPox_RedSpots_Systemic",
+      "description": "Identifies explicit mentions of 'red spots', 'patches', or 'rashes' combined with any general systemic symptom or itching, as these are strong indicators not present in counter-examples. Priority increased to resolve conflict with typhoid.",
+      "pattern": "(?i)(?=.*\\b(?:little|small|red)\\s+(?:spots|patches|rashes)\\b)(?=.*\\b(?:itch(?:ing|es|y)|discomfort|fever|appetite|energy|tired|exhausted|fatigued|sick|lethargic|headache)\\b).*",
+      "priority": 11,
+      "label": "chicken pox"
+    },
+    {
+      "id": "787b35b6",
+      "name": "ChickenPox_Rashes_Itch_NoNegs",
+      "description": "Matches general 'rashes', 'skin rash', or 'red patches' combined with itching, discomfort, swelling, or spreading, while employing negative lookaheads to explicitly exclude keywords associated with 'varicose veins', 'psoriasis', and 'typhoid' found in counter-examples. Updated to include singular 'rash'.",
+      "pattern": "(?i)(?=.*\\b(?:rash(?:es)?|skin\\s+rash|red\\s+patches)\\b)(?=.*\\b(?:itch(?:ing|es|y)|discomfort|uncomfortable|irritating|swollen|spreading)\\b)(?!.*\\b(?:legs|calves|veins|nails|dents|pits|silvery\\s+film|palms|soles|fissures|peeling|genital|joints|abdominal|diarrhea|constipation)\\b).*",
+      "priority": 8,
+      "label": "chicken pox"
+    },
+    {
+      "id": "1e081a6c",
+      "name": "Psoriasis_SpecificSkinManifestations",
+      "description": "Matches highly specific skin descriptions characteristic of psoriasis, such as scaly spots, silvery film/powder, or peeling/flaking skin, especially on common affected areas like elbows and knees. Updated to handle 'elbows and knees' conjunction.",
+      "pattern": "(?i)\\b(?:scaly\\s+spots|silvery\\s+film|silver-like\\s+powder|peeling\\s+of\\s+the\\s+skin(?:(?:,\\s+especially(?:\\s+(?:the\\s+skin|area))?)?\\s+on)?(?:my)?\\s*(?:elbows|knees|elbows\\s+and\\s+knees)|dry,\\s+flaky\\s+(?:areas|patches)|skin\\s+flaking)\\b",
+      "priority": 9,
+      "label": "psoriasis"
+    },
+    {
+      "id": "6f9deb14",
+      "name": "Psoriasis_NailIssues",
+      "description": "Identifies characteristic nail problems like small dents, pits, or strange inflammation, which are strong indicators of psoriatic nail disease.",
+      "pattern": "(?i)(?=.*\\bnails\\b)(?=.*\\b(?:dents|pits|inflammation|inflamed)\\b).*",
+      "priority": 9,
+      "label": "psoriasis"
+    },
+    {
+      "id": "18092b20",
+      "name": "Psoriasis_PalmsSolesFissures",
+      "description": "Detects specific skin conditions on palms and soles, such as severe fissures or cracks, which can be seen in forms of psoriasis like palmoplantar psoriasis.",
+      "pattern": "(?i)(?=.*\\b(?:fissures|cracks)\\b)(?=.*\\b(?:palms|soles)\\b).*",
+      "priority": 8,
+      "label": "psoriasis"
+    },
+    {
+      "id": "19ceccee",
+      "name": "Psoriasis_JointPainSymptoms",
+      "description": "Captures various descriptions of joint pain, often with strong adjectives (e.g., excruciating, extreme), which is a key symptom of psoriatic arthritis.",
+      "pattern": "(?i)\\b(?:joint\\s+pain|pain\\s+in\\s+my\\s+joints|joints\\s+pain|excruciating\\s+(?:discomfort|agony)|extreme\\s+pain)\\b",
+      "priority": 7,
+      "label": "psoriasis"
+    },
+    {
+      "id": "25da1daa",
+      "name": "typhoid_gi_fever_combination",
+      "description": "Matches texts describing a combination of at least one core GI symptom (vomiting, nausea, diarrhea, constipation) and at least one systemic symptom or abdominal pain (fever, headache, abdominal/stomach pain).",
+      "pattern": "(?i)(?=.*\\b(?:vomiting|nauseated|nausea|diarrhea|constipation)\\b)(?=.*\\b(?:fever|headache|abdominal\\s+(?:pain|cramps?|part)|stomach\\s+(?:ache|discomfort|pains?)|belly\\s+(?:pain|area|pains?))\\b).*",
+      "priority": 10,
+      "label": "typhoid"
+    },
+    {
+      "id": "3b8ab87b",
+      "name": "VaricoseVeins_VeinVisualSymptoms",
+      "description": "Matches direct mentions of veins or blood vessels being prominent, swollen, visible, or protruding on legs or calves.",
+      "pattern": "(?i)(?=.*\\b(?:veins|blood\\s*vessels?)\\b)(?=.*\\b(?:protruding|prominent|swollen|visible|bulge|enlarged)\\b)(?=.*\\b(?:legs?|calves?)\\b).*",
       "priority": 10,
       "label": "varicose veins"
     },
     {
-      "id": "5cade146",
-      "name": "Rule_VaricoseVeins_CrampsAndContext",
-      "description": "Matches texts describing cramps in the calves or legs, allowing for either order of 'cramps' and 'legs/calves', especially when associated with frequent occurrence, prolonged activity (standing, walking, exercising) or being overweight/obese.",
-      "pattern": "(?i)(?:\\b(?:frequent(?:ly)?\\s+)?(?:cramps?|cramping)\\b.*?\\b(?:calves|legs)\\b|\\b(?:calves|legs)\\b.*?\\b(?:frequent(?:ly)?\\s+)?(?:cramps?|cramping))\\b.*?\\b(?:(?:standing|walking|exercising|physical\\s*activities)\\b.*?\\b(?:long\\s*periods|long\\s*durations|longer\\s*i'm\\s*on\\s*my\\s*feet|after\\s*a\\s*while\\s*of\\s*working)\\b|overweight|obesity)\\b",
+      "id": "960c0e96",
+      "name": "VaricoseVeins_UnexplainedBruisingLegs",
+      "description": "Matches mentions of unexplained bruises or bruising specifically on the legs or calves.",
+      "pattern": "(?i)\\b(?:bruises?|bruising)\\b(?:(?!arms|neck|chest|body).*?)\\b(?:legs?|calves?)\\b(?:.*?)\\b(?:cannot\\s+explain|unexplained|not\\s+sure)\\b|\\b(?:cannot\\s+explain|unexplained|not\\s+sure)\\b(?:.*?)\\b(?:bruises?|bruising)\\b(?:(?!arms|neck|chest|body).*?)\\b(?:legs?|calves?)\\b",
       "priority": 9,
       "label": "varicose veins"
     },
     {
-      "id": "d39fa014",
-      "name": "Rule_VaricoseVeins_LegSwelling",
-      "description": "Matches texts about swelling in the legs or calves, often linked to being overweight, obesity, difficulty with footwear, worsening over time, or discomfort when sitting.",
-      "pattern": "(?i)\\b(?:legs|calves)\\b.*?\\b(?:swelling|swollen)\\b(?:.*?\\b(?:overweight|obesity|difficulty\\s*fitting\\s*into\\s*my\\s*shoes|worse\\s*over\\s*time|discomfort\\s*(?:when\\s*i\\s*sit|sitting))\\b)?",
+      "id": "e8652932",
+      "name": "VaricoseVeins_ActivityAggravatedLegDiscomfort",
+      "description": "Matches leg or calf pain, discomfort, cramps, or aching that is aggravated by prolonged standing or walking.",
+      "pattern": "(?i)\\b(?:standing|walking)\\s+for\\s+long\\s+(?:periods?|durations?|times?)\\b(?:.*?)\\b(?:pain|discomfort|cramps?|ache)\\b(?:.*?)\\b(?:legs?|calves?)\\b|\\b(?:pain|discomfort|cramps?|ache)\\b(?:.*?)\\b(?:legs?|calves?)\\b(?:.*?)\\b(?:standing|walking)\\s+for\\s+long\\s+(?:periods?|durations?|times?)\\b",
       "priority": 8,
       "label": "varicose veins"
     },
     {
-      "id": "6da618e2",
-      "name": "Rule_VaricoseVeins_LegRashWithoutPsoriasisMarkers",
-      "description": "Matches texts describing a rash, inflamed, or red skin on the legs or calves causing discomfort, but explicitly excludes keywords commonly associated with psoriasis.",
-      "pattern": "(?i)\\b(?:rash|inflamed|red)\\b.*?\\b(?:legs|calves)\\b(?:.*?\\b(?:itchy|discomfort|difficulty\\s*sleeping|hurt|pain|aching)\\b)(?!.*?\\b(?:peeling|cracks|dents\\s*in\\s*nails|scaly|silver\\s*like\\s*dusting|joint\\s*pain|fissures)\\b)",
+      "id": "24cc9fd7",
+      "name": "VaricoseVeins_LegCramps",
+      "description": "Matches mentions of cramps specifically located in the legs or calves, including pain similar to cramps.",
+      "pattern": "(?i)\\b(?:cramps?|pain\\b.*?similar\\s+to\\s+cramps)\\b(?:.*?)\\b(?:legs?|calves?)\\b",
       "priority": 7,
       "label": "varicose veins"
     },
     {
-      "id": "08f9d68f",
-      "name": "Rule_VaricoseVeins_LegPainFromActivity",
-      "description": "Matches texts describing general discomfort, pain, or aching in the legs, calves, or feet, especially when related to standing, walking, sitting, running, physical activities, or associated with long durations.",
-      "pattern": "(?i)\\b(?:discomfort|pain|ache|hurt)\\b.*?\\b(?:legs|calves|feet)\\b.*?\\b(?:standing|walking|sitting|running|physical\\s*activities|exercis(?:e|ing)|long\\s*periods|long\\s*durations|longer\\s*i'm\\s*on\\s*my\\s*feet)\\b",
+      "id": "82ee5eb4",
+      "name": "ChickenPox_SystemicSymptoms",
+      "description": "Matches combinations of general systemic symptoms characteristic of chicken pox, such as fever/headache, fatigue/weakness, and loss of appetite, requiring at least two distinct categories of these symptoms.",
+      "pattern": "(?i)(?:(?=.*\\b(?:high\\s+fever|fever|headache)\\b)(?=.*\\b(?:tired|exhausted|fatigued|no\\s+energy|lethargic|sick|weak)\\b)|(?=.*\\b(?:high\\s+fever|fever|headache)\\b)(?=.*\\b(?:lost\\s+my\\s+appetite|loss\\s+of\\s+appetite|can't\\s+seem\\s+to\\s+eat|no\\s+appetite)\\b)|(?=.*\\b(?:tired|exhausted|fatigued|no\\s+energy|lethargic|sick|weak)\\b)(?=.*\\b(?:lost\\s+my\\s+appetite|loss\\s+of\\s+appetite|can't\\s+seem\\s+to\\s+eat|no\\s+appetite)\\b)).*",
+      "priority": 9,
+      "label": "chicken pox"
+    },
+    {
+      "id": "3c988c38",
+      "name": "ChickenPox_AppetiteLoss",
+      "description": "Matches mentions of significant loss of appetite or inability to eat, often a general early symptom of chicken pox when no other specific symptoms are present.",
+      "pattern": "(?i)\\b(?:lost\\s+my\\s+appetite|loss\\s+of\\s+appetite|can't\\s+seem\\s+to\\s+eat|no\\s+appetite)\\b",
       "priority": 6,
+      "label": "chicken pox"
+    },
+    {
+      "id": "6e5048cf",
+      "name": "ChickenPox_FatigueEnergyLoss",
+      "description": "Matches general fatigue, lack of energy, or lethargy, which can be an early symptom of chicken pox.",
+      "pattern": "(?i)\\b(?:tired|exhausted|fatigued|no\\s+energy|lethargic|sick|weak)\\b",
+      "priority": 6,
+      "label": "chicken pox"
+    },
+    {
+      "id": "31d0aed0",
+      "name": "Typhoid_SystemicAbdominal",
+      "description": "Matches a combination of systemic symptoms (fever, headache, chills, fatigue) and abdominal or stomach discomfort, even without explicit GI symptoms like diarrhea or vomiting. This broadens coverage for typhoid cases.",
+      "pattern": "(?i)(?=.*\\b(?:fever|headache|chills|tired|exhausted|fatigued|sick|weak|lethargic)\\b)(?=.*\\b(?:abdominal\\s+(?:pain|cramps?|part)|stomach\\s+(?:ache|discomfort|pains?)|belly\\s+(?:pain|area|pains?))\\b).*",
+      "priority": 9,
+      "label": "typhoid"
+    },
+    {
+      "id": "015bd09a",
+      "name": "VaricoseVeins_LegRashSymptoms",
+      "description": "Matches descriptions of a spreading, red, inflamed, or itchy rash specifically on the legs or calves, indicating a possible complication of varicose veins like venous eczema.",
+      "pattern": "(?i)(?=.*\\b(?:rash(?:es)?|skin\\s+rash)\\b)(?=.*\\b(?:legs?|calves?)\\b)(?=.*\\b(?:spreading|red|inflamed|itch(?:ing|es|y)|discomfort|irritated)\\b).*",
+      "priority": 9,
       "label": "varicose veins"
-    },
-    {
-      "id": "2cbf1f6c",
-      "name": "Rule_Psoriasis_SkinSymptoms",
-      "description": "Matches texts describing core psoriasis skin manifestations like peeling, scaly, flaky, cracks, fissures, thickened skin, silver-like dusting, or rash. It is flexible to capture these symptoms on typical affected areas (knees, elbows, scalp, palms, soles, etc.) in various word orders, or as general 'skin' or 'rash' symptoms.",
-      "pattern": "(?i)(?:\\b(?:peeling|scaly|flaky|cracks?|fissures?|thickened|silver\\s*like\\s*dusting|scales)\\b(?:.*?\\b(?:knees|elbows|scalp|lower\\s*back|palms?|soles?|arms?|legs?|chest|skin|rash)\\b)?|\\b(?:knees|elbows|scalp|lower\\s*back|palms?|soles?|arms?|legs?|chest|skin|rash)\\b.*?\\b(?:peeling|scaly|flaky|cracks?|fissures?|thickened|silver\\s*like\\s*dusting|scales)\\b)",
-      "priority": 12,
-      "label": "psoriasis"
-    },
-    {
-      "id": "b61526fa",
-      "name": "Rule_Psoriasis_NailJointSpecific",
-      "description": "Matches texts indicating specific psoriasis symptoms related to nails (dents, pits, cracks, inflammation) or joint pain/agony/ache. It is flexible to capture 'dents' before or after 'nails'.",
-      "pattern": "(?i)(?:\\b(?:nails?)\\b.*?\\b(?:small\\s*dents?|dents?|pits?|cracks?|inflammat(?:ion|ed))|\\b(?:small\\s*dents?|dents?|pits?|cracks?|inflammat(?:ion|ed))\\b.*?\\b(?:nails?)|\\b(?:joints?)\\b.*?\\b(?:pain|agony|ache))",
-      "priority": 11,
-      "label": "psoriasis"
-    },
-    {
-      "id": "1d1a5b35",
-      "name": "Rule_Psoriasis_WinterSensitivity",
-      "description": "Matches texts describing skin conditions, particularly rashes, that worsen in winter months or dry air, or are sensitive to temperature/humidity changes, often associated with psoriasis.",
-      "pattern": "(?i)\\b(?:rash|skin)\\b.*?\\b(?:worse\\s*in\\s*the\\s*winter\\s*months?|dry\\s*air|sensitive|irritated\\s*by\\s*changes\\s*in\\s*temperature\\s*or\\s*humidity)\\b",
-      "priority": 10,
-      "label": "psoriasis"
     }
   ]
 }

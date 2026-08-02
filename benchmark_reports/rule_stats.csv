@@ -1,9 +1,0 @@
-rule_id,rule_name,label,matched,correct,incorrect,precision,recall,f1,coverage,false_positive
-b61526fa,Rule_Psoriasis_NailJointSpecific,psoriasis,4,8,0,2.0,1.0,1.3333333333333333,0.26666666666666666,0
-d39fa014,Rule_VaricoseVeins_LegSwelling,varicose veins,2,4,0,2.0,0.5714285714285714,0.888888888888889,0.13333333333333333,0
-5cade146,Rule_VaricoseVeins_CrampsAndContext,varicose veins,1,2,0,2.0,0.2857142857142857,0.5,0.06666666666666667,0
-2cbf1f6c,Rule_Psoriasis_SkinSymptoms,psoriasis,5,7,2,1.4,0.875,1.0769230769230769,0.3333333333333333,1
-a9e080c7,Rule_VaricoseVeins_ExplicitVeins,varicose veins,2,2,0,1.0,0.2857142857142857,0.4444444444444445,0.13333333333333333,0
-1d1a5b35,Rule_Psoriasis_WinterSensitivity,psoriasis,0,0,0,0.0,0.0,0.0,0.0,0
-6da618e2,Rule_VaricoseVeins_LegRashWithoutPsoriasisMarkers,varicose veins,0,0,0,0.0,0.0,0.0,0.0,0
-08f9d68f,Rule_VaricoseVeins_LegPainFromActivity,varicose veins,0,0,0,0.0,0.0,0.0,0.0,0

@@ -1,0 +1,13 @@
+text,true_label,predicted_label,rule,rule_name,error_type
+"i have red and inflammatory skin around my mouth, nose, and eyes. it is frequently irritating and unpleasant. recently, it has got very painful.",psoriasis,unknown,,,no_rule_fired
+"my skin has been peeling, especially on my knees, elbows, and scalp. this peeling is often accompanied by a burning or stinging sensation.",psoriasis,unknown,,,no_rule_fired
+"i've had a high fever for the past few days. i don't know what's causing it. also, i noticed rashes on my skin and it's hard for me to resist scratching.",chicken pox,unknown,,,no_rule_fired
+"my joints are experiencing an unusual discomfort. additionally, i've experienced weird skin peeling in various places on my body. i'm concerned that something is wrong with my body.",psoriasis,unknown,,,no_rule_fired
+"my calves have been cramping up when i walk or stand for long periods of time. there are bruise marks on my calves, which is making me worried. i feel tired very soon.",varicose veins,chicken pox,6e5048cf,ChickenPox_FatigueEnergyLoss,false_positive
+my skin is very sensitive and reacts easily to changes in temperature or humidity. i often have to be careful about what products i use on my skin.,psoriasis,unknown,,,no_rule_fired
+"the rash on my skin is causing a lot of discomforts. it's red and inflamed, spreading all over my body. the rash is accompanied by intense itching, especially on my arms and legs.",chicken pox,varicose veins,015bd09a,VaricoseVeins_LegRashSymptoms,false_positive
+"i have a skin rash that's red and inflamed, and it's spreading all over my body. i've been experiencing intense itching, especially on my arms and legs.",chicken pox,varicose veins,015bd09a,VaricoseVeins_LegRashSymptoms,false_positive
+"i am having some diarrhea and constipation, which has been quite concerning. in my stomach, there is a severe, painful ache. i'm constantly exhausted and don't feel like eating anything.",typhoid,chicken pox,6e5048cf,ChickenPox_FatigueEnergyLoss,false_positive
+my fingers and soles have pretty thick skin that is cracked severely. these fractures hurt and bleed frequently. the fractures are itchy and covered with scales.,psoriasis,unknown,,,no_rule_fired
+the veins in my legs are causing discomfort and difficulty sleeping at night. i have no idea why it is happening. i get cramps when i sprint.,varicose veins,unknown,,,no_rule_fired
+"i've been having a lot of difficulty breathing, and i feel like i'm constantly nauseous. i also have mild belly pain. it's been terrifying at times.",typhoid,unknown,,,no_rule_fired

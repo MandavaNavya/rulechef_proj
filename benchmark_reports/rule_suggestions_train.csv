@@ -1,0 +1,18 @@
+rule_id,rule_name,recommendation
+25da1daa,typhoid_gi_fever_combination,Rule looks stable.
+31d0aed0,Typhoid_SystemicAbdominal,Consider adding alternative symptom patterns.
+3b8ab87b,VaricoseVeins_VeinVisualSymptoms,Consider adding alternative symptom patterns.
+babde443,ChickenPox_RedSpots_Systemic,Consider adding alternative symptom patterns.
+6f9deb14,Psoriasis_NailIssues,Consider adding alternative symptom patterns.
+19ceccee,Psoriasis_JointPainSymptoms,Consider adding alternative symptom patterns.
+1e081a6c,Psoriasis_SpecificSkinManifestations,Consider adding alternative symptom patterns.
+cab0e80f,ChickenPox_LymphNodes,Consider adding alternative symptom patterns.
+960c0e96,VaricoseVeins_UnexplainedBruisingLegs,Consider adding alternative symptom patterns.
+24cc9fd7,VaricoseVeins_LegCramps,Consider adding alternative symptom patterns.
+18092b20,Psoriasis_PalmsSolesFissures,Consider adding alternative symptom patterns.
+e8652932,VaricoseVeins_ActivityAggravatedLegDiscomfort,Consider adding alternative symptom patterns.
+787b35b6,ChickenPox_Rashes_Itch_NoNegs,Consider adding alternative symptom patterns.
+82ee5eb4,ChickenPox_SystemicSymptoms,Consider adding alternative symptom patterns.
+015bd09a,VaricoseVeins_LegRashSymptoms,Consider adding alternative symptom patterns.
+6e5048cf,ChickenPox_FatigueEnergyLoss,Consider adding alternative symptom patterns.
+3c988c38,ChickenPox_AppetiteLoss,Require additional symptoms before firing. Consider adding alternative symptom patterns.

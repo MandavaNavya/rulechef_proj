@@ -1,0 +1,18 @@
+rule_id,rule_name,recommendation
+25da1daa,typhoid_gi_fever_combination,Rule looks stable.
+babde443,ChickenPox_RedSpots_Systemic,Rule looks stable.
+6f9deb14,Psoriasis_NailIssues,Consider adding alternative symptom patterns.
+19ceccee,Psoriasis_JointPainSymptoms,Consider adding alternative symptom patterns.
+24cc9fd7,VaricoseVeins_LegCramps,Consider adding alternative symptom patterns.
+cab0e80f,ChickenPox_LymphNodes,Consider adding alternative symptom patterns.
+3b8ab87b,VaricoseVeins_VeinVisualSymptoms,Consider adding alternative symptom patterns.
+e8652932,VaricoseVeins_ActivityAggravatedLegDiscomfort,Consider adding alternative symptom patterns.
+82ee5eb4,ChickenPox_SystemicSymptoms,Consider adding alternative symptom patterns.
+6e5048cf,ChickenPox_FatigueEnergyLoss,Require additional symptoms before firing. Consider adding alternative symptom patterns.
+31d0aed0,Typhoid_SystemicAbdominal,Require additional symptoms before firing. Consider adding alternative symptom patterns.
+3c988c38,ChickenPox_AppetiteLoss,Require additional symptoms before firing. Consider adding alternative symptom patterns.
+015bd09a,VaricoseVeins_LegRashSymptoms,Require additional symptoms before firing. Consider adding alternative symptom patterns. Inspect false-positive examples and refine the regex.
+787b35b6,ChickenPox_Rashes_Itch_NoNegs,Require additional symptoms before firing. Consider adding alternative symptom patterns.
+1e081a6c,Psoriasis_SpecificSkinManifestations,Require additional symptoms before firing. Consider adding alternative symptom patterns.
+960c0e96,VaricoseVeins_UnexplainedBruisingLegs,Require additional symptoms before firing. Consider adding alternative symptom patterns.
+18092b20,Psoriasis_PalmsSolesFissures,Require additional symptoms before firing. Consider adding alternative symptom patterns.

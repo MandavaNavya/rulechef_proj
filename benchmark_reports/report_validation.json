@@ -1,0 +1,1207 @@
+{
+  "timestamp": "2026-08-02T12:10:20.617858",
+  "dataset": "validation",
+  "labels": [
+    "psoriasis",
+    "varicose veins",
+    "typhoid",
+    "chicken pox"
+  ],
+  "metrics": {
+    "dataset": "validation",
+    "total_samples": 30,
+    "covered_samples": 23,
+    "unknown_samples": 7,
+    "coverage": 0.7666666666666667,
+    "overall_accuracy": 0.7,
+    "overall_precision_macro": 0.91875,
+    "overall_recall_macro": 0.7142857142857143,
+    "overall_f1_macro": 0.7846153846153847,
+    "overall_precision_weighted": 0.9175,
+    "overall_recall_weighted": 0.7,
+    "overall_f1_weighted": 0.7750427350427349,
+    "covered_accuracy": 0.9130434782608695,
+    "covered_precision_macro": 0.91875,
+    "covered_recall_macro": 0.9142857142857143,
+    "covered_f1_macro": 0.9085470085470086,
+    "covered_precision_weighted": 0.9271739130434782,
+    "covered_recall_weighted": 0.9130434782608695,
+    "covered_f1_weighted": 0.9128205128205128
+  },
+  "confusion_matrix": [
+    [
+      4,
+      1,
+      0,
+      0,
+      3
+    ],
+    [
+      0,
+      4,
+      0,
+      0,
+      4
+    ],
+    [
+      0,
+      0,
+      6,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      7,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  ],
+  "per_class": [
+    {
+      "label": "psoriasis",
+      "support": 8,
+      "tp": 4,
+      "fp": 0,
+      "fn": 4,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6666666666666666
+    },
+    {
+      "label": "varicose veins",
+      "support": 8,
+      "tp": 4,
+      "fp": 1,
+      "fn": 4,
+      "precision": 0.8,
+      "recall": 0.5,
+      "f1": 0.6153846153846154
+    },
+    {
+      "label": "typhoid",
+      "support": 7,
+      "tp": 6,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.8571428571428571,
+      "f1": 0.923076923076923
+    },
+    {
+      "label": "chicken pox",
+      "support": 7,
+      "tp": 7,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333333333333333
+    }
+  ],
+  "rule_statistics": [
+    {
+      "rule_id": "25da1daa",
+      "rule_name": "typhoid_gi_fever_combination",
+      "label": "typhoid",
+      "description": "Matches texts describing a combination of at least one core GI symptom (vomiting, nausea, diarrhea, constipation) and at least one systemic symptom or abdominal pain (fever, headache, abdominal/stomach pain).",
+      "priority": 10,
+      "pattern": "(?i)(?=.*\\b(?:vomiting|nauseated|nausea|diarrhea|constipation)\\b)(?=.*\\b(?:fever|headache|abdominal\\s+(?:pain|cramps?|part)|stomach\\s+(?:ache|discomfort|pains?)|belly\\s+(?:pain|area|pains?))\\b).*",
+      "matched": 6,
+      "winning_predictions": 6,
+      "true_positive": 6,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 0.8571428571428571,
+      "f1": 0.923076923076923,
+      "coverage": 0.2,
+      "examples_true_positive": [
+        {
+          "text": "i have developed diarrhea. it is accompanied by severe pain in my belly area. i don't feel like eating anything, and most of the time, i have a mild headache.",
+          "true": "typhoid",
+          "predicted": "typhoid"
+        },
+        {
+          "text": "i've been experiencing high fever, especially at night. it's been really uncomfortable. there is a mild headache along with constipation and diarrhea.",
+          "true": "typhoid",
+          "predicted": "typhoid"
+        },
+        {
+          "text": "i've lost a lot of weight in the past week because i haven't been able to eat much due to nausea and vomiting. this is followed by mild fever, headache and belly pain. i'm really concerned about my health.",
+          "true": "typhoid",
+          "predicted": "typhoid"
+        },
+        {
+          "text": "i have been experiencing diarrhea and have had loose, watery stools several times a day. i have lost my appetite and feel nauseated all the time. i am starting to get a mild fever too.",
+          "true": "typhoid",
+          "predicted": "typhoid"
+        },
+        {
+          "text": "i've had a persistent stomach pain for the past week, and it is not healing even with medication. i feel like vomiting and can't eat anything, and because of which i have become extremely weak.",
+          "true": "typhoid",
+          "predicted": "typhoid"
+        },
+        {
+          "text": "the stomach discomfort has been severe and frequent. vomiting and constipation have also happened. i'm concerned about my health.",
+          "true": "typhoid",
+          "predicted": "typhoid"
+        }
+      ],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "babde443",
+      "rule_name": "ChickenPox_RedSpots_Systemic",
+      "label": "chicken pox",
+      "description": "Identifies explicit mentions of 'red spots', 'patches', or 'rashes' combined with any general systemic symptom or itching, as these are strong indicators not present in counter-examples. Priority increased to resolve conflict with typhoid.",
+      "priority": 11,
+      "pattern": "(?i)(?=.*\\b(?:little|small|red)\\s+(?:spots|patches|rashes)\\b)(?=.*\\b(?:itch(?:ing|es|y)|discomfort|fever|appetite|energy|tired|exhausted|fatigued|sick|lethargic|headache)\\b).*",
+      "matched": 4,
+      "winning_predictions": 4,
+      "true_positive": 4,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 0.5714285714285714,
+      "f1": 0.7272727272727273,
+      "coverage": 0.13333333333333333,
+      "examples_true_positive": [
+        {
+          "text": "i am starting to develop tiny red spots all over my face and neck area, and it itches when i touch them. the itching is making my day very uncomfortable.",
+          "true": "chicken pox",
+          "predicted": "chicken pox"
+        },
+        {
+          "text": "i am exhausted and have lost my appetite. i feel vomiting and can't eat anything. in addition, little red spots are beginning to appear on my skin and near the neck. i am really worried about my health.",
+          "true": "chicken pox",
+          "predicted": "chicken pox"
+        },
+        {
+          "text": "i'm worried about these red spots on my skin. it's spreading rapidly and causing a lot of problems. i also developed a mild fever and headache every night.",
+          "true": "chicken pox",
+          "predicted": "chicken pox"
+        },
+        {
+          "text": "there are small red spots all over my body that i can't explain. the bumps are itchy and uncomfortable and seem to spread rapidly. it's worrying me.",
+          "true": "chicken pox",
+          "predicted": "chicken pox"
+        }
+      ],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "6f9deb14",
+      "rule_name": "Psoriasis_NailIssues",
+      "label": "psoriasis",
+      "description": "Identifies characteristic nail problems like small dents, pits, or strange inflammation, which are strong indicators of psoriatic nail disease.",
+      "priority": 9,
+      "pattern": "(?i)(?=.*\\bnails\\b)(?=.*\\b(?:dents|pits|inflammation|inflamed)\\b).*",
+      "matched": 3,
+      "winning_predictions": 3,
+      "true_positive": 3,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 0.375,
+      "f1": 0.5454545454545454,
+      "coverage": 0.1,
+      "examples_true_positive": [
+        {
+          "text": "the skin around my mouth, nose, and eyes is red and inflamed. it is often itchy and uncomfortable. there is a noticeable inflammation in my nails.",
+          "true": "psoriasis",
+          "predicted": "psoriasis"
+        },
+        {
+          "text": "i have experienced difficulty sleeping due to the itching and discomfort caused by the rash. there are small dents in my nails, which is really concerning.",
+          "true": "psoriasis",
+          "predicted": "psoriasis"
+        },
+        {
+          "text": "my nails are starting to have small pits on them. i am worried and don't know what is causing it. also, my joints pain and there are rashes on my arms and back.",
+          "true": "psoriasis",
+          "predicted": "psoriasis"
+        }
+      ],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "19ceccee",
+      "rule_name": "Psoriasis_JointPainSymptoms",
+      "label": "psoriasis",
+      "description": "Captures various descriptions of joint pain, often with strong adjectives (e.g., excruciating, extreme), which is a key symptom of psoriatic arthritis.",
+      "priority": 7,
+      "pattern": "(?i)\\b(?:joint\\s+pain|pain\\s+in\\s+my\\s+joints|joints\\s+pain|excruciating\\s+(?:discomfort|agony)|extreme\\s+pain)\\b",
+      "matched": 3,
+      "winning_predictions": 1,
+      "true_positive": 1,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 0.125,
+      "f1": 0.2222222222222222,
+      "coverage": 0.1,
+      "examples_true_positive": [
+        {
+          "text": "i have noticed a sudden peeling of skin at different parts of my body, mainly arms, legs and back. also, i face severe joint pain and skin rashes.",
+          "true": "psoriasis",
+          "predicted": "psoriasis"
+        }
+      ],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "24cc9fd7",
+      "rule_name": "VaricoseVeins_LegCramps",
+      "label": "varicose veins",
+      "description": "Matches mentions of cramps specifically located in the legs or calves, including pain similar to cramps.",
+      "priority": 7,
+      "pattern": "(?i)\\b(?:cramps?|pain\\b.*?similar\\s+to\\s+cramps)\\b(?:.*?)\\b(?:legs?|calves?)\\b",
+      "matched": 3,
+      "winning_predictions": 2,
+      "true_positive": 2,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 0.25,
+      "f1": 0.4,
+      "coverage": 0.1,
+      "examples_true_positive": [
+        {
+          "text": "i have noticed cramps in my calves are becoming more frequent and intense. it is causing me a lot of discomforts. i am also overweight and my legs have started to swell.",
+          "true": "varicose veins",
+          "predicted": "varicose veins"
+        },
+        {
+          "text": "walking is tough for me because of cramps in my calves. obesity, i believe, is the cause of this. after a while of working, i'm exhausted.",
+          "true": "varicose veins",
+          "predicted": "varicose veins"
+        }
+      ],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "cab0e80f",
+      "rule_name": "ChickenPox_LymphNodes",
+      "label": "chicken pox",
+      "description": "Matches mentions of lymph nodes combined with itching, swelling, or pain, which is specific to chicken pox in the provided data.",
+      "priority": 10,
+      "pattern": "(?i)\\b(?:small|large)?\\s*lymph nodes\\b.*?\\b(?:swell|itch(?:ing|es|y)|pain|uncomfortable)\\b",
+      "matched": 1,
+      "winning_predictions": 1,
+      "true_positive": 1,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 0.14285714285714285,
+      "f1": 0.25,
+      "coverage": 0.03333333333333333,
+      "examples_true_positive": [
+        {
+          "text": "i have small lymph nodes on my arms and face. the itching is making my day very uncomfortable.",
+          "true": "chicken pox",
+          "predicted": "chicken pox"
+        }
+      ],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "3b8ab87b",
+      "rule_name": "VaricoseVeins_VeinVisualSymptoms",
+      "label": "varicose veins",
+      "description": "Matches direct mentions of veins or blood vessels being prominent, swollen, visible, or protruding on legs or calves.",
+      "priority": 10,
+      "pattern": "(?i)(?=.*\\b(?:veins|blood\\s*vessels?)\\b)(?=.*\\b(?:protruding|prominent|swollen|visible|bulge|enlarged)\\b)(?=.*\\b(?:legs?|calves?)\\b).*",
+      "matched": 1,
+      "winning_predictions": 1,
+      "true_positive": 1,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 0.125,
+      "f1": 0.2222222222222222,
+      "coverage": 0.03333333333333333,
+      "examples_true_positive": [
+        {
+          "text": "the prominent veins on my calves are causing self-consciousness and embarrassment. they are swollen and protrude from my skin, making them very noticeable.",
+          "true": "varicose veins",
+          "predicted": "varicose veins"
+        }
+      ],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "e8652932",
+      "rule_name": "VaricoseVeins_ActivityAggravatedLegDiscomfort",
+      "label": "varicose veins",
+      "description": "Matches leg or calf pain, discomfort, cramps, or aching that is aggravated by prolonged standing or walking.",
+      "priority": 8,
+      "pattern": "(?i)\\b(?:standing|walking)\\s+for\\s+long\\s+(?:periods?|durations?|times?)\\b(?:.*?)\\b(?:pain|discomfort|cramps?|ache)\\b(?:.*?)\\b(?:legs?|calves?)\\b|\\b(?:pain|discomfort|cramps?|ache)\\b(?:.*?)\\b(?:legs?|calves?)\\b(?:.*?)\\b(?:standing|walking)\\s+for\\s+long\\s+(?:periods?|durations?|times?)\\b",
+      "matched": 1,
+      "winning_predictions": 1,
+      "true_positive": 1,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 0.125,
+      "f1": 0.2222222222222222,
+      "coverage": 0.03333333333333333,
+      "examples_true_positive": [
+        {
+          "text": "standing or walking for long periods of time causes a lot of pain in my legs. i get cramps upon doing physical activities. there are bruise marks on my legs too.",
+          "true": "varicose veins",
+          "predicted": "varicose veins"
+        }
+      ],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "82ee5eb4",
+      "rule_name": "ChickenPox_SystemicSymptoms",
+      "label": "chicken pox",
+      "description": "Matches combinations of general systemic symptoms characteristic of chicken pox, such as fever/headache, fatigue/weakness, and loss of appetite, requiring at least two distinct categories of these symptoms.",
+      "priority": 9,
+      "pattern": "(?i)(?:(?=.*\\b(?:high\\s+fever|fever|headache)\\b)(?=.*\\b(?:tired|exhausted|fatigued|no\\s+energy|lethargic|sick|weak)\\b)|(?=.*\\b(?:high\\s+fever|fever|headache)\\b)(?=.*\\b(?:lost\\s+my\\s+appetite|loss\\s+of\\s+appetite|can't\\s+seem\\s+to\\s+eat|no\\s+appetite)\\b)|(?=.*\\b(?:tired|exhausted|fatigued|no\\s+energy|lethargic|sick|weak)\\b)(?=.*\\b(?:lost\\s+my\\s+appetite|loss\\s+of\\s+appetite|can't\\s+seem\\s+to\\s+eat|no\\s+appetite)\\b)).*",
+      "matched": 5,
+      "winning_predictions": 3,
+      "true_positive": 2,
+      "false_positive": 1,
+      "precision": 0.6666666666666666,
+      "recall": 0.2857142857142857,
+      "f1": 0.4,
+      "coverage": 0.16666666666666666,
+      "examples_true_positive": [
+        {
+          "text": "i have swollen red lymph nodes on my arms and legs that itch when i touch them. i'm also suffering from a terrible headache and a mild fever. i don't feel like eating anything and have lost my appetite.",
+          "true": "chicken pox",
+          "predicted": "chicken pox"
+        },
+        {
+          "text": "there are red swollen spots all over my body. it itches if i touch them. moreover, i also have a high fever and headache and always feel exhausted.",
+          "true": "chicken pox",
+          "predicted": "chicken pox"
+        }
+      ],
+      "examples_false_positive": [
+        {
+          "text": "i have been feeling really fatigued and weak, and i can't seem to get rid of it. i have a mild fever and a strange pain in my abdominal area. i can't understand what is happening.",
+          "true": "typhoid",
+          "predicted": "chicken pox"
+        }
+      ]
+    },
+    {
+      "rule_id": "6e5048cf",
+      "rule_name": "ChickenPox_FatigueEnergyLoss",
+      "label": "chicken pox",
+      "description": "Matches general fatigue, lack of energy, or lethargy, which can be an early symptom of chicken pox.",
+      "priority": 6,
+      "pattern": "(?i)\\b(?:tired|exhausted|fatigued|no\\s+energy|lethargic|sick|weak)\\b",
+      "matched": 5,
+      "winning_predictions": 0,
+      "true_positive": 0,
+      "false_positive": 0,
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "coverage": 0.16666666666666666,
+      "examples_true_positive": [],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "31d0aed0",
+      "rule_name": "Typhoid_SystemicAbdominal",
+      "label": "typhoid",
+      "description": "Matches a combination of systemic symptoms (fever, headache, chills, fatigue) and abdominal or stomach discomfort, even without explicit GI symptoms like diarrhea or vomiting. This broadens coverage for typhoid cases.",
+      "priority": 9,
+      "pattern": "(?i)(?=.*\\b(?:fever|headache|chills|tired|exhausted|fatigued|sick|weak|lethargic)\\b)(?=.*\\b(?:abdominal\\s+(?:pain|cramps?|part)|stomach\\s+(?:ache|discomfort|pains?)|belly\\s+(?:pain|area|pains?))\\b).*",
+      "matched": 3,
+      "winning_predictions": 0,
+      "true_positive": 0,
+      "false_positive": 0,
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "coverage": 0.1,
+      "examples_true_positive": [],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "3c988c38",
+      "rule_name": "ChickenPox_AppetiteLoss",
+      "label": "chicken pox",
+      "description": "Matches mentions of significant loss of appetite or inability to eat, often a general early symptom of chicken pox when no other specific symptoms are present.",
+      "priority": 6,
+      "pattern": "(?i)\\b(?:lost\\s+my\\s+appetite|loss\\s+of\\s+appetite|can't\\s+seem\\s+to\\s+eat|no\\s+appetite)\\b",
+      "matched": 3,
+      "winning_predictions": 0,
+      "true_positive": 0,
+      "false_positive": 0,
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "coverage": 0.1,
+      "examples_true_positive": [],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "015bd09a",
+      "rule_name": "VaricoseVeins_LegRashSymptoms",
+      "label": "varicose veins",
+      "description": "Matches descriptions of a spreading, red, inflamed, or itchy rash specifically on the legs or calves, indicating a possible complication of varicose veins like venous eczema.",
+      "priority": 9,
+      "pattern": "(?i)(?=.*\\b(?:rash(?:es)?|skin\\s+rash)\\b)(?=.*\\b(?:legs?|calves?)\\b)(?=.*\\b(?:spreading|red|inflamed|itch(?:ing|es|y)|discomfort|irritated)\\b).*",
+      "matched": 1,
+      "winning_predictions": 1,
+      "true_positive": 0,
+      "false_positive": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "coverage": 0.03333333333333333,
+      "examples_true_positive": [],
+      "examples_false_positive": [
+        {
+          "text": "i've seen a sudden peeling of skin on various regions of my body, mostly my arms, legs, and back. in addition, i have significant joint pain and skin rashes. the rash is spreading to different parts of my body.",
+          "true": "psoriasis",
+          "predicted": "varicose veins"
+        }
+      ]
+    },
+    {
+      "rule_id": "787b35b6",
+      "rule_name": "ChickenPox_Rashes_Itch_NoNegs",
+      "label": "chicken pox",
+      "description": "Matches general 'rashes', 'skin rash', or 'red patches' combined with itching, discomfort, swelling, or spreading, while employing negative lookaheads to explicitly exclude keywords associated with 'varicose veins', 'psoriasis', and 'typhoid' found in counter-examples. Updated to include singular 'rash'.",
+      "priority": 8,
+      "pattern": "(?i)(?=.*\\b(?:rash(?:es)?|skin\\s+rash|red\\s+patches)\\b)(?=.*\\b(?:itch(?:ing|es|y)|discomfort|uncomfortable|irritating|swollen|spreading)\\b)(?!.*\\b(?:legs|calves|veins|nails|dents|pits|silvery\\s+film|palms|soles|fissures|peeling|genital|joints|abdominal|diarrhea|constipation)\\b).*",
+      "matched": 1,
+      "winning_predictions": 0,
+      "true_positive": 0,
+      "false_positive": 0,
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "coverage": 0.03333333333333333,
+      "examples_true_positive": [],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "1e081a6c",
+      "rule_name": "Psoriasis_SpecificSkinManifestations",
+      "label": "psoriasis",
+      "description": "Matches highly specific skin descriptions characteristic of psoriasis, such as scaly spots, silvery film/powder, or peeling/flaking skin, especially on common affected areas like elbows and knees. Updated to handle 'elbows and knees' conjunction.",
+      "priority": 9,
+      "pattern": "(?i)\\b(?:scaly\\s+spots|silvery\\s+film|silver-like\\s+powder|peeling\\s+of\\s+the\\s+skin(?:(?:,\\s+especially(?:\\s+(?:the\\s+skin|area))?)?\\s+on)?(?:my)?\\s*(?:elbows|knees|elbows\\s+and\\s+knees)|dry,\\s+flaky\\s+(?:areas|patches)|skin\\s+flaking)\\b",
+      "matched": 0,
+      "winning_predictions": 0,
+      "true_positive": 0,
+      "false_positive": 0,
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "coverage": 0.0,
+      "examples_true_positive": [],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "960c0e96",
+      "rule_name": "VaricoseVeins_UnexplainedBruisingLegs",
+      "label": "varicose veins",
+      "description": "Matches mentions of unexplained bruises or bruising specifically on the legs or calves.",
+      "priority": 9,
+      "pattern": "(?i)\\b(?:bruises?|bruising)\\b(?:(?!arms|neck|chest|body).*?)\\b(?:legs?|calves?)\\b(?:.*?)\\b(?:cannot\\s+explain|unexplained|not\\s+sure)\\b|\\b(?:cannot\\s+explain|unexplained|not\\s+sure)\\b(?:.*?)\\b(?:bruises?|bruising)\\b(?:(?!arms|neck|chest|body).*?)\\b(?:legs?|calves?)\\b",
+      "matched": 0,
+      "winning_predictions": 0,
+      "true_positive": 0,
+      "false_positive": 0,
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "coverage": 0.0,
+      "examples_true_positive": [],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "18092b20",
+      "rule_name": "Psoriasis_PalmsSolesFissures",
+      "label": "psoriasis",
+      "description": "Detects specific skin conditions on palms and soles, such as severe fissures or cracks, which can be seen in forms of psoriasis like palmoplantar psoriasis.",
+      "priority": 8,
+      "pattern": "(?i)(?=.*\\b(?:fissures|cracks)\\b)(?=.*\\b(?:palms|soles)\\b).*",
+      "matched": 0,
+      "winning_predictions": 0,
+      "true_positive": 0,
+      "false_positive": 0,
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "coverage": 0.0,
+      "examples_true_positive": [],
+      "examples_false_positive": []
+    }
+  ],
+  "rule_quality": [
+    {
+      "rule_id": "25da1daa",
+      "rule_name": "typhoid_gi_fever_combination",
+      "label": "typhoid",
+      "quality": "Excellent",
+      "quality_score": 100,
+      "suggestions": "Rule looks stable."
+    },
+    {
+      "rule_id": "babde443",
+      "rule_name": "ChickenPox_RedSpots_Systemic",
+      "label": "chicken pox",
+      "quality": "Excellent",
+      "quality_score": 100,
+      "suggestions": "Rule looks stable."
+    },
+    {
+      "rule_id": "6f9deb14",
+      "rule_name": "Psoriasis_NailIssues",
+      "label": "psoriasis",
+      "quality": "Good",
+      "quality_score": 80,
+      "suggestions": "Recall is low. Rule misses many true examples."
+    },
+    {
+      "rule_id": "19ceccee",
+      "rule_name": "Psoriasis_JointPainSymptoms",
+      "label": "psoriasis",
+      "quality": "Good",
+      "quality_score": 80,
+      "suggestions": "Recall is low. Rule misses many true examples."
+    },
+    {
+      "rule_id": "24cc9fd7",
+      "rule_name": "VaricoseVeins_LegCramps",
+      "label": "varicose veins",
+      "quality": "Good",
+      "quality_score": 80,
+      "suggestions": "Recall is low. Rule misses many true examples."
+    },
+    {
+      "rule_id": "cab0e80f",
+      "rule_name": "ChickenPox_LymphNodes",
+      "label": "chicken pox",
+      "quality": "Fair",
+      "quality_score": 70,
+      "suggestions": "Recall is low. Rule misses many true examples. Rule rarely activates."
+    },
+    {
+      "rule_id": "3b8ab87b",
+      "rule_name": "VaricoseVeins_VeinVisualSymptoms",
+      "label": "varicose veins",
+      "quality": "Fair",
+      "quality_score": 70,
+      "suggestions": "Recall is low. Rule misses many true examples. Rule rarely activates."
+    },
+    {
+      "rule_id": "e8652932",
+      "rule_name": "VaricoseVeins_ActivityAggravatedLegDiscomfort",
+      "label": "varicose veins",
+      "quality": "Fair",
+      "quality_score": 70,
+      "suggestions": "Recall is low. Rule misses many true examples. Rule rarely activates."
+    },
+    {
+      "rule_id": "82ee5eb4",
+      "rule_name": "ChickenPox_SystemicSymptoms",
+      "label": "chicken pox",
+      "quality": "Fair",
+      "quality_score": 60,
+      "suggestions": "Increase specificity to reduce false positives. Recall is low. Rule misses many true examples."
+    },
+    {
+      "rule_id": "6e5048cf",
+      "rule_name": "ChickenPox_FatigueEnergyLoss",
+      "label": "chicken pox",
+      "quality": "Poor",
+      "quality_score": 45,
+      "suggestions": "Precision is very low. Rule is likely too generic. Recall is low. Rule misses many true examples."
+    },
+    {
+      "rule_id": "31d0aed0",
+      "rule_name": "Typhoid_SystemicAbdominal",
+      "label": "typhoid",
+      "quality": "Poor",
+      "quality_score": 45,
+      "suggestions": "Precision is very low. Rule is likely too generic. Recall is low. Rule misses many true examples."
+    },
+    {
+      "rule_id": "3c988c38",
+      "rule_name": "ChickenPox_AppetiteLoss",
+      "label": "chicken pox",
+      "quality": "Poor",
+      "quality_score": 45,
+      "suggestions": "Precision is very low. Rule is likely too generic. Recall is low. Rule misses many true examples."
+    },
+    {
+      "rule_id": "015bd09a",
+      "rule_name": "VaricoseVeins_LegRashSymptoms",
+      "label": "varicose veins",
+      "quality": "Poor",
+      "quality_score": 10,
+      "suggestions": "Precision is very low. Rule is likely too generic. Recall is low. Rule misses many true examples. Rule rarely activates. Produces more false positives than true positives."
+    },
+    {
+      "rule_id": "787b35b6",
+      "rule_name": "ChickenPox_Rashes_Itch_NoNegs",
+      "label": "chicken pox",
+      "quality": "Poor",
+      "quality_score": 35,
+      "suggestions": "Precision is very low. Rule is likely too generic. Recall is low. Rule misses many true examples. Rule rarely activates."
+    },
+    {
+      "rule_id": "1e081a6c",
+      "rule_name": "Psoriasis_SpecificSkinManifestations",
+      "label": "psoriasis",
+      "quality": "Poor",
+      "quality_score": 35,
+      "suggestions": "Precision is very low. Rule is likely too generic. Recall is low. Rule misses many true examples. Rule rarely activates."
+    },
+    {
+      "rule_id": "960c0e96",
+      "rule_name": "VaricoseVeins_UnexplainedBruisingLegs",
+      "label": "varicose veins",
+      "quality": "Poor",
+      "quality_score": 35,
+      "suggestions": "Precision is very low. Rule is likely too generic. Recall is low. Rule misses many true examples. Rule rarely activates."
+    },
+    {
+      "rule_id": "18092b20",
+      "rule_name": "Psoriasis_PalmsSolesFissures",
+      "label": "psoriasis",
+      "quality": "Poor",
+      "quality_score": 35,
+      "suggestions": "Precision is very low. Rule is likely too generic. Recall is low. Rule misses many true examples. Rule rarely activates."
+    }
+  ],
+  "rule_suggestions": [
+    {
+      "rule_id": "25da1daa",
+      "rule_name": "typhoid_gi_fever_combination",
+      "recommendation": "Rule looks stable."
+    },
+    {
+      "rule_id": "babde443",
+      "rule_name": "ChickenPox_RedSpots_Systemic",
+      "recommendation": "Rule looks stable."
+    },
+    {
+      "rule_id": "6f9deb14",
+      "rule_name": "Psoriasis_NailIssues",
+      "recommendation": "Consider adding alternative symptom patterns."
+    },
+    {
+      "rule_id": "19ceccee",
+      "rule_name": "Psoriasis_JointPainSymptoms",
+      "recommendation": "Consider adding alternative symptom patterns."
+    },
+    {
+      "rule_id": "24cc9fd7",
+      "rule_name": "VaricoseVeins_LegCramps",
+      "recommendation": "Consider adding alternative symptom patterns."
+    },
+    {
+      "rule_id": "cab0e80f",
+      "rule_name": "ChickenPox_LymphNodes",
+      "recommendation": "Consider adding alternative symptom patterns."
+    },
+    {
+      "rule_id": "3b8ab87b",
+      "rule_name": "VaricoseVeins_VeinVisualSymptoms",
+      "recommendation": "Consider adding alternative symptom patterns."
+    },
+    {
+      "rule_id": "e8652932",
+      "rule_name": "VaricoseVeins_ActivityAggravatedLegDiscomfort",
+      "recommendation": "Consider adding alternative symptom patterns."
+    },
+    {
+      "rule_id": "82ee5eb4",
+      "rule_name": "ChickenPox_SystemicSymptoms",
+      "recommendation": "Consider adding alternative symptom patterns."
+    },
+    {
+      "rule_id": "6e5048cf",
+      "rule_name": "ChickenPox_FatigueEnergyLoss",
+      "recommendation": "Require additional symptoms before firing. Consider adding alternative symptom patterns."
+    },
+    {
+      "rule_id": "31d0aed0",
+      "rule_name": "Typhoid_SystemicAbdominal",
+      "recommendation": "Require additional symptoms before firing. Consider adding alternative symptom patterns."
+    },
+    {
+      "rule_id": "3c988c38",
+      "rule_name": "ChickenPox_AppetiteLoss",
+      "recommendation": "Require additional symptoms before firing. Consider adding alternative symptom patterns."
+    },
+    {
+      "rule_id": "015bd09a",
+      "rule_name": "VaricoseVeins_LegRashSymptoms",
+      "recommendation": "Require additional symptoms before firing. Consider adding alternative symptom patterns. Inspect false-positive examples and refine the regex."
+    },
+    {
+      "rule_id": "787b35b6",
+      "rule_name": "ChickenPox_Rashes_Itch_NoNegs",
+      "recommendation": "Require additional symptoms before firing. Consider adding alternative symptom patterns."
+    },
+    {
+      "rule_id": "1e081a6c",
+      "rule_name": "Psoriasis_SpecificSkinManifestations",
+      "recommendation": "Require additional symptoms before firing. Consider adding alternative symptom patterns."
+    },
+    {
+      "rule_id": "960c0e96",
+      "rule_name": "VaricoseVeins_UnexplainedBruisingLegs",
+      "recommendation": "Require additional symptoms before firing. Consider adding alternative symptom patterns."
+    },
+    {
+      "rule_id": "18092b20",
+      "rule_name": "Psoriasis_PalmsSolesFissures",
+      "recommendation": "Require additional symptoms before firing. Consider adding alternative symptom patterns."
+    }
+  ],
+  "weak_rules": [
+    {
+      "rule_id": "6e5048cf",
+      "rule_name": "ChickenPox_FatigueEnergyLoss",
+      "label": "chicken pox",
+      "description": "Matches general fatigue, lack of energy, or lethargy, which can be an early symptom of chicken pox.",
+      "priority": 6,
+      "pattern": "(?i)\\b(?:tired|exhausted|fatigued|no\\s+energy|lethargic|sick|weak)\\b",
+      "matched": 5,
+      "winning_predictions": 0,
+      "true_positive": 0,
+      "false_positive": 0,
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "coverage": 0.16666666666666666,
+      "examples_true_positive": [],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "31d0aed0",
+      "rule_name": "Typhoid_SystemicAbdominal",
+      "label": "typhoid",
+      "description": "Matches a combination of systemic symptoms (fever, headache, chills, fatigue) and abdominal or stomach discomfort, even without explicit GI symptoms like diarrhea or vomiting. This broadens coverage for typhoid cases.",
+      "priority": 9,
+      "pattern": "(?i)(?=.*\\b(?:fever|headache|chills|tired|exhausted|fatigued|sick|weak|lethargic)\\b)(?=.*\\b(?:abdominal\\s+(?:pain|cramps?|part)|stomach\\s+(?:ache|discomfort|pains?)|belly\\s+(?:pain|area|pains?))\\b).*",
+      "matched": 3,
+      "winning_predictions": 0,
+      "true_positive": 0,
+      "false_positive": 0,
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "coverage": 0.1,
+      "examples_true_positive": [],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "3c988c38",
+      "rule_name": "ChickenPox_AppetiteLoss",
+      "label": "chicken pox",
+      "description": "Matches mentions of significant loss of appetite or inability to eat, often a general early symptom of chicken pox when no other specific symptoms are present.",
+      "priority": 6,
+      "pattern": "(?i)\\b(?:lost\\s+my\\s+appetite|loss\\s+of\\s+appetite|can't\\s+seem\\s+to\\s+eat|no\\s+appetite)\\b",
+      "matched": 3,
+      "winning_predictions": 0,
+      "true_positive": 0,
+      "false_positive": 0,
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "coverage": 0.1,
+      "examples_true_positive": [],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "015bd09a",
+      "rule_name": "VaricoseVeins_LegRashSymptoms",
+      "label": "varicose veins",
+      "description": "Matches descriptions of a spreading, red, inflamed, or itchy rash specifically on the legs or calves, indicating a possible complication of varicose veins like venous eczema.",
+      "priority": 9,
+      "pattern": "(?i)(?=.*\\b(?:rash(?:es)?|skin\\s+rash)\\b)(?=.*\\b(?:legs?|calves?)\\b)(?=.*\\b(?:spreading|red|inflamed|itch(?:ing|es|y)|discomfort|irritated)\\b).*",
+      "matched": 1,
+      "winning_predictions": 1,
+      "true_positive": 0,
+      "false_positive": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "coverage": 0.03333333333333333,
+      "examples_true_positive": [],
+      "examples_false_positive": [
+        {
+          "text": "i've seen a sudden peeling of skin on various regions of my body, mostly my arms, legs, and back. in addition, i have significant joint pain and skin rashes. the rash is spreading to different parts of my body.",
+          "true": "psoriasis",
+          "predicted": "varicose veins"
+        }
+      ]
+    },
+    {
+      "rule_id": "787b35b6",
+      "rule_name": "ChickenPox_Rashes_Itch_NoNegs",
+      "label": "chicken pox",
+      "description": "Matches general 'rashes', 'skin rash', or 'red patches' combined with itching, discomfort, swelling, or spreading, while employing negative lookaheads to explicitly exclude keywords associated with 'varicose veins', 'psoriasis', and 'typhoid' found in counter-examples. Updated to include singular 'rash'.",
+      "priority": 8,
+      "pattern": "(?i)(?=.*\\b(?:rash(?:es)?|skin\\s+rash|red\\s+patches)\\b)(?=.*\\b(?:itch(?:ing|es|y)|discomfort|uncomfortable|irritating|swollen|spreading)\\b)(?!.*\\b(?:legs|calves|veins|nails|dents|pits|silvery\\s+film|palms|soles|fissures|peeling|genital|joints|abdominal|diarrhea|constipation)\\b).*",
+      "matched": 1,
+      "winning_predictions": 0,
+      "true_positive": 0,
+      "false_positive": 0,
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "coverage": 0.03333333333333333,
+      "examples_true_positive": [],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "1e081a6c",
+      "rule_name": "Psoriasis_SpecificSkinManifestations",
+      "label": "psoriasis",
+      "description": "Matches highly specific skin descriptions characteristic of psoriasis, such as scaly spots, silvery film/powder, or peeling/flaking skin, especially on common affected areas like elbows and knees. Updated to handle 'elbows and knees' conjunction.",
+      "priority": 9,
+      "pattern": "(?i)\\b(?:scaly\\s+spots|silvery\\s+film|silver-like\\s+powder|peeling\\s+of\\s+the\\s+skin(?:(?:,\\s+especially(?:\\s+(?:the\\s+skin|area))?)?\\s+on)?(?:my)?\\s*(?:elbows|knees|elbows\\s+and\\s+knees)|dry,\\s+flaky\\s+(?:areas|patches)|skin\\s+flaking)\\b",
+      "matched": 0,
+      "winning_predictions": 0,
+      "true_positive": 0,
+      "false_positive": 0,
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "coverage": 0.0,
+      "examples_true_positive": [],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "960c0e96",
+      "rule_name": "VaricoseVeins_UnexplainedBruisingLegs",
+      "label": "varicose veins",
+      "description": "Matches mentions of unexplained bruises or bruising specifically on the legs or calves.",
+      "priority": 9,
+      "pattern": "(?i)\\b(?:bruises?|bruising)\\b(?:(?!arms|neck|chest|body).*?)\\b(?:legs?|calves?)\\b(?:.*?)\\b(?:cannot\\s+explain|unexplained|not\\s+sure)\\b|\\b(?:cannot\\s+explain|unexplained|not\\s+sure)\\b(?:.*?)\\b(?:bruises?|bruising)\\b(?:(?!arms|neck|chest|body).*?)\\b(?:legs?|calves?)\\b",
+      "matched": 0,
+      "winning_predictions": 0,
+      "true_positive": 0,
+      "false_positive": 0,
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "coverage": 0.0,
+      "examples_true_positive": [],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "18092b20",
+      "rule_name": "Psoriasis_PalmsSolesFissures",
+      "label": "psoriasis",
+      "description": "Detects specific skin conditions on palms and soles, such as severe fissures or cracks, which can be seen in forms of psoriasis like palmoplantar psoriasis.",
+      "priority": 8,
+      "pattern": "(?i)(?=.*\\b(?:fissures|cracks)\\b)(?=.*\\b(?:palms|soles)\\b).*",
+      "matched": 0,
+      "winning_predictions": 0,
+      "true_positive": 0,
+      "false_positive": 0,
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "coverage": 0.0,
+      "examples_true_positive": [],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "82ee5eb4",
+      "rule_name": "ChickenPox_SystemicSymptoms",
+      "label": "chicken pox",
+      "description": "Matches combinations of general systemic symptoms characteristic of chicken pox, such as fever/headache, fatigue/weakness, and loss of appetite, requiring at least two distinct categories of these symptoms.",
+      "priority": 9,
+      "pattern": "(?i)(?:(?=.*\\b(?:high\\s+fever|fever|headache)\\b)(?=.*\\b(?:tired|exhausted|fatigued|no\\s+energy|lethargic|sick|weak)\\b)|(?=.*\\b(?:high\\s+fever|fever|headache)\\b)(?=.*\\b(?:lost\\s+my\\s+appetite|loss\\s+of\\s+appetite|can't\\s+seem\\s+to\\s+eat|no\\s+appetite)\\b)|(?=.*\\b(?:tired|exhausted|fatigued|no\\s+energy|lethargic|sick|weak)\\b)(?=.*\\b(?:lost\\s+my\\s+appetite|loss\\s+of\\s+appetite|can't\\s+seem\\s+to\\s+eat|no\\s+appetite)\\b)).*",
+      "matched": 5,
+      "winning_predictions": 3,
+      "true_positive": 2,
+      "false_positive": 1,
+      "precision": 0.6666666666666666,
+      "recall": 0.2857142857142857,
+      "f1": 0.4,
+      "coverage": 0.16666666666666666,
+      "examples_true_positive": [
+        {
+          "text": "i have swollen red lymph nodes on my arms and legs that itch when i touch them. i'm also suffering from a terrible headache and a mild fever. i don't feel like eating anything and have lost my appetite.",
+          "true": "chicken pox",
+          "predicted": "chicken pox"
+        },
+        {
+          "text": "there are red swollen spots all over my body. it itches if i touch them. moreover, i also have a high fever and headache and always feel exhausted.",
+          "true": "chicken pox",
+          "predicted": "chicken pox"
+        }
+      ],
+      "examples_false_positive": [
+        {
+          "text": "i have been feeling really fatigued and weak, and i can't seem to get rid of it. i have a mild fever and a strange pain in my abdominal area. i can't understand what is happening.",
+          "true": "typhoid",
+          "predicted": "chicken pox"
+        }
+      ]
+    }
+  ],
+  "strong_rules": [
+    {
+      "rule_id": "25da1daa",
+      "rule_name": "typhoid_gi_fever_combination",
+      "label": "typhoid",
+      "description": "Matches texts describing a combination of at least one core GI symptom (vomiting, nausea, diarrhea, constipation) and at least one systemic symptom or abdominal pain (fever, headache, abdominal/stomach pain).",
+      "priority": 10,
+      "pattern": "(?i)(?=.*\\b(?:vomiting|nauseated|nausea|diarrhea|constipation)\\b)(?=.*\\b(?:fever|headache|abdominal\\s+(?:pain|cramps?|part)|stomach\\s+(?:ache|discomfort|pains?)|belly\\s+(?:pain|area|pains?))\\b).*",
+      "matched": 6,
+      "winning_predictions": 6,
+      "true_positive": 6,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 0.8571428571428571,
+      "f1": 0.923076923076923,
+      "coverage": 0.2,
+      "examples_true_positive": [
+        {
+          "text": "i have developed diarrhea. it is accompanied by severe pain in my belly area. i don't feel like eating anything, and most of the time, i have a mild headache.",
+          "true": "typhoid",
+          "predicted": "typhoid"
+        },
+        {
+          "text": "i've been experiencing high fever, especially at night. it's been really uncomfortable. there is a mild headache along with constipation and diarrhea.",
+          "true": "typhoid",
+          "predicted": "typhoid"
+        },
+        {
+          "text": "i've lost a lot of weight in the past week because i haven't been able to eat much due to nausea and vomiting. this is followed by mild fever, headache and belly pain. i'm really concerned about my health.",
+          "true": "typhoid",
+          "predicted": "typhoid"
+        },
+        {
+          "text": "i have been experiencing diarrhea and have had loose, watery stools several times a day. i have lost my appetite and feel nauseated all the time. i am starting to get a mild fever too.",
+          "true": "typhoid",
+          "predicted": "typhoid"
+        },
+        {
+          "text": "i've had a persistent stomach pain for the past week, and it is not healing even with medication. i feel like vomiting and can't eat anything, and because of which i have become extremely weak.",
+          "true": "typhoid",
+          "predicted": "typhoid"
+        },
+        {
+          "text": "the stomach discomfort has been severe and frequent. vomiting and constipation have also happened. i'm concerned about my health.",
+          "true": "typhoid",
+          "predicted": "typhoid"
+        }
+      ],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "babde443",
+      "rule_name": "ChickenPox_RedSpots_Systemic",
+      "label": "chicken pox",
+      "description": "Identifies explicit mentions of 'red spots', 'patches', or 'rashes' combined with any general systemic symptom or itching, as these are strong indicators not present in counter-examples. Priority increased to resolve conflict with typhoid.",
+      "priority": 11,
+      "pattern": "(?i)(?=.*\\b(?:little|small|red)\\s+(?:spots|patches|rashes)\\b)(?=.*\\b(?:itch(?:ing|es|y)|discomfort|fever|appetite|energy|tired|exhausted|fatigued|sick|lethargic|headache)\\b).*",
+      "matched": 4,
+      "winning_predictions": 4,
+      "true_positive": 4,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 0.5714285714285714,
+      "f1": 0.7272727272727273,
+      "coverage": 0.13333333333333333,
+      "examples_true_positive": [
+        {
+          "text": "i am starting to develop tiny red spots all over my face and neck area, and it itches when i touch them. the itching is making my day very uncomfortable.",
+          "true": "chicken pox",
+          "predicted": "chicken pox"
+        },
+        {
+          "text": "i am exhausted and have lost my appetite. i feel vomiting and can't eat anything. in addition, little red spots are beginning to appear on my skin and near the neck. i am really worried about my health.",
+          "true": "chicken pox",
+          "predicted": "chicken pox"
+        },
+        {
+          "text": "i'm worried about these red spots on my skin. it's spreading rapidly and causing a lot of problems. i also developed a mild fever and headache every night.",
+          "true": "chicken pox",
+          "predicted": "chicken pox"
+        },
+        {
+          "text": "there are small red spots all over my body that i can't explain. the bumps are itchy and uncomfortable and seem to spread rapidly. it's worrying me.",
+          "true": "chicken pox",
+          "predicted": "chicken pox"
+        }
+      ],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "6f9deb14",
+      "rule_name": "Psoriasis_NailIssues",
+      "label": "psoriasis",
+      "description": "Identifies characteristic nail problems like small dents, pits, or strange inflammation, which are strong indicators of psoriatic nail disease.",
+      "priority": 9,
+      "pattern": "(?i)(?=.*\\bnails\\b)(?=.*\\b(?:dents|pits|inflammation|inflamed)\\b).*",
+      "matched": 3,
+      "winning_predictions": 3,
+      "true_positive": 3,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 0.375,
+      "f1": 0.5454545454545454,
+      "coverage": 0.1,
+      "examples_true_positive": [
+        {
+          "text": "the skin around my mouth, nose, and eyes is red and inflamed. it is often itchy and uncomfortable. there is a noticeable inflammation in my nails.",
+          "true": "psoriasis",
+          "predicted": "psoriasis"
+        },
+        {
+          "text": "i have experienced difficulty sleeping due to the itching and discomfort caused by the rash. there are small dents in my nails, which is really concerning.",
+          "true": "psoriasis",
+          "predicted": "psoriasis"
+        },
+        {
+          "text": "my nails are starting to have small pits on them. i am worried and don't know what is causing it. also, my joints pain and there are rashes on my arms and back.",
+          "true": "psoriasis",
+          "predicted": "psoriasis"
+        }
+      ],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "19ceccee",
+      "rule_name": "Psoriasis_JointPainSymptoms",
+      "label": "psoriasis",
+      "description": "Captures various descriptions of joint pain, often with strong adjectives (e.g., excruciating, extreme), which is a key symptom of psoriatic arthritis.",
+      "priority": 7,
+      "pattern": "(?i)\\b(?:joint\\s+pain|pain\\s+in\\s+my\\s+joints|joints\\s+pain|excruciating\\s+(?:discomfort|agony)|extreme\\s+pain)\\b",
+      "matched": 3,
+      "winning_predictions": 1,
+      "true_positive": 1,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 0.125,
+      "f1": 0.2222222222222222,
+      "coverage": 0.1,
+      "examples_true_positive": [
+        {
+          "text": "i have noticed a sudden peeling of skin at different parts of my body, mainly arms, legs and back. also, i face severe joint pain and skin rashes.",
+          "true": "psoriasis",
+          "predicted": "psoriasis"
+        }
+      ],
+      "examples_false_positive": []
+    },
+    {
+      "rule_id": "24cc9fd7",
+      "rule_name": "VaricoseVeins_LegCramps",
+      "label": "varicose veins",
+      "description": "Matches mentions of cramps specifically located in the legs or calves, including pain similar to cramps.",
+      "priority": 7,
+      "pattern": "(?i)\\b(?:cramps?|pain\\b.*?similar\\s+to\\s+cramps)\\b(?:.*?)\\b(?:legs?|calves?)\\b",
+      "matched": 3,
+      "winning_predictions": 2,
+      "true_positive": 2,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 0.25,
+      "f1": 0.4,
+      "coverage": 0.1,
+      "examples_true_positive": [
+        {
+          "text": "i have noticed cramps in my calves are becoming more frequent and intense. it is causing me a lot of discomforts. i am also overweight and my legs have started to swell.",
+          "true": "varicose veins",
+          "predicted": "varicose veins"
+        },
+        {
+          "text": "walking is tough for me because of cramps in my calves. obesity, i believe, is the cause of this. after a while of working, i'm exhausted.",
+          "true": "varicose veins",
+          "predicted": "varicose veins"
+        }
+      ],
+      "examples_false_positive": []
+    }
+  ],
+  "misclassifications": [
+    {
+      "text": "recently, my calves have been cramping up frequently, especially when i am walking or standing for long periods of time. also, the veins are very noticeable.",
+      "true_label": "varicose veins",
+      "predicted_label": "unknown",
+      "rule": null,
+      "rule_name": null,
+      "error_type": "no_rule_fired"
+    },
+    {
+      "text": "i've seen a sudden peeling of skin on various regions of my body, mostly my arms, legs, and back. in addition, i have significant joint pain and skin rashes. the rash is spreading to different parts of my body.",
+      "true_label": "psoriasis",
+      "predicted_label": "varicose veins",
+      "rule": "015bd09a",
+      "rule_name": "VaricoseVeins_LegRashSymptoms",
+      "error_type": "false_positive"
+    },
+    {
+      "text": "there is a silver like dusting on my skin. moreover, the skin on my arms and back are starting to peel off. this is strange and really concerning me.",
+      "true_label": "psoriasis",
+      "predicted_label": "unknown",
+      "rule": null,
+      "rule_name": null,
+      "error_type": "no_rule_fired"
+    },
+    {
+      "text": "the swelling in my legs has gotten worse over the past few weeks and is causing me difficulty fitting into my shoes. it is also causing discomfort when i sit for long periods of time.",
+      "true_label": "varicose veins",
+      "predicted_label": "unknown",
+      "rule": null,
+      "rule_name": null,
+      "error_type": "no_rule_fired"
+    },
+    {
+      "text": "the pain in my calves is constant and becomes worse when i stand or walk for long periods of time. i am getting constant cramps and can't run for longer periods of time.",
+      "true_label": "varicose veins",
+      "predicted_label": "unknown",
+      "rule": null,
+      "rule_name": null,
+      "error_type": "no_rule_fired"
+    },
+    {
+      "text": "i have been feeling really fatigued and weak, and i can't seem to get rid of it. i have a mild fever and a strange pain in my abdominal area. i can't understand what is happening.",
+      "true_label": "typhoid",
+      "predicted_label": "chicken pox",
+      "rule": "82ee5eb4",
+      "rule_name": "ChickenPox_SystemicSymptoms",
+      "error_type": "false_positive"
+    },
+    {
+      "text": "the skin around the veins on my legs is dry and flaky. it seems there is a major bruise and my legs have started to swell.",
+      "true_label": "varicose veins",
+      "predicted_label": "unknown",
+      "rule": null,
+      "rule_name": null,
+      "error_type": "no_rule_fired"
+    },
+    {
+      "text": "i have noticed that my skin has become more sensitive than it used to be. there is a silver like dusting on my skin, especially on my back and elbows.",
+      "true_label": "psoriasis",
+      "predicted_label": "unknown",
+      "rule": null,
+      "rule_name": null,
+      "error_type": "no_rule_fired"
+    },
+    {
+      "text": "there is a silver like dusting on my skin, especially on my lower back and scalp. this dusting is made up of small scales that flake off easily when i scratch them.",
+      "true_label": "psoriasis",
+      "predicted_label": "unknown",
+      "rule": null,
+      "rule_name": null,
+      "error_type": "no_rule_fired"
+    }
+  ]
+}

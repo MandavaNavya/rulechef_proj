@@ -1,0 +1,974 @@
+{
+  "name": "default",
+  "task": {
+    "name": "Disease Classification",
+    "description": "Classify a disease based on the symptoms described in the text.",
+    "input_schema": {
+      "text": "str"
+    },
+    "output_schema": {
+      "label": "str"
+    },
+    "type": "classification",
+    "matching_mode": "text",
+    "text_field": "text"
+  },
+  "description": "",
+  "examples": [
+    {
+      "id": "d5a306e2",
+      "input": {
+        "text": "the itching is making it hard for me to sleep at night. i can't seem to get any rest because the rash is so itchy and uncomfortable. i'm feeling really tired and exhausted."
+      },
+      "expected_output": {
+        "label": "chicken pox"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "f216e20e",
+      "input": {
+        "text": "i have no energy and have lost my appetite. i'm feeling really sick and don't know what's wrong. also, there are small red spots starting to show on my skin."
+      },
+      "expected_output": {
+        "label": "chicken pox"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "17fc5c16",
+      "input": {
+        "text": "i've lost my appetite and can't seem to eat anything. i'm worried about my health."
+      },
+      "expected_output": {
+        "label": "chicken pox"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "438687fb",
+      "input": {
+        "text": "i'm feeling really sick and lost my appetite. i've seen little red patches on my arms, neck and face that itch when i touch them."
+      },
+      "expected_output": {
+        "label": "chicken pox"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "16b25d22",
+      "input": {
+        "text": "i have a high fever and red spots and rashes all over my body. i feel exhausted and have completely lost my appetite, which has made me weak and lethargic. i am really worried."
+      },
+      "expected_output": {
+        "label": "chicken pox"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "4b429f2a",
+      "input": {
+        "text": "for the past few weeks, i've had a skin rash on my arms, legs, and chest. it's red and irritating, with dry, scaly spots. i have a strange pain in my joints too."
+      },
+      "expected_output": {
+        "label": "psoriasis"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "1ad370b8",
+      "input": {
+        "text": "my nails have small dents or pits in them, and they often feel inflammatory and tender to the touch. even there are minor rashes on my arms."
+      },
+      "expected_output": {
+        "label": "psoriasis"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "8b7adbb8",
+      "input": {
+        "text": "the rashes on my skin are not healing. moreover, i have noticed a sudden peeling of the skin, especially the skin on my elbows and knees. i am really worried about this."
+      },
+      "expected_output": {
+        "label": "psoriasis"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "bf49a937",
+      "input": {
+        "text": "my skin has a silvery film, particularly on my back, arms and scalp. this dusting is composed of tiny scales that easily peel off when scratched."
+      },
+      "expected_output": {
+        "label": "psoriasis"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "d110ba54",
+      "input": {
+        "text": "i've had trouble sleeping because of the itching and pain produced by the rash. my nails have little dents, which is really alarming. moreover, my joints pain everyday and i have no idea what is causing it."
+      },
+      "expected_output": {
+        "label": "psoriasis"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "053556ef",
+      "input": {
+        "text": "the abdominal pain has been coming and going, and it's been really unpleasant. it's been accompanied by constipation and vomiting. i feel really concerned about my health."
+      },
+      "expected_output": {
+        "label": "typhoid"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "61b40700",
+      "input": {
+        "text": "i've also had some diarrhea, which has been really unpleasant. it's been coming and going, and it's been accompanied by abdominal cramps and bloating."
+      },
+      "expected_output": {
+        "label": "typhoid"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "dda5d512",
+      "input": {
+        "text": "i am having a terrible pain in my abdominal part, and i've been feeling really nauseated. i'm also experiencing a mild fever. i am really worried."
+      },
+      "expected_output": {
+        "label": "typhoid"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "a5302f7a",
+      "input": {
+        "text": "i've been having a lot of trouble sleeping because of the high fever, headache and chills. i wake up every day having a terrible pain in my belly area."
+      },
+      "expected_output": {
+        "label": "typhoid"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "4445e3ff",
+      "input": {
+        "text": "diarrhea has been really watery and foul-smelling, and it's been accompanied by abdominal pain. i feel like vomiting most of the time."
+      },
+      "expected_output": {
+        "label": "typhoid"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "529b9c8e",
+      "input": {
+        "text": "there is bruising on my legs that i cannot explain. i can see strange blood vessels below the skin. also, i am slightly obese and i am really worried."
+      },
+      "expected_output": {
+        "label": "varicose veins"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "3c7e70a0",
+      "input": {
+        "text": "the veins in my calves are protruding out quite unusually. i am worried about it. also, i am overweight and i believe this is the reason behind all of this."
+      },
+      "expected_output": {
+        "label": "varicose veins"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "33f3214f",
+      "input": {
+        "text": "the veins on my calves have become very prominent and causing discomfort. i can't stand for long periods of time, as it causes pain in my legs, similar to cramps."
+      },
+      "expected_output": {
+        "label": "varicose veins"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "20d6aceb",
+      "input": {
+        "text": "standing or walking for long periods of time has been causing a lot of pain in my legs. it feels like a cramp and becomes worse the longer i am on my feet."
+      },
+      "expected_output": {
+        "label": "varicose veins"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "4e44d1b3",
+      "input": {
+        "text": "the veins on my calves are very prominent and are causing me a lot of discomforts. they are swollen and protrude from my skin."
+      },
+      "expected_output": {
+        "label": "varicose veins"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "3f4b3d0a",
+      "input": {
+        "text": "i have a high fever and a mild headache. i'm tired most of the time and completely lost my appetite."
+      },
+      "expected_output": {
+        "label": "chicken pox"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "c4c46802",
+      "input": {
+        "text": "i have a high fever and a severe headache. i can't seem to eat anything and feel like vomiting. there are also some red spots developing on my arms. i am really worried."
+      },
+      "expected_output": {
+        "label": "chicken pox"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "d54fb3aa",
+      "input": {
+        "text": "i have seen rashes on my arms and neck and it itches if i scratch them. i've also had a high fever for a few days. i have no idea what is causing it. the itching is causing me a lot of discomforts."
+      },
+      "expected_output": {
+        "label": "chicken pox"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "cfd128bc",
+      "input": {
+        "text": "my arms and face have small lymph nodes, which are starting to swell. my day has been made really miserable by the constant itching and pain."
+      },
+      "expected_output": {
+        "label": "chicken pox"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "6505f0c2",
+      "input": {
+        "text": "i have a skin rash that's red and swollen, and it's spreading all over my body. i have a mild fever and it is causing me a lot of discomforts."
+      },
+      "expected_output": {
+        "label": "chicken pox"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "fb220974",
+      "input": {
+        "text": "my palms and soles have grown and developed severe fissures. these cracks are unpleasant and frequently bleed. also, the skin is starting to peel off."
+      },
+      "expected_output": {
+        "label": "psoriasis"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "771d7c5a",
+      "input": {
+        "text": "my skin is extremely sensitive and quickly irritated by changes in temperature or humidity. my nails have developed dents on them. i am worried about this sudden change."
+      },
+      "expected_output": {
+        "label": "psoriasis"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "4118a915",
+      "input": {
+        "text": "my genital skin is red and irritated. it is frequently irritating, burning, and unpleasant. there are also rashes in various places of the body. also, i have a strange pain in my joints."
+      },
+      "expected_output": {
+        "label": "psoriasis"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "04502a4e",
+      "input": {
+        "text": "my nails are slightly dented. even my joints are now experiencing excruciating discomfort. my skin has a silver-like powder, especially on my back and elbows."
+      },
+      "expected_output": {
+        "label": "psoriasis"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "61266fb6",
+      "input": {
+        "text": "i have been experiencing joint pain in my fingers, wrists, and knees. the pain is often achy and throbbing, and it gets worse when i move my joints."
+      },
+      "expected_output": {
+        "label": "psoriasis"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "771edff6",
+      "input": {
+        "text": "the diarrhea has been quite fluid and smelly, and it has been accompanied by severe abdominal pain and headache. most of the time, i feel like vomiting."
+      },
+      "expected_output": {
+        "label": "typhoid"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "23edcd03",
+      "input": {
+        "text": "because of the vomiting and diarrhea, i've been having a lot of difficulties staying hydrated. i have a high fever, as well as constipation and headache."
+      },
+      "expected_output": {
+        "label": "typhoid"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "d0fcda10",
+      "input": {
+        "text": "i've been suffering from constipation and stomach discomfort, which has been really uncomfortable. last night, i had a mild fever too."
+      },
+      "expected_output": {
+        "label": "typhoid"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "d640250b",
+      "input": {
+        "text": "i am experiencing constipation and stomach ache, which has been really difficult. the discomfort has gotten worse, and it is seriously interfering with my everyday life."
+      },
+      "expected_output": {
+        "label": "typhoid"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "9b64bf56",
+      "input": {
+        "text": "i've been feeling exhausted and weak, and i can't seem to get rid of it. because of the vomiting and nausea, i've entirely lost my appetite. my belly pains which are causing me concern."
+      },
+      "expected_output": {
+        "label": "typhoid"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "1f56b2f7",
+      "input": {
+        "text": "long durations of standing or walking have caused severe discomfort in my legs. it's a burning ache that gets worse the longer i'm on my feet."
+      },
+      "expected_output": {
+        "label": "varicose veins"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "0c6d54a8",
+      "input": {
+        "text": "the swelling in my legs is causing me to have difficulty fitting into my shoes. i can't sprint or stand for long periods of time. i can see some swollen blood vessels."
+      },
+      "expected_output": {
+        "label": "varicose veins"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "8b34c154",
+      "input": {
+        "text": "my legs have been causing a lot of discomforts when i exercise. they feel heavy and swollen, and the veins are prominent and painful. i feel fatigued all the time."
+      },
+      "expected_output": {
+        "label": "varicose veins"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "5fa1dba1",
+      "input": {
+        "text": "i have noticed that there are bruises on my legs that i cannot explain. they are not painful but are concerning to me."
+      },
+      "expected_output": {
+        "label": "varicose veins"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "1e253544",
+      "input": {
+        "text": "the cramps in my calves are making it difficult for me to walk. i feel fatigued after working for some time. i believe obesity is the reason behind this."
+      },
+      "expected_output": {
+        "label": "varicose veins"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "aeb6f804",
+      "input": {
+        "text": "my arms and neck have large lymph nodes, which itch when i touch them. the itching has made my day extremely uncomfortable."
+      },
+      "expected_output": {
+        "label": "chicken pox"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "ffc29f55",
+      "input": {
+        "text": "i have little red spots all over my body that i don't understand. it worries me. i have lost my appetite and every night, i am exhausted and have a severe headache."
+      },
+      "expected_output": {
+        "label": "chicken pox"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "53367c6c",
+      "input": {
+        "text": "i'm feeling fatigued and have no energy. i can barely keep my eyes open during the day, and i've been feeling lethargic and unable to motivate myself."
+      },
+      "expected_output": {
+        "label": "chicken pox"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "62f1f965",
+      "input": {
+        "text": "i feel tired every day. there are red spots all over my arms and back and it itches if i touch them. i am really worried and not sure what to do."
+      },
+      "expected_output": {
+        "label": "chicken pox"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "1d4139d0",
+      "input": {
+        "text": "i'm worried about this rash on my skin. it's spreading rapidly and causing a lot of discomforts. i can hardly sleep at night because of the itching,"
+      },
+      "expected_output": {
+        "label": "chicken pox"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "8867bc75",
+      "input": {
+        "text": "because of dry, flaky areas on my skin, i am prone to infections. my joints are in excruciating agony. the skin on my knees and elbows is beginning to flake."
+      },
+      "expected_output": {
+        "label": "psoriasis"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "66d9bb99",
+      "input": {
+        "text": "my arms, face and back\u00a0are all red and irritated. it is frequently irritating and unpleasant. my nails have a strange inflammation and have developed small dents. i have never seen anything like this."
+      },
+      "expected_output": {
+        "label": "psoriasis"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "22ac8a60",
+      "input": {
+        "text": "my skin is prone to infections due to dry, flaky patches. i am experiencing a strong pain in my joints. the skin on my knees and elbows is starting to peel off."
+      },
+      "expected_output": {
+        "label": "psoriasis"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "3f113e5b",
+      "input": {
+        "text": "because of dry, flaky areas on my skin, i am prone to infections. my joints are in extreme pain . my knees and elbows' skin are starting to peel off."
+      },
+      "expected_output": {
+        "label": "psoriasis"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "49a87bf9",
+      "input": {
+        "text": "my skin rash has extended to other areas of my body, including my chest and belly. it is irritating and unpleasant, and it is frequently worst at night. i'm also experiencing skin flaking."
+      },
+      "expected_output": {
+        "label": "psoriasis"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "404c87c8",
+      "input": {
+        "text": "the abdominal pain has been frequent and really painful. constipation and vomiting have also occurred. i'm quite worried about my health."
+      },
+      "expected_output": {
+        "label": "typhoid"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "e82ee148",
+      "input": {
+        "text": "there is a distinct pain in my abdominal part. i am not sure what it is. i am also going through constant vomiting and feel nauseous."
+      },
+      "expected_output": {
+        "label": "typhoid"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "621484af",
+      "input": {
+        "text": "i've been experiencing chills, fever, and extreme stomach discomfort. i've been generally unhappy, and i can't seem to get rid of these symptoms."
+      },
+      "expected_output": {
+        "label": "typhoid"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "7f02b0c4",
+      "input": {
+        "text": "i've been having a lot of trouble keeping hydrated because of the vomiting and diarrhea. there is a mild fever along with constipation and headache."
+      },
+      "expected_output": {
+        "label": "typhoid"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "7d0dfb33",
+      "input": {
+        "text": "i've also been suffering from diarrhea, which has been really uncomfortable. it comes and goes, and it's accompanied by stomach aches and vomiting."
+      },
+      "expected_output": {
+        "label": "typhoid"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "e049907e",
+      "input": {
+        "text": "the rash on my legs is spreading and becoming more severe. it is red, inflamed, and itchy, causing a lot of discomfort and difficulty sleeping at night."
+      },
+      "expected_output": {
+        "label": "varicose veins"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "94fca92c",
+      "input": {
+        "text": "the skin on my calves is itchy and inflamed, causing a lot of discomfort and difficulty sleeping at night. the blood vessels have started to protrude out, which is concerning."
+      },
+      "expected_output": {
+        "label": "varicose veins"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "1a0ba499",
+      "input": {
+        "text": "i am overweight and have noticed that my legs are swollen and the blood vessels are visible. my legs have swollen and i can see a stream of swollen veins on my calves."
+      },
+      "expected_output": {
+        "label": "varicose veins"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "9137dd66",
+      "input": {
+        "text": "as i am overweight, i have noticed that my legs are swollen and the blood vessels are more visible than usual. the swelling seems to be getting worse over time."
+      },
+      "expected_output": {
+        "label": "varicose veins"
+      },
+      "source": "human",
+      "confidence": 0.8
+    },
+    {
+      "id": "11ed351a",
+      "input": {
+        "text": "i am experiencing too many cramps in the last couple of days. i think something is not right. i believe there is a small bruise on my calves, but i am not sure about it."
+      },
+      "expected_output": {
+        "label": "varicose veins"
+      },
+      "source": "human",
+      "confidence": 0.8
+    }
+  ],
+  "corrections": [],
+  "feedback": [],
+  "structured_feedback": [],
+  "rules": [
+    {
+      "id": "cab0e80f",
+      "name": "ChickenPox_LymphNodes",
+      "description": "Matches mentions of lymph nodes combined with itching, swelling, or pain, which is specific to chicken pox in the provided data.",
+      "format": "regex",
+      "content": "(?i)\\b(?:small|large)?\\s*lymph nodes\\b.*?\\b(?:swell|itch(?:ing|es|y)|pain|uncomfortable)\\b",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-08-02T12:09:27.464954",
+      "output_template": {
+        "label": "chicken pox"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "babde443",
+      "name": "ChickenPox_RedSpots_Systemic",
+      "description": "Identifies explicit mentions of 'red spots', 'patches', or 'rashes' combined with any general systemic symptom or itching, as these are strong indicators not present in counter-examples. Priority increased to resolve conflict with typhoid.",
+      "format": "regex",
+      "content": "(?i)(?=.*\\b(?:little|small|red)\\s+(?:spots|patches|rashes)\\b)(?=.*\\b(?:itch(?:ing|es|y)|discomfort|fever|appetite|energy|tired|exhausted|fatigued|sick|lethargic|headache)\\b).*",
+      "priority": 11,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-08-02T12:10:19.617168",
+      "output_template": {
+        "label": "chicken pox"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "787b35b6",
+      "name": "ChickenPox_Rashes_Itch_NoNegs",
+      "description": "Matches general 'rashes', 'skin rash', or 'red patches' combined with itching, discomfort, swelling, or spreading, while employing negative lookaheads to explicitly exclude keywords associated with 'varicose veins', 'psoriasis', and 'typhoid' found in counter-examples. Updated to include singular 'rash'.",
+      "format": "regex",
+      "content": "(?i)(?=.*\\b(?:rash(?:es)?|skin\\s+rash|red\\s+patches)\\b)(?=.*\\b(?:itch(?:ing|es|y)|discomfort|uncomfortable|irritating|swollen|spreading)\\b)(?!.*\\b(?:legs|calves|veins|nails|dents|pits|silvery\\s+film|palms|soles|fissures|peeling|genital|joints|abdominal|diarrhea|constipation)\\b).*",
+      "priority": 8,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-08-02T12:10:19.616772",
+      "output_template": {
+        "label": "chicken pox"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "1e081a6c",
+      "name": "Psoriasis_SpecificSkinManifestations",
+      "description": "Matches highly specific skin descriptions characteristic of psoriasis, such as scaly spots, silvery film/powder, or peeling/flaking skin, especially on common affected areas like elbows and knees. Updated to handle 'elbows and knees' conjunction.",
+      "format": "regex",
+      "content": "(?i)\\b(?:scaly\\s+spots|silvery\\s+film|silver-like\\s+powder|peeling\\s+of\\s+the\\s+skin(?:(?:,\\s+especially(?:\\s+(?:the\\s+skin|area))?)?\\s+on)?(?:my)?\\s*(?:elbows|knees|elbows\\s+and\\s+knees)|dry,\\s+flaky\\s+(?:areas|patches)|skin\\s+flaking)\\b",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-08-02T12:10:19.617401",
+      "output_template": {
+        "label": "psoriasis"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "6f9deb14",
+      "name": "Psoriasis_NailIssues",
+      "description": "Identifies characteristic nail problems like small dents, pits, or strange inflammation, which are strong indicators of psoriatic nail disease.",
+      "format": "regex",
+      "content": "(?i)(?=.*\\bnails\\b)(?=.*\\b(?:dents|pits|inflammation|inflamed)\\b).*",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-08-02T12:09:27.468331",
+      "output_template": {
+        "label": "psoriasis"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "18092b20",
+      "name": "Psoriasis_PalmsSolesFissures",
+      "description": "Detects specific skin conditions on palms and soles, such as severe fissures or cracks, which can be seen in forms of psoriasis like palmoplantar psoriasis.",
+      "format": "regex",
+      "content": "(?i)(?=.*\\b(?:fissures|cracks)\\b)(?=.*\\b(?:palms|soles)\\b).*",
+      "priority": 8,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-08-02T12:09:27.468560",
+      "output_template": {
+        "label": "psoriasis"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "19ceccee",
+      "name": "Psoriasis_JointPainSymptoms",
+      "description": "Captures various descriptions of joint pain, often with strong adjectives (e.g., excruciating, extreme), which is a key symptom of psoriatic arthritis.",
+      "format": "regex",
+      "content": "(?i)\\b(?:joint\\s+pain|pain\\s+in\\s+my\\s+joints|joints\\s+pain|excruciating\\s+(?:discomfort|agony)|extreme\\s+pain)\\b",
+      "priority": 7,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-08-02T12:06:58.364190",
+      "output_template": {
+        "label": "psoriasis"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "25da1daa",
+      "name": "typhoid_gi_fever_combination",
+      "description": "Matches texts describing a combination of at least one core GI symptom (vomiting, nausea, diarrhea, constipation) and at least one systemic symptom or abdominal pain (fever, headache, abdominal/stomach pain).",
+      "format": "regex",
+      "content": "(?i)(?=.*\\b(?:vomiting|nauseated|nausea|diarrhea|constipation)\\b)(?=.*\\b(?:fever|headache|abdominal\\s+(?:pain|cramps?|part)|stomach\\s+(?:ache|discomfort|pains?)|belly\\s+(?:pain|area|pains?))\\b).*",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-08-02T12:09:27.468737",
+      "output_template": {
+        "label": "typhoid"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "3b8ab87b",
+      "name": "VaricoseVeins_VeinVisualSymptoms",
+      "description": "Matches direct mentions of veins or blood vessels being prominent, swollen, visible, or protruding on legs or calves.",
+      "format": "regex",
+      "content": "(?i)(?=.*\\b(?:veins|blood\\s*vessels?)\\b)(?=.*\\b(?:protruding|prominent|swollen|visible|bulge|enlarged)\\b)(?=.*\\b(?:legs?|calves?)\\b).*",
+      "priority": 10,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-08-02T12:09:27.469282",
+      "output_template": {
+        "label": "varicose veins"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "960c0e96",
+      "name": "VaricoseVeins_UnexplainedBruisingLegs",
+      "description": "Matches mentions of unexplained bruises or bruising specifically on the legs or calves.",
+      "format": "regex",
+      "content": "(?i)\\b(?:bruises?|bruising)\\b(?:(?!arms|neck|chest|body).*?)\\b(?:legs?|calves?)\\b(?:.*?)\\b(?:cannot\\s+explain|unexplained|not\\s+sure)\\b|\\b(?:cannot\\s+explain|unexplained|not\\s+sure)\\b(?:.*?)\\b(?:bruises?|bruising)\\b(?:(?!arms|neck|chest|body).*?)\\b(?:legs?|calves?)\\b",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-08-02T12:09:27.469603",
+      "output_template": {
+        "label": "varicose veins"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "e8652932",
+      "name": "VaricoseVeins_ActivityAggravatedLegDiscomfort",
+      "description": "Matches leg or calf pain, discomfort, cramps, or aching that is aggravated by prolonged standing or walking.",
+      "format": "regex",
+      "content": "(?i)\\b(?:standing|walking)\\s+for\\s+long\\s+(?:periods?|durations?|times?)\\b(?:.*?)\\b(?:pain|discomfort|cramps?|ache)\\b(?:.*?)\\b(?:legs?|calves?)\\b|\\b(?:pain|discomfort|cramps?|ache)\\b(?:.*?)\\b(?:legs?|calves?)\\b(?:.*?)\\b(?:standing|walking)\\s+for\\s+long\\s+(?:periods?|durations?|times?)\\b",
+      "priority": 8,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-08-02T12:08:04.383555",
+      "output_template": {
+        "label": "varicose veins"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "24cc9fd7",
+      "name": "VaricoseVeins_LegCramps",
+      "description": "Matches mentions of cramps specifically located in the legs or calves, including pain similar to cramps.",
+      "format": "regex",
+      "content": "(?i)\\b(?:cramps?|pain\\b.*?similar\\s+to\\s+cramps)\\b(?:.*?)\\b(?:legs?|calves?)\\b",
+      "priority": 7,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-08-02T12:08:04.384139",
+      "output_template": {
+        "label": "varicose veins"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "82ee5eb4",
+      "name": "ChickenPox_SystemicSymptoms",
+      "description": "Matches combinations of general systemic symptoms characteristic of chicken pox, such as fever/headache, fatigue/weakness, and loss of appetite, requiring at least two distinct categories of these symptoms.",
+      "format": "regex",
+      "content": "(?i)(?:(?=.*\\b(?:high\\s+fever|fever|headache)\\b)(?=.*\\b(?:tired|exhausted|fatigued|no\\s+energy|lethargic|sick|weak)\\b)|(?=.*\\b(?:high\\s+fever|fever|headache)\\b)(?=.*\\b(?:lost\\s+my\\s+appetite|loss\\s+of\\s+appetite|can't\\s+seem\\s+to\\s+eat|no\\s+appetite)\\b)|(?=.*\\b(?:tired|exhausted|fatigued|no\\s+energy|lethargic|sick|weak)\\b)(?=.*\\b(?:lost\\s+my\\s+appetite|loss\\s+of\\s+appetite|can't\\s+seem\\s+to\\s+eat|no\\s+appetite)\\b)).*",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-08-02T12:09:27.466289",
+      "output_template": {
+        "label": "chicken pox"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "3c988c38",
+      "name": "ChickenPox_AppetiteLoss",
+      "description": "Matches mentions of significant loss of appetite or inability to eat, often a general early symptom of chicken pox when no other specific symptoms are present.",
+      "format": "regex",
+      "content": "(?i)\\b(?:lost\\s+my\\s+appetite|loss\\s+of\\s+appetite|can't\\s+seem\\s+to\\s+eat|no\\s+appetite)\\b",
+      "priority": 6,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-08-02T12:10:19.617181",
+      "output_template": {
+        "label": "chicken pox"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "6e5048cf",
+      "name": "ChickenPox_FatigueEnergyLoss",
+      "description": "Matches general fatigue, lack of energy, or lethargy, which can be an early symptom of chicken pox.",
+      "format": "regex",
+      "content": "(?i)\\b(?:tired|exhausted|fatigued|no\\s+energy|lethargic|sick|weak)\\b",
+      "priority": 6,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-08-02T12:10:19.617312",
+      "output_template": {
+        "label": "chicken pox"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "31d0aed0",
+      "name": "Typhoid_SystemicAbdominal",
+      "description": "Matches a combination of systemic symptoms (fever, headache, chills, fatigue) and abdominal or stomach discomfort, even without explicit GI symptoms like diarrhea or vomiting. This broadens coverage for typhoid cases.",
+      "format": "regex",
+      "content": "(?i)(?=.*\\b(?:fever|headache|chills|tired|exhausted|fatigued|sick|weak|lethargic)\\b)(?=.*\\b(?:abdominal\\s+(?:pain|cramps?|part)|stomach\\s+(?:ache|discomfort|pains?)|belly\\s+(?:pain|area|pains?))\\b).*",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-08-02T12:10:19.617659",
+      "output_template": {
+        "label": "typhoid"
+      },
+      "output_key": "label"
+    },
+    {
+      "id": "015bd09a",
+      "name": "VaricoseVeins_LegRashSymptoms",
+      "description": "Matches descriptions of a spreading, red, inflamed, or itchy rash specifically on the legs or calves, indicating a possible complication of varicose veins like venous eczema.",
+      "format": "regex",
+      "content": "(?i)(?=.*\\b(?:rash(?:es)?|skin\\s+rash)\\b)(?=.*\\b(?:legs?|calves?)\\b)(?=.*\\b(?:spreading|red|inflamed|itch(?:ing|es|y)|discomfort|irritated)\\b).*",
+      "priority": 9,
+      "confidence": 0.5,
+      "times_applied": 0,
+      "successes": 0,
+      "failures": 0,
+      "created_at": "2026-08-02T12:10:19.617849",
+      "output_template": {
+        "label": "varicose veins"
+      },
+      "output_key": "label"
+    }
+  ],
+  "version": 1
+}
